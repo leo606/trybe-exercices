@@ -20,3 +20,52 @@ ol .par {
 ol .primo {
     text-transform: uppercase;
 }
+
+h1, h2, h3 {
+    color: red;
+}
+
+h1 em, h2 em, h3 em {
+    font-size: 40px;
+    border: solid 1px black;
+}
+
+li {
+    font-size: 20px;
+}
+
+li em {
+    font-weight: bold;
+}
+
+.liAzul {
+    color: blue;
+}
+
+.java {
+    background-color: pink;
+}
+
+.aliados a:hover {
+    font-weight: bold;
+}
+
+.aliados .stack a:hover {
+    color: orange;
+}
+
+.aliados .w3 a:hover {
+    color: green;
+}
+
+.aliados .mdn a:hover {
+    color: black;
+}
+
+.aliados .devdocs a:hover {
+    color: yellow;
+}
+
+.aliados .trybe a:hover {
+    color: green;
+}
