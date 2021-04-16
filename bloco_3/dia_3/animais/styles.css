@@ -1,0 +1,16 @@
+body {
+    font-family: sans-serif;
+}
+img {
+    width: 300px;
+}
+
+.humpbackWhale {
+    color: blue;
+}
+
+.paragrafos{
+    background-color: burlywood;
+    width: 60%;
+    overflow: auto;
+}
