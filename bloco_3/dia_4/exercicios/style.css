@@ -1,11 +1,37 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: cadetblue;
+    background-color: whitesmoke;
+    max-width: 1000px;
+    margin-left: 30px;
+    font-size: 16px;
 }
 
 header {
-    background-color: aquamarine;
     margin-top: 90px;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+section:nth-of-type(even) {
+    background-color: wheat;
+}
+
+section:nth-of-type(odd) {
+    background-color: thistle;
+}
+
+h3, h4 {
+    margin-left: 30px;
+}
+
+p {
+    max-width: 60%;
+}
+
+p, img {
+    margin-left: 60px;
 }
 
 nav {
@@ -30,9 +56,7 @@ nav ul {
 nav ul li {
     display: inline-block;
     margin-right: 60px;
-    list-style: none;
-
-    
+    list-style: none;    
 }
 
 nav ul li a {
@@ -46,10 +70,14 @@ h3 {
     border-top: solid 1px black;
 }
 
+section {
+    margin-left: 33px;
+}
+
 table th {
     width: 133px;
     text-align: right;
-    background-color: darkcyan;
+    /* background-color: darkcyan; */
 }
 
 table td {
