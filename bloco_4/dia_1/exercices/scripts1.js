@@ -13,8 +13,15 @@
 // console.log(subtracao);
 
 // ---MULTIPLICAÇÃO:
-let a = 3;
+// let a = 3;
+// let b = 3;
+
+// let multiplicacao = a * b;
+// console.log(multiplicacao);
+
+// --- DIVISÃO:
+let a = 9;
 let b = 3;
 
-let multiplicacao = a * b;
-console.log(multiplicacao);
+let divisao = a / b;
+console.log(divisao);
