@@ -20,8 +20,15 @@
 // console.log(multiplicacao);
 
 // --- DIVISÃO:
-let a = 9;
-let b = 3;
+// let a = 9;
+// let b = 3;
 
-let divisao = a / b;
-console.log(divisao);
+// let divisao = a / b;
+// console.log(divisao);
+
+// MÓDULO:
+let a = 3333333;
+let b = 4;
+
+let mod = a % b;
+console.log(mod);
