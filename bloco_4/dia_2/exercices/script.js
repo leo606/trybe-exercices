@@ -29,13 +29,13 @@ if (mediaAritmetica > 20) {
 
 // EXERCICIO 5:
 // Utilizando for , descubra qual o maior valor contido no array e imprima-o;
-let maiorNumero = 0;
+let maiorValor = 0;
 for (let index3 = 0; index3 < numbers.length; index3 += 1){
-    if (numbers[index3] > maiorNumero){
-        maiorNumero = numbers[index3];
+    if (numbers[index3] > maiorValor){
+        maiorValor = numbers[index3];
     }
 }
-console.log(`O maior número é ${maiorNumero}`);
+console.log(`O maior número é ${maiorValor}`);
 
 // EXERCICIO 6:
 // Descubra quantos valores ímpares existem no array e imprima o resultado. Caso não exista nenhum, imprima a mensagem: "nenhum valor ímpar encontrado";
@@ -45,7 +45,14 @@ for (let index4 = 0; index4 < numbers.length; index4 += 1){
         numerosImpares = numerosImpares += 1;
     }
 }
-console.log(`A quantidade de ímpares é ${numerosImpares}`)
+console.log(`A quantidade de ímpares é ${numerosImpares}`);
 
 // EXERCICIO 7:
 // Utilizando for , descubra qual o menor valor contido no array e imprima-o;
+let menorValor = maiorValor;
+for (let index5 = 0; index5 < numbers.length; index5 += 1){
+    if (numbers[index5] < menorValor) {
+        menorValor = numbers[index5];
+    }
+}
+console.log(`O menor valor é ${menorValor}`);
