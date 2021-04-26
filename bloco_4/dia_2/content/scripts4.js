@@ -25,6 +25,7 @@ for (let indexGames = 0; indexGames < playerGame.length; indexGames += 1) {
     console.log(`MEGASENA      ${megaSenaNumbers}`);
     console.log(`PLAYER GAME   ${playerGame[indexGames]}`);
     console.log(`ACERTOS       ${numberOfHits}`);
+    console.log('----------------------------------------------')
     
 };
 
