@@ -1,19 +1,17 @@
-// Agora inverta o lado do triângulo.
-
 let size = 5;
 let symbol = '*';
 let outputLine = '';
-let inputPosition = size;
+let starPrintPosition = size;
 
 for (let lineIndex = 0; lineIndex < size; lineIndex += 1){
-  for (let columIndex = 0; columIndex <= size; columIndex += 1){
-    if (columIndex < inputPosition){
+  for (let columnIndex = 0; columnIndex <= size; columnIndex += 1){
+    if(columnIndex < starPrintPosition){
       outputLine = outputLine + ' ';
     }else{
       outputLine = outputLine + symbol;
-    };
+    }
   };
   console.log(outputLine);
+  starPrintPosition -= 1;
   outputLine = '';
-  inputPosition -= 1;
 };
