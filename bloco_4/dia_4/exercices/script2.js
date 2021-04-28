@@ -71,7 +71,7 @@ function mostRepeated(numbers) {
         numberRepeat += 1;
       };
     };
-    if (numberRepeat >= repeats){
+    if (numberRepeat >= repeats) {
       mostRepeatedNumber = numbers[index];
       repeats = numberRepeat;
     }
@@ -79,4 +79,16 @@ function mostRepeated(numbers) {
   };
   return mostRepeatedNumber;
 }
-console.log(mostRepeated([2, 3, 2, 5, 8, 8, 8, 8, 2, 3]));
+// console.log(mostRepeated([2, 3, 2, 5, 8, 8, 8, 8, 2, 3]));
+
+// EXERCICIO 6:
+// Crie uma função que receba um número inteiro N e retorne o somatório de todos os números de 1 até N.
+
+function summation(n) {
+  let sum = 0;
+  for (let index = 0; index <= n; index += 1){
+    sum += index;
+  };
+  return sum;
+};
+console.log(summation());
