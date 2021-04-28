@@ -30,14 +30,19 @@ function maiorValor (numeros) {
   return numeros.indexOf(maiorValor);
 };
 
-console.log(maiorValor([999, 1001, 1002]));
+// console.log(maiorValor([999, 1001, 1002]));
 
-// let numeros = [33, 91, 90, 85];
-// let maiorValor = 0;
+// EXERCICIO 3:
+// Crie uma função que receba um array de inteiros e retorne o índice do menor valor.
 
-// for (let index in numeros) {
-//   if (numeros[index] > maiorValor) {
-//     maiorValor = numeros[index];
-//   };
-// };
-// console.log(maiorValor);
+function menorValor(numeros){
+  let menorValor = numeros[0];
+  for (index in numeros){
+    if (numeros[index] < menorValor){
+      menorValor = numeros[index];
+    };
+  }
+  return numeros.indexOf(menorValor);
+};
+
+console.log(menorValor([1, 6, 90, 3, -1, -99]))
