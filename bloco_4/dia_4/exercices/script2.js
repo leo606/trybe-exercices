@@ -45,4 +45,19 @@ function menorValor(numeros){
   return numeros.indexOf(menorValor);
 };
 
-console.log(menorValor([1, 6, 90, 3, -1, -99]))
+// console.log(menorValor([1, 6, 90, 3, -1, -99]))
+
+// EXERCICIO 4:
+// Crie uma função que receba um array de nomes e retorne o nome com a maior quantidade de caracteres.
+
+function longestName (nomes){
+  let longName = '';
+  for (index in nomes){
+    if (nomes[index].length > longName.length){
+      longName = nomes[index];
+    };
+  };
+  return longName;
+};
+
+console.log(longestName(['Joaaaaaaaaaaaaaasé', 'Lucasssssss', 'Nádia', 'Fernanda', 'Cairo', 'Joana']));
