@@ -91,4 +91,21 @@ function summation(n) {
   };
   return sum;
 };
-console.log(summation());
+// console.log(summation());
+
+// EXERCICIO 7:
+// Crie uma função que receba uma string word e outra string ending . Verifique se a string ending é o final da string word . Considere que a string ending sempre será menor que a string word.
+
+function checkWordEnding (word, end) {
+  let wordBeginning = '';
+  let wordEnd = '';
+  for (let index = 0; index < (word.length - end.length); index += 1){
+    wordBeginning += word[index];
+  };
+  
+  
+
+
+  return ;
+};
+console.log(checkWordEnding('trybe', 'be'));
