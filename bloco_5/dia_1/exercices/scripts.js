@@ -10,3 +10,7 @@ function mudarCorMain(div){
 }
 mudarCorMain(document.getElementsByClassName('main-content')[0]);
 
+function mundarCorCenter (div){
+  div.style.backgroundColor = 'whitesmoke';
+}
+mundarCorCenter(document.getElementsByClassName('center-content')[0])
