@@ -25,9 +25,15 @@ corrigeH1(document.getElementsByClassName('title')[0]);
 // EXERCICIO 5:
 function toUpper (paragrafo){
   for (let index = 0; index < paragrafo.length; index += 1){    
-    let text = paragrafo[index].innerHTML;
-    let textupper = text.toUpperCase();
-    paragrafo[index].innerHTML = textupper;
+    paragrafo[index].innerHTML = paragrafo[index].innerHTML.toUpperCase();
   }
 }
 toUpper(document.getElementsByTagName('p'));
+
+// EXERCICIO 6:
+function printParagraphs (paragrafos){
+  for (let index = 0; index < paragrafos.length; index += 1){
+    console.log(paragrafos[index].innerHTML);
+  }
+}
+printParagraphs(document.getElementsByTagName('p'));
