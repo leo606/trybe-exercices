@@ -87,3 +87,16 @@ function addListInRightContent (){
 
 }
 addListInRightContent();
+
+// EXERCICIO 9
+// Adicione 3 tags h3 , todas sendo filhas do div criado no passo 2
+
+function add3TagsH3InMainContent (){
+  let divMainContent = document.querySelector('.main-content');
+  
+  for (let index = 0; index < 3; index += 1){
+    let h3 = document.createElement('h3');
+    divMainContent.appendChild(h3);
+  }
+}
+add3TagsH3InMainContent();
