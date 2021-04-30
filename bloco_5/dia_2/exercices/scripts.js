@@ -37,6 +37,15 @@ function addPIntoDivCenterContent (){
 addPIntoDivCenterContent();
 
 // EXERCICIO 5
-// Adicione a tag div com a classe left-content como filho da tag div criada no passo 2;
+// Adicione a tag div com a classe left-content como filho da tag div criada no passo 2 (main-content);
 
+function addDivLeftContent (){
+  let divMainContent = document.querySelector('.main-content');
+  let divLeftContent = document.createElement('div');
+  divLeftContent.className = 'left-content';
+  divMainContent.appendChild(divLeftContent);  
+}
+addDivLeftContent();
 
+// EXERCICIO 6
+// Adicione a tag 
