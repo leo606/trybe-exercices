@@ -100,3 +100,19 @@ function add3TagsH3InMainContent (){
   }
 }
 add3TagsH3InMainContent();
+
+// EXERCICIO 10
+// Adicione a classe title na tag h1 criada;
+bodyH1.className = 'title';
+
+// EXERCICIO 11
+// Adicione a classe description nas 3 tags h3 criadas;
+
+function addClassDescriptionInH3 (){
+  let heading3 = document.querySelectorAll('.main-content h3');
+
+  for (let index = 0; index < heading3.length; index +=1){
+    heading3[index].className = 'description';
+  }
+}
+addClassDescriptionInH3();
