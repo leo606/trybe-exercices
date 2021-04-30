@@ -33,3 +33,9 @@ divPrimeiroFilho.innerHTML = 'esse é um filho do primeiro filho do filho'
 primeiroFilhoDoFilho.appendChild(divPrimeiroFilho);
 
 document.querySelector('#primeiroFilhoDoFilho div').parentElement.parentElement.parentElement.lastElementChild.previousElementSibling.previousElementSibling;
+
+// Remova todos os elementos filhos de paiDoPai exceto pai , elementoOndeVoceEsta e primeiroFilhoDoFilho .
+// asdfasdadd.removeChild(elemt);
+
+let paiDoPai = document.querySelectorAll('#paiDoPai')
+
