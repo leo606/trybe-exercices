@@ -109,10 +109,18 @@ bodyH1.className = 'title';
 // Adicione a classe description nas 3 tags h3 criadas;
 
 function addClassDescriptionInH3 (){
-  let heading3 = document.querySelectorAll('.main-content h3');
+  let heading3 = document.getElementsByTagName('h3');
 
   for (let index = 0; index < heading3.length; index +=1){
     heading3[index].className = 'description';
   }
 }
 addClassDescriptionInH3();
+
+// EXERCICIO 11
+// Remova o div criado no passo 5 (aquele que possui a classe left-content ). Utilize a função .removeChild()
+
+function removeDivLeftContent () {
+  let divMainContent = document.getElementsByClassName('main-content');
+}
+removeDivLeftContent();
