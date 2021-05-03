@@ -71,5 +71,19 @@ function changeHolidayColor() {
 let stringFriday = 'Sexta-feira';
 let buttonFriday = document.createElement('button');
 buttonFriday.id = 'btn-friday';
-buttonFriday.innerHTML = stringFeriados;
+buttonFriday.innerHTML = stringFriday;
 buttonsContainer.appendChild(buttonFriday);
+
+// EXERCICIO 5
+buttonFriday.addEventListener('click', changeFridayText);
+let fridayDays = [4, 11, 18, 25];
+let fridays = document.getElementsByClassName('friday');
+function changeFridayText() {
+  for (let index in fridays){
+    if (fridays[index].innerHTML === 'SEXTOU!'){
+      fridays[index].innerHTML = fridayDays[index];
+    }else {
+      fridays[index].innerHTML = 'SEXTOU!';
+    }
+  }
+}
