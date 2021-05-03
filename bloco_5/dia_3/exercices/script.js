@@ -49,14 +49,14 @@ for (let index = 0; index < dezDaysList.length; index += 1) {
 // EXERCICIO 2
 let stringFeriados = 'Feriados';
 let buttonsContainer = document.querySelector('.buttons-container');
-let button = document.createElement('button');
-button.id = 'btn-holiday';
-button.innerHTML = stringFeriados;
-buttonsContainer.appendChild(button);
+let buttonFeriado = document.createElement('button');
+buttonFeriado.id = 'btn-holiday';
+buttonFeriado.innerHTML = stringFeriados;
+buttonsContainer.appendChild(buttonFeriado);
 
 // EXERCICIO 3
 let holidayDays = document.querySelectorAll('#days .holiday');
-button.addEventListener('click', changeHolidayColor);
+buttonFeriado.addEventListener('click', changeHolidayColor);
 function changeHolidayColor() {
   for (let index = 0; index < holidayDays.length; index += 1) {
     if (holidayDays[index].style.backgroundColor == 'orange') {
@@ -66,3 +66,10 @@ function changeHolidayColor() {
     }
   }
 }
+
+// EXERCICIO 4
+let stringFriday = 'Sexta-feira';
+let buttonFriday = document.createElement('button');
+buttonFriday.id = 'btn-friday';
+buttonFriday.innerHTML = stringFeriados;
+buttonsContainer.appendChild(buttonFriday);
