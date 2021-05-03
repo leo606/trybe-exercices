@@ -37,5 +37,6 @@ document.querySelector('#primeiroFilhoDoFilho div').parentElement.parentElement.
 // Remova todos os elementos filhos de paiDoPai exceto pai , elementoOndeVoceEsta e primeiroFilhoDoFilho .
 // asdfasdadd.removeChild(elemt);
 
-let paiDoPai = document.querySelectorAll('#paiDoPai')
+pai = document.getElementById('paiDoPai').getElementsByTagName('div');
 
+pai.getElementById('pai')
