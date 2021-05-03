@@ -15,6 +15,7 @@ createDaysOfTheWeek();
 
 // Escreva seu código abaixo.
 
+// EXERCICIO 1
 const dezDaysList = [29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
 let ulIdDays = document.getElementById('days');
 let listItem = document.createElement('li');
@@ -24,23 +25,44 @@ for (let index = 0; index < dezDaysList.length; index += 1) {
   if (dezDaysList[index] === 24 || dezDaysList[index] === 31) {
     let listItem = document.createElement('li');
     listItem.innerHTML = dezDaysList[index];
-    listItem.className = 'day holiday'
+    listItem.className = 'day holiday';
     ulIdDays.appendChild(listItem);
   } else if (dezDaysList[index] === 4 || dezDaysList[index] === 11 || dezDaysList[index] === 18) {
     let listItem = document.createElement('li');
     listItem.innerHTML = dezDaysList[index];
-    listItem.className = 'day friday'
+    listItem.className = 'day friday';
     ulIdDays.appendChild(listItem);
   } else if (dezDaysList[index] === 25) {
     let listItem = document.createElement('li');
     listItem.innerHTML = dezDaysList[index];
-    listItem.className = 'day holiday friday'
+    listItem.className = 'day holiday friday';
     ulIdDays.appendChild(listItem);
   } else {
     let listItem = document.createElement('li');
     listItem.innerHTML = dezDaysList[index];
-    listItem.className = 'day'
+    listItem.className = 'day';
     ulIdDays.appendChild(listItem);
   }
 
+}
+
+// EXERCICIO 2
+let stringFeriados = 'Feriados';
+let buttonsContainer = document.querySelector('.buttons-container');
+let button = document.createElement('button');
+button.id = 'btn-holiday';
+button.innerHTML = stringFeriados;
+buttonsContainer.appendChild(button);
+
+// EXERCICIO 3
+let holidayDays = document.querySelectorAll('#days .holiday');
+button.addEventListener('click', changeHolidayColor);
+function changeHolidayColor() {
+  for (let index = 0; index < holidayDays.length; index += 1) {
+    if (holidayDays[index].style.backgroundColor == 'orange') {
+      holidayDays[index].style.backgroundColor = 'rgb(238,238,238)';
+    } else {
+      holidayDays[index].style.backgroundColor = 'orange';
+    }
+  }
 }
