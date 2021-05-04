@@ -141,3 +141,14 @@ function taskSelected(){
   })
 }
 taskSelected();
+
+function dayTaskColor (){
+  let days = document.querySelector('#days');
+  let selectedTask = document.getElementsByClassName('task selected');
+  
+  days.addEventListener('click', function(origem){
+    let origemColor = origem.target.style.color;
+    // if ()
+  })
+}
+dayTaskColor();
