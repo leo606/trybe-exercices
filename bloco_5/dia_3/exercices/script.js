@@ -116,11 +116,28 @@ function addTask(string) {
   createSpan.innerHTML = string;
   myTasks.appendChild(createSpan);
 }
+addTask();
 
 // EXERCICIO 8
 function addColorLegenda(color) {
   let myTasks = document.querySelector('.my-tasks');
   let createDiv = document.createElement('div');
+  createDiv.className = 'task';
   createDiv.style.backgroundColor = color;
   myTasks.appendChild(createDiv);
 }
+addColorLegenda();
+
+// EXERCICIO 9
+function taskSelected(){
+  let taskDiv = document.querySelector('.task');
+
+  taskDiv.addEventListener('click', function(origem) {
+    if (origem.target.className == 'task selected'){
+      origem.target.className = 'task';
+    }else {
+      origem.target.className = 'task selected';
+    }
+  })
+}
+taskSelected();
