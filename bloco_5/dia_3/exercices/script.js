@@ -79,11 +79,32 @@ buttonFriday.addEventListener('click', changeFridayText);
 let fridayDays = [4, 11, 18, 25];
 let fridays = document.getElementsByClassName('friday');
 function changeFridayText() {
-  for (let index in fridays){
-    if (fridays[index].innerHTML === 'SEXTOU!'){
+  for (let index in fridays) {
+    if (fridays[index].innerHTML === 'SEXTOU!') {
       fridays[index].innerHTML = fridayDays[index];
-    }else {
+    } else {
       fridays[index].innerHTML = 'SEXTOU!';
     }
   }
 }
+
+// EXERCICIO 6
+
+function zoomIn() {
+  let daysId = document.querySelector('#days');
+
+  daysId.addEventListener('mouseover', function(origem) {
+    origem.target.style.fontSize = '23px';
+
+  })
+};
+
+function zoomOut() {
+  let daysId = document.querySelector('#days');
+
+  daysId.addEventListener('mouseout', function(origem) {
+    origem.target.style.fontSize = '20px';
+  })
+};
+zoomIn();
+zoomOut();
