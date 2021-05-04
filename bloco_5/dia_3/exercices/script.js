@@ -93,7 +93,7 @@ function changeFridayText() {
 function zoomIn() {
   let daysId = document.querySelector('#days');
 
-  daysId.addEventListener('mouseover', function(origem) {
+  daysId.addEventListener('mouseover', function (origem) {
     origem.target.style.fontSize = '23px';
 
   })
@@ -102,9 +102,25 @@ function zoomIn() {
 function zoomOut() {
   let daysId = document.querySelector('#days');
 
-  daysId.addEventListener('mouseout', function(origem) {
+  daysId.addEventListener('mouseout', function (origem) {
     origem.target.style.fontSize = '20px';
   })
 };
 zoomIn();
 zoomOut();
+
+// EXERCICIO 7
+function addTask(string) {
+  let myTasks = document.querySelector('.my-tasks');
+  let createSpan = document.createElement('span');
+  createSpan.innerHTML = string;
+  myTasks.appendChild(createSpan);
+}
+
+// EXERCICIO 8
+function addColorLegenda(color) {
+  let myTasks = document.querySelector('.my-tasks');
+  let createDiv = document.createElement('div');
+  createDiv.style.backgroundColor = color;
+  myTasks.appendChild(createDiv);
+}
