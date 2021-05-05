@@ -7,7 +7,7 @@ window.onload = function () {
       settingsDivs[index].classList = 'option-div';
     }
   }
-  // settingsDivsClass();
+  // settingsDivsClass(); ---- ACHO Q NÃO VOU PRECISAR DISSO
 
   function changeBackgroundColor() {
     let background = document.getElementsByTagName('body')[0];
@@ -53,6 +53,36 @@ window.onload = function () {
   }
   changeTextColor();
 
+  function changeFontSize() {
+    let articles = document.getElementsByTagName('article');
+    let fontSizeButtons = document.getElementById('font-size');
+
+    if (localStorage.fontSize !== undefined) {
+      for (let index = 0; index < articles.length; index += 1) {
+        articles[index].style.fontSize = localStorage.fontSize;
+      }
+    }
+
+    fontSizeButtons.addEventListener('click', function (event) {
+      if (event.target.innerHTML == 'Grande'){
+        for (let index = 0; index < articles.length; index += 1){
+          articles[index].style.fontSize = 'large';
+          localStorage.fontSize = articles[index].style.fontSize;
+        }
+      } else if (event.target.innerHTML == 'Media'){
+        for (let index = 0; index < articles.length; index += 1){
+          articles[index].style.fontSize = 'medium';
+          localStorage.fontSize = articles[index].style.fontSize;
+        }
+      } else {
+        for (let index = 0; index < articles.length; index +=1){
+          articles[index].style.fontSize = 'small';
+          localStorage.fontSize = articles[index].style.fontSize;
+        }
+      }
+    })
+  }
+  changeFontSize();
 
 
 
