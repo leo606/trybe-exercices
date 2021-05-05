@@ -15,11 +15,11 @@ window.onload = function () {
     if (localStorage.bgColor !== 'undefined') {
       background.style.backgroundColor = localStorage.bgColor;
     }
-    colorButtons.addEventListener('click', function(event){
-      if (event.target.className == 'white'){
+    colorButtons.addEventListener('click', function (event) {
+      if (event.target.className == 'white') {
         background.style.backgroundColor = 'white';
         localStorage.bgColor = 'white';
-      }else {
+      } else {
         background.style.backgroundColor = 'grey';
         localStorage.bgColor = 'grey';
       }
@@ -28,7 +28,30 @@ window.onload = function () {
   }
   changeBackgroundColor();
 
+  function changeTextColor() {
+    let text = document.querySelectorAll('p');
+    let textColorButtons = document.getElementById('text-color');
+    if (localStorage.textColor !== 'undefined') {
+      for (let index = 0; index < text.length; index += 1) {
+        text[index].style.color = localStorage.textColor;
+      }
+    }
 
+    textColorButtons.addEventListener('click', function (event) {
+      if (event.target.className == 'white') {
+        for (let index = 0; index < text.length; index += 1) {
+          text[index].style.color = 'white';
+          localStorage.textColor = text[index].style.color;
+        }
+      } else {
+        for (let index = 0; index < text.length; index += 1) {
+          text[index].style.color = 'black';
+          localStorage.textColor = text[index].style.color;
+        }
+      }
+    })
+  }
+  changeTextColor();
 
 
 
