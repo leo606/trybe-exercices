@@ -64,18 +64,18 @@ window.onload = function () {
     }
 
     fontSizeButtons.addEventListener('click', function (event) {
-      if (event.target.innerHTML == 'Grande'){
-        for (let index = 0; index < articles.length; index += 1){
+      if (event.target.innerHTML == 'Grande') {
+        for (let index = 0; index < articles.length; index += 1) {
           articles[index].style.fontSize = 'large';
           localStorage.fontSize = articles[index].style.fontSize;
         }
-      } else if (event.target.innerHTML == 'Media'){
-        for (let index = 0; index < articles.length; index += 1){
+      } else if (event.target.innerHTML == 'Media') {
+        for (let index = 0; index < articles.length; index += 1) {
           articles[index].style.fontSize = 'medium';
           localStorage.fontSize = articles[index].style.fontSize;
         }
       } else {
-        for (let index = 0; index < articles.length; index +=1){
+        for (let index = 0; index < articles.length; index += 1) {
           articles[index].style.fontSize = 'small';
           localStorage.fontSize = articles[index].style.fontSize;
         }
@@ -84,6 +84,37 @@ window.onload = function () {
   }
   changeFontSize();
 
+  function changelineSpacing() {
+    let paragraph = document.getElementsByTagName('p');
+    let lineSpacingButton = document.getElementById('line-spacing');
+
+    if (localStorage.lineSpacing !== 'undefined') {
+      for (let index = 0; index < paragraph.length; index += 1) {
+        paragraph[index].style.lineHeight = localStorage.lineSpacing;
+      }
+    }
+
+    lineSpacingButton.addEventListener('click', function (event) {
+      if (event.target.innerHTML === 'Grande') {
+        for (let index = 0; index < paragraph.length; index += 1) {
+          paragraph[index].style.lineHeight = '60px';
+          localStorage.lineSpacing = paragraph[index].style.lineHeight;
+        }
+      } else if (event.target.innerHTML === 'Media') {
+        for (let index = 0; index < paragraph.length; index += 1) {
+          paragraph[index].style.lineHeight = '30px';
+          localStorage.lineSpacing = paragraph[index].style.lineHeight;
+        }
+      } else {
+        for (let index = 0; index < paragraph.length; index += 1) {
+          paragraph[index].style.lineHeight = '20px';
+          localStorage.lineSpacing = paragraph[index].style.lineHeight;
+        }
+      }
+    })
+  }
+
+  changelineSpacing();
 
 
 }

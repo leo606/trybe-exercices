@@ -12,3 +12,7 @@
 #background-color .grey{
   background-color: grey;
 }
+
+p {
+  line-height: 60px;
+}
