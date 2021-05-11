@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Formulário de currículo</title>
+</head>
+
+<body>
+  <fieldset>
+    <legend>Dados Pessoais</legend>
+    <input type="text" maxlength="40" required placeholder="Nome">
+    <input type="email" maxlength="50" required placeholder="Email">
+    <input type="text" maxlength="11" required placeholder="CPF">
+    <input type="text" maxlength="200" required placeholder="Endereço">
+    <input type="text" maxlength="28" required placeholder="Cidade">
+    <select name="estado" id="input-estados" required></select>
+    <label for="casa-input"><input type="radio" name="moradia" id="casa-input">Casa</label>
+    <label for="ap-input"><input type="radio" name="moradia" id="ap-input">Apartamento</label>
+  </fieldset>
+
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
