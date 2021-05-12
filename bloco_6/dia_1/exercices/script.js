@@ -190,6 +190,16 @@ function formValidation(event) {
   }
 }
 
+function clearForm() {
+  let inputFields = document.getElementsByTagName('input');
+  let textAreaFields = document.getElementsByTagName('textarea');
+
+  for (let index = 0; index < inputFields.length; index += 1) {
+    inputFields[index].value = '';
+    inputFields[index].checked = false;
+  }
+}
+
 window.onload = function () {
   statesOptions();
   let submitButton = document.getElementById('submit-button');
@@ -197,4 +207,7 @@ window.onload = function () {
 
   let startDate = document.getElementById('input-start-date');
   startDate.addEventListener('blur', checkDate);
+
+  let clearFormButton = document.getElementById('clear-form');
+  clearFormButton.addEventListener('click', clearForm);
 }
