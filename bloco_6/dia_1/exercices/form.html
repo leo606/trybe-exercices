@@ -10,19 +10,35 @@
 </head>
 
 <body>
-  <fieldset>
-    <legend>Dados Pessoais</legend>
-    <input type="text" maxlength="40" required placeholder="Nome">
-    <input type="email" maxlength="50" required placeholder="Email">
-    <input type="text" maxlength="11" required placeholder="CPF">
-    <input type="text" maxlength="200" required placeholder="Endereço">
-    <input type="text" maxlength="28" required placeholder="Cidade">
-    <select name="estado" id="input-estados" required></select>
-    <label for="casa-input"><input type="radio" name="moradia" id="casa-input">Casa</label>
-    <label for="ap-input"><input type="radio" name="moradia" id="ap-input">Apartamento</label>
-  </fieldset>
+  <form action="">
 
+    <fieldset>
+      <legend>Dados Pessoais</legend>
+      <input type="text" maxlength="40" name="name" required placeholder="Nome">
+      <input type="email" maxlength="50" name="email" required placeholder="Email">
+      <input type="text" maxlength="11" name="cpf" required placeholder="CPF">
+      <input type="text" maxlength="200" name="address" required placeholder="Endereço">
+      <input type="text" maxlength="28" name="city" required placeholder="Cidade">
+      <select name="states" id="input-states"></select>
+      <label for="input-casa"><input name="houseType" id="input-casa" type="radio">Casa</label>
+      <label for="input-ap"><input name="houseType" id="input-ap" type="radio">Apartamento</label>
+    </fieldset>
 
+    <fieldset>
+      <legend>Dados último emprego</legend>
+      <label for="input-resume">Resumo<br><textarea name="resume" id="input-resume" cols="30" rows="10"></textarea></label>
+      <br>
+      <input type="text" name="occupation" maxlength="40" required placeholder="Cargo">
+      <br>
+      <label for="input-occupation-resume">Resumo do cargo<br><textarea name="occupation-resume" id="input-occupation-resume" cols="30" rows="10"></textarea></label>
+      <br>
+      <input name="start-date" id="input-start-date" type="text" placeholder="Data início">
+    </fieldset>
+
+    <button id="submit-button" type="submit">Enviar</button>
+  </form>
+  <div id="error"></div>
+  <div id="summary"></div>
   <script src="./script.js"></script>
 </body>
 
