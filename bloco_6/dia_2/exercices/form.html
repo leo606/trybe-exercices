@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./bootstrap-5.0.0-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./jquery-3.6.0.min.js"></script>
+  <script src="./bootstrap-5.0.0-dist/js/bootstrap.min.js"></script>
+  <title>Formulário de currículo</title>
+</head>
+
+<body>
+  <form action="">
+
+    <fieldset>
+      <legend>Dados Pessoais</legend>
+      <div class="mb-3"><input class="form-control" type="text" maxlength="40" name="name" required placeholder="Nome">
+      </div>
+      <div class="mb-3"><input class="form-control" type="email" maxlength="50" name="email" required
+          placeholder="Email"></div>
+      <div class="mb-3"><input class="form-control" type="text" maxlength="11" name="cpf" required placeholder="CPF">
+      </div>
+      <div class="mb-3"><input class="form-control" type="text" maxlength="200" name="address" required
+          placeholder="Endereço"></div>
+      <div class="mb-3"><input class="form-control" type="text" maxlength="28" name="city" required
+          placeholder="Cidade"></div>
+      <div class="mb-3"><select class="form-control" name="states" id="input-states"></select></div>
+      <div class="mb-3">
+        <label for="input-casa"><input name="houseType" id="input-casa" type="radio"> Casa</label>
+        <label for="input-ap"><input name="houseType" id="input-ap" type="radio"> Apartamento</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Dados último emprego</legend>
+      <div class="mb-3">
+        <label class="form-label" for="input-resume">Resumo do currículo</label>
+        <textarea class="form-control" name="resume" id="input-resume" rows="6"></textarea>
+      </div>
+      <div class="mb-3"><input class="form-control" type="text" name="occupation" maxlength="40" required
+          placeholder="Cargo"></div>
+      <div class="mb-3"><label class="form-label" for="input-occupation-resume">Resumo do cargo</label>
+        <textarea class="form-control" name="occupation-resume" id="input-occupation-resume" rows="6"></textarea>
+      </div>
+      <div class="mb-3"><input class="form-control" name="start-date" id="input-start-date" type="text"
+          placeholder="Data início"></div>
+    </fieldset>
+
+    <button class="btn btn-primary" id="submit-button" type="submit">Enviar</button>
+    <button class="btn btn-primary" id="clear-form">Limpar</button>
+  </form>
+  <div id="error"></div>
+  <div id="summary"></div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
