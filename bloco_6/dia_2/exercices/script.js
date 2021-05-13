@@ -230,7 +230,28 @@ new window.JustValidate('#cv-form', {
     city: {
       required: true,
       maxLength: 48
+    },
+    state: {
+      required: true
+    },
+    houseType: {
+      required: true
+    },
+    cvResume: {
+      required: true,
+      maxLength:1000
+    },
+    occupation:{
+      required:true
+    },
+    occupationResume:{
+      required:true,
+      maxLength:1000
+    },
+    startDate:{
+      required:true
     }
+
   },
 
   focusWrongField: true,
@@ -255,7 +276,28 @@ new window.JustValidate('#cv-form', {
     city: {
       required: 'Digite seu CPF',
       maxLength: 'Máximo de 48 caracteres'
+    },
+    state: {
+      required: 'Selecione seu estado'
+    },
+    houseType: {
+      required: 'Selecione um tipo'
+    },
+    cvResume: {
+      required: 'Digite o resumo do seu currículo',
+      maxLength:'Máximo de 1000 caracteres'
+    },
+    occupation:{
+      required:'Digite seu Cargo'
+    },
+    occupationResume:{
+      required:'Digite um resumo do seu cargo',
+      maxLength:'Máximo de 1000 caracteres'
+    },
+    startDate:{
+      required:'Escolha uma data de início'
     }
+
   },
 
 });

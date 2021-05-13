@@ -38,38 +38,38 @@
       <label for="input-cidade">Cidade:</label>
       <input class="form-control" id="input-cidade" type="text" data-validate-field="city" name="city" required placeholder="Cidade">
     </div>
-    <div class="mb-3">
+    <div class="mb-3 just-validate-tooltip-container">
       <label for="input-states">Estado:</label>
-      <select class="form-select" name="states" id="input-states"></select>
+      <select class="form-select" data-validate-field="state" name="states" id="input-states"></select>
     </div>
-    <div class="mb-3">
-      <input class="form-check-input" name="houseType" id="input-casa" type="radio">
+    <div class="mb-3 just-validate-tooltip-container">
+      <input class="form-check-input" name="houseType" data-validate-field="houseType" id="input-casa" type="radio">
       <label class="form-check-label" for="input-casa">Casa</label>
       <br>
-      <input class="form-check-input" name="houseType" id="input-ap" type="radio">
+      <input class="form-check-input" name="houseType" data-validate-field="houseType" id="input-ap" type="radio">
       <label class="form-check-label" for="input-ap">Apartamento</label>
     </div>
 
     <h2>Dados do último emprego</h2>
     <hr>
 
-    <div class="mb-3">
+    <div class="mb-3 just-validate-tooltip-container">
       <label class="form-label" for="input-resume">Resumo do currículo:</label>
-      <textarea class="form-control" name="resume" id="input-resume" rows="6"></textarea>
+      <textarea class="form-control" data-validate-field="cvResume" name="resume" id="input-resume" rows="6"></textarea>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 just-validate-tooltip-container">
       <label for="input-occupation">Cargo:</label>
-      <input class="form-control" id="input-occupation" type="text" name="occupation" maxlength="40" required placeholder="Cargo">
+      <input class="form-control" data-validate-field="occupation" id="input-occupation" type="text" name="occupation" maxlength="40" required placeholder="Cargo">
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 just-validate-tooltip-container">
       <label class="form-label" for="input-occupation-resume">Resumo do cargo:</label>
-      <textarea class="form-control" name="occupation-resume" id="input-occupation-resume" rows="6"></textarea>
+      <textarea class="form-control" data-validate-field="occupationResume" name="occupation-resume" id="input-occupation-resume" rows="6"></textarea>
     </div>
 
-    <div class="mb-3">
-      <input class="form-control" name="start-date" id="input-start-date" type="text" placeholder="Data início">
+    <div class="mb-3 just-validate-tooltip-container">
+      <input class="form-control" data-validate-field="startDate" name="start-date" id="input-start-date" type="text" placeholder="Data início">
     </div>
 
     <button class="form__btn btn btn-primary" id="submit-button" type="submit">Enviar</button>
