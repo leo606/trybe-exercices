@@ -190,24 +190,68 @@ function formValidation(event) {
   }
 }
 
-function clearForm() {
-  let inputFields = document.getElementsByTagName('input');
-  let textAreaFields = document.getElementsByTagName('textarea');
-
-  for (let index = 0; index < inputFields.length; index += 1) {
-    inputFields[index].value = '';
-    inputFields[index].checked = false;
+let picker = new Pikaday({
+  field: document.getElementById('input-start-date'),
+  format: 'DD/MM/YYYY',
+  toString(date, format) {
+    const day = date.getDate();
+    const month = date.getMonth();;
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  },
+  parse(dateString, format) {
+    const parts = dateString.split('/');
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10);
+    const year = parseInt(parts[2], 10);
+    return new Date(year, month, day);
   }
-}
+});
+
+new window.JustValidate('#cv-form', {
+  rules: {
+    name: {
+      required: true,
+      minLength: 3
+    },
+    email: {
+      required: true,
+      email: true
+    },
+    cpf: {
+      required: true,
+      minLength: 11,
+      maxLength: 11
+    }
+  },
+
+  focusWrongField: true,
+
+  messages: {
+    name: {
+      minLength: 'Muito curto',
+      required: 'Digite seu nome'
+    },
+    email: {
+      required: 'Digite seu email',
+      email: 'Email inválido'
+    },
+    cpf: {
+      required: 'Digite seu CPF',
+      minLength: 'CPF inválido',
+      maxLength: 'CPF inválido'
+    }
+  },
+
+});
 
 window.onload = function () {
   statesOptions();
-  let submitButton = document.getElementById('submit-button');
-  submitButton.addEventListener('click', formValidation);
+  // let submitButton = document.getElementById('submit-button');
+  // submitButton.addEventListener('click', formValidation);
 
-  let startDate = document.getElementById('input-start-date');
-  startDate.addEventListener('blur', checkDate);
 
-  let clearFormButton = document.getElementById('clear-form');
-  clearFormButton.addEventListener('click', clearForm);
 }
+
+
+
