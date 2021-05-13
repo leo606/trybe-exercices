@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./bootstrap-5.0.0-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+  <link rel="stylesheet" href="./node_modules/just-validate/dist/css/justValidateTooltip.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./jquery-3.6.0.min.js"></script>
+  <script src="./bootstrap-5.0.0-dist/js/bootstrap.min.js"></script>
+  <title>Formulário de currículo</title>
+</head>
+
+<body>
+  <form id="cv-form" action="">
+    <h2>Dados pessoais</h2>
+    <hr>
+    <div class="mb-3 just-validate-tooltip-container">
+      <label for="input-name">Nome:</label>
+      <input class="form-control" id="input-name" type="text" maxlength="40" name="name" data-validate-field="name" required placeholder="Nome">
+    </div>
+    <div class="mb-3 just-validate-tooltip-container">
+      <label for="input-email">Email:</label>
+      <input class="form-control" id="input-email" type="email" maxlength="50" name="email" data-validate-field="email" required placeholder="Email">
+    </div>
+    <div class="mb-3 just-validate-tooltip-container">
+      <label for="input-cpf">CPF:</label>
+      <input class="form-control" id="input-cpf" type="number" maxlength="11" data-validate-field="cpf" name="cpf" required placeholder="CPF">
+    </div>
+    <div class="mb-3 just-validate-tooltip-container">
+      <label for="input-cpf">Endereço:</label>
+      <input class="form-control" id="input-address" type="text" name="address" data-validate-field="address" required placeholder="Endereço">
+    </div>
+    <div class="mb-3 just-validate-tooltip-container">
+      <label for="input-cidade">Cidade:</label>
+      <input class="form-control" id="input-cidade" type="text" data-validate-field="city" name="city" required placeholder="Cidade">
+    </div>
+    <div class="mb-3 just-validate-tooltip-container">
+      <label for="input-states">Estado:</label>
+      <select class="form-select" data-validate-field="state" name="states" id="input-states"></select>
+    </div>
+    <div class="mb-3 just-validate-tooltip-container">
+      <input class="form-check-input" name="houseType" data-validate-field="houseType" id="input-casa" type="radio">
+      <label class="form-check-label" for="input-casa">Casa</label>
+      <br>
+      <input class="form-check-input" name="houseType" data-validate-field="houseType" id="input-ap" type="radio">
+      <label class="form-check-label" for="input-ap">Apartamento</label>
+    </div>
+
+    <h2>Dados do último emprego</h2>
+    <hr>
+
+    <div class="mb-3 just-validate-tooltip-container">
+      <label class="form-label" for="input-resume">Resumo do currículo:</label>
+      <textarea class="form-control" data-validate-field="cvResume" name="resume" id="input-resume" rows="6"></textarea>
+    </div>
+
+    <div class="mb-3 just-validate-tooltip-container">
+      <label for="input-occupation">Cargo:</label>
+      <input class="form-control" data-validate-field="occupation" id="input-occupation" type="text" name="occupation" maxlength="40" required placeholder="Cargo">
+    </div>
+
+    <div class="mb-3 just-validate-tooltip-container">
+      <label class="form-label" for="input-occupation-resume">Resumo do cargo:</label>
+      <textarea class="form-control" data-validate-field="occupationResume" name="occupation-resume" id="input-occupation-resume" rows="6"></textarea>
+    </div>
+
+    <div class="mb-3 just-validate-tooltip-container">
+      <input class="form-control" data-validate-field="startDate" name="start-date" id="input-start-date" type="text" placeholder="Data início">
+    </div>
+
+    <button class="form__btn btn btn-primary" id="submit-button" type="submit">Enviar</button>
+    <button class="btn btn-primary" id="clear-form" type="reset">Limpar</button>
+  </form>
+
+  <div id="error"></div>
+  <div id="summary"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+  <script src="./node_modules/just-validate/dist/js/just-validate.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
