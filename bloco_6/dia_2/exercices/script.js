@@ -194,15 +194,18 @@ let picker = new Pikaday({
   field: document.getElementById('input-start-date'),
   format: 'DD/MM/YYYY',
   toString(date, format) {
+    // you should do formatting based on the passed format,
+    // but we will just return 'D/M/YYYY' for simplicity
     const day = date.getDate();
-    const month = date.getMonth();;
+    const month = date.getMonth() + 1;
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   },
   parse(dateString, format) {
+    // dateString is the result of `toString` method
     const parts = dateString.split('/');
     const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10);
+    const month = parseInt(parts[1], 10) - 1;
     const year = parseInt(parts[2], 10);
     return new Date(year, month, day);
   }
@@ -239,17 +242,17 @@ new window.JustValidate('#cv-form', {
     },
     cvResume: {
       required: true,
-      maxLength:1000
+      maxLength: 1000
     },
-    occupation:{
-      required:true
+    occupation: {
+      required: true
     },
-    occupationResume:{
-      required:true,
-      maxLength:1000
+    occupationResume: {
+      required: true,
+      maxLength: 1000
     },
-    startDate:{
-      required:true
+    startDate: {
+      required: true
     }
 
   },
@@ -285,17 +288,17 @@ new window.JustValidate('#cv-form', {
     },
     cvResume: {
       required: 'Digite o resumo do seu currículo',
-      maxLength:'Máximo de 1000 caracteres'
+      maxLength: 'Máximo de 1000 caracteres'
     },
-    occupation:{
-      required:'Digite seu Cargo'
+    occupation: {
+      required: 'Digite seu Cargo'
     },
-    occupationResume:{
-      required:'Digite um resumo do seu cargo',
-      maxLength:'Máximo de 1000 caracteres'
+    occupationResume: {
+      required: 'Digite um resumo do seu cargo',
+      maxLength: 'Máximo de 1000 caracteres'
     },
-    startDate:{
-      required:'Escolha uma data de início'
+    startDate: {
+      required: 'Escolha uma data de início'
     }
 
   },
