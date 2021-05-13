@@ -226,6 +226,10 @@ new window.JustValidate('#cv-form', {
     address: {
       required: true,
       maxLength: 200
+    },
+    city: {
+      required: true,
+      maxLength: 48
     }
   },
 
@@ -246,7 +250,11 @@ new window.JustValidate('#cv-form', {
       maxLength: 'CPF inválido'
     },
     address: {
-      maxLength:'Máximo de 200 caracteres'
+      maxLength: 'Máximo de 200 caracteres'
+    },
+    city: {
+      required: 'Digite seu CPF',
+      maxLength: 'Máximo de 48 caracteres'
     }
   },
 
