@@ -26,11 +26,18 @@ body {
   order: 1;
 }
 
+@media (min-width: 768px){
+  .menu-container{
+  flex-grow: 1;
+  }
+}
+
 .menu-container ul {
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
+
 
 .menu-container li {
   color: white;
