@@ -60,10 +60,6 @@ body {
   flex-grow: 10;
 }
 
-.movie-container div {
-  flex-basis: 16%;
-}
-
 .movie-container h2 {
   margin: 40px 0;
   text-align: center;
@@ -83,6 +79,8 @@ body {
   height: 150px;
   justify-content: center;
   margin: 10px;
+  flex-basis: 16%;
+  flex-grow: 1;
 }
 
 .aside-container {
