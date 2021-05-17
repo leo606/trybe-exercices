@@ -98,6 +98,14 @@
   body {
     padding: 0;
   }
+  #header {
+    position: fixed;
+    width: 100vw;
+    margin: 0;
+  }
+  #navigation{
+    margin-top: 90px;
+  }
   #aside {
     display: none;
   }
