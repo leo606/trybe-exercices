@@ -1,0 +1,27 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0 9px 0 6px;
+  font-size: 16px;
+}
+
+h1 {
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  max-width: max-content;
+  margin: auto;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 15px;
+}
