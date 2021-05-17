@@ -39,11 +39,14 @@ nav ul li {
     max-width: 900px;
   }
   .aside-one, .aside-two{
-    background-color: antiquewhite;
     display: inline-block;
     vertical-align: top;
   }
   .aside-two{
     float: right;
+  }
+  footer {
+    max-width: 600px;
+    text-align: justify;
   }
 }
