@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
 }
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -28,12 +29,21 @@ nav ul li {
 
 @media screen and (min-width: 800px) {
   body {
-  margin: 0 24px 0 24px;
+    margin: 0 24px 0 24px;
   }
 }
 
 @media screen and (min-width: 1090px) {
   body {
-    margin: 0 30px 0 30px;
-    }
+    margin: auto;
+    max-width: 900px;
+  }
+  .aside-one, .aside-two{
+    background-color: antiquewhite;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .aside-two{
+    float: right;
+  }
 }
