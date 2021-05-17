@@ -93,3 +93,12 @@
     width: 90%;
   }
 }
+
+@media screen and (max-width: 333px){
+  body {
+    padding: 0;
+  }
+  #aside h3 {
+    display: none;
+  }
+}
