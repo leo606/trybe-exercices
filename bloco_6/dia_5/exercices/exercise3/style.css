@@ -97,10 +97,13 @@
 @media screen and (max-width: 360px){
   body {
     padding: 0;
-    background-color: #383;
   }
   #aside {
     display: none;
+  }
+  #navigation ul li {
+    display: flex;
+    flex-direction: column;
   }
   img {
     max-width: 100%;
