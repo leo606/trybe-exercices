@@ -1,0 +1,52 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0 9px 0 12px;
+  font-size: 19px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  max-width: max-content;
+  margin: auto;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 6px 0 6px;
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    margin: 0 24px 0 24px;
+  }
+}
+
+@media screen and (min-width: 1090px) {
+  body {
+    margin: auto;
+    max-width: 900px;
+  }
+  .aside-one, .aside-two{
+    display: inline-block;
+    vertical-align: top;
+  }
+  .aside-two{
+    float: right;
+  }
+  footer {
+    max-width: 600px;
+    text-align: justify;
+  }
+}
