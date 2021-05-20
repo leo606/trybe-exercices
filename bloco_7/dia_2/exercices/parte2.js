@@ -81,5 +81,11 @@ const allLessonsObj = allLessons();
 function numeroEstudantes() {
   return allLessonsObj.lesson1.numeroEstudantes + allLessonsObj.lesson2.numeroEstudantes + allLessonsObj.lesson3.numeroEstudantes
 };
-console.log(numeroEstudantes());
+// console.log(numeroEstudantes());
 
+
+// Crie uma função que obtenha o valor da chave de acordo com a sua posição no objeto.
+function getKey(obj, position){
+  return obj[Object.keys(obj)[position]];
+}
+console.log(getKey(lesson1, 0));
