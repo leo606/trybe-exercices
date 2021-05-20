@@ -31,3 +31,9 @@ console.log();
 
 console.log('student2===')
 printObj(student2);
+
+const printValue = (obj) => Object.values(obj);
+
+console.log('-----------------')
+
+console.log(printValue(student2));
