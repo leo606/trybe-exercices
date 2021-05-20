@@ -40,6 +40,9 @@ const order = {
 // Modifique o nome da pessoa compradora.
 // Modifique o valor total da compra para R$ 50,00.
 
+order.name = 'Joana';
+order.payment.total = 50;
+
 const customerInfo = (order) => {
   return `Olá ${order.order.delivery.deliveryPerson} entrega para ${order.name}, telefone ${order.phoneNumber}, ${order.address.street}, Nº ${order.address.number}, AP: ${order.address.apartment}
 
