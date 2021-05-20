@@ -30,9 +30,14 @@ addTurno(lesson2, 'turno', 'manhã');
 function listKeys(obj){
   Object.keys(obj).forEach(key => console.log(key));
 }
-listKeys(lesson2);
+// listKeys(lesson2);
 
 // Crie uma função para mostrar o tamanho de um objeto.
+
+function objLenght(obj) {
+  console.log(`O tamanho do objeto é ${Object.keys(obj).length}`);
+}
+objLenght(lesson1);
 
 // Crie uma função para listar os valores de um objeto. Essa função deve receber um objeto como parâmetro.
 
