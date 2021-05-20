@@ -1,5 +1,5 @@
+const skills = ['HTML', 'CSS', 'JavaScript', 'Linux', 'Lógica'];
 
-// ESSA É UMA FORMA DE FAZER MAS NÃO ME PARECE QUE É ISSO QUE O EXERCÍCIO PROPÕE
 const findX = (parametro, string) => {
   let sentence = '';
   for (let index of string) {
@@ -12,4 +12,17 @@ const findX = (parametro, string) => {
   return sentence
 }
 
-console.log(findX('bebet', 'Tryber x aqui!'));
+const concat = (string) => {
+  const sorted = skills.sort();
+  
+  let output = `${string}
+-
+Minhas skills:`;
+
+
+  sorted.forEach((skill) => output = `${output}
+-${skill}`);
+
+  return output
+}
+console.log(concat(findX('Leo', 'Tryber x aqui!')));
