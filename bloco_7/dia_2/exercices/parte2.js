@@ -33,13 +33,17 @@ function listKeys(obj){
 // listKeys(lesson2);
 
 // Crie uma função para mostrar o tamanho de um objeto.
-
 function objLenght(obj) {
   console.log(`O tamanho do objeto é ${Object.keys(obj).length}`);
 }
-objLenght(lesson1);
+// objLenght(lesson1);
 
 // Crie uma função para listar os valores de um objeto. Essa função deve receber um objeto como parâmetro.
+function objValues(obj) {
+  Object.values(obj).forEach((key) => console.log(key));
+}
+objValues(lesson3);
+
 
 // Crie um objeto de nome allLessons , que deve agrupar todas as aulas através do Object.assign .
 // Cada chave desse novo objeto será uma aula, sendo essas chaves: lesson1 , lesson2 e lesson3 .
