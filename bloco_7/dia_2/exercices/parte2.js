@@ -42,7 +42,7 @@ function objLenght(obj) {
 function objValues(obj) {
   Object.values(obj).forEach((key) => console.log(key));
 }
-objValues(lesson3);
+// objValues(lesson3);
 
 
 // Crie um objeto de nome allLessons , que deve agrupar todas as aulas através do Object.assign .
@@ -69,3 +69,17 @@ objValues(lesson3);
 //      turno: 'noite' }
 // };
 // */
+
+function allLessons() {
+  return Object.assign({}, {lesson1, lesson2, lesson3})
+}
+const allLessonsObj = allLessons();
+// console.log(allLessonsObj);
+
+// Usando o objeto criado no exercício 5, crie uma função que retorne o número total de estudantes em todas as aulas.
+
+function numeroEstudantes() {
+  return allLessonsObj.lesson1.numeroEstudantes + allLessonsObj.lesson2.numeroEstudantes + allLessonsObj.lesson3.numeroEstudantes
+};
+console.log(numeroEstudantes());
+
