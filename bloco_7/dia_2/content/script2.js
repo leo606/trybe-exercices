@@ -18,15 +18,16 @@ const student2 = {
 };
 
 function printObj(obj) {
-  for (let index in obj){
-    console.log(`${index}, Nível: ${obj[index]}`);
+  const keys = Object.keys(obj);
+  for (let index in keys){
+    console.log(`${keys[index]}: Nivel ${obj[keys[index]]}`);
   }
 }
-console.log('student1')
+console.log('student1===')
 printObj(student1);
 
 console.log();
 console.log();
 
-console.log('student2')
+console.log('student2===')
 printObj(student2);
