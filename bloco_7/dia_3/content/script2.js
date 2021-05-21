@@ -11,4 +11,8 @@ const assert = require('assert');
 const list1 = [1, 2, 3, 4, 5, 6];
 const list2 = [1, 2, 3, 4, 5, 6, 7];
 
-assert.deepStrictEqual(list1, list2, 'não sao iguais');
+// assert.deepStrictEqual(list1, list2, 'não sao iguais');
+
+const person1 = {name:'John', age: 50};
+const person2 = {name:'John', age: 50};
+assert.deepStrictEqual(person1, person2, 'não sao iguais');
