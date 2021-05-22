@@ -99,3 +99,23 @@ assert.strictEqual(myFizzBuzz(16), 16, '16 não é divisível por 3 ou 5');
 
 // Faça uma chamada com um parâmetro que não é um número e verifique se o retorno é o esperado
 assert.strictEqual(myFizzBuzz('test'), false, 'myFizzBuzz não retornou false ao receber uma string');
+
+// Compare dois objetos (JSON) para verificar se são idênticos ou não
+const obj1 = {
+  title: 'My Title',
+  description: 'My Description',
+};
+
+const obj2 = {
+  description: 'My Description',
+  title: 'My Title',
+};
+
+const obj3 = {
+  title: 'My Different Title',
+  description: 'My Description',
+};
+
+assert.deepStrictEqual(obj1, obj2, 'obj1 e obj2 não são iguais');
+assert.notDeepStrictEqual(obj1, obj3, 'obj1 e obj3 não são iguais');
+assert.notDeepStrictEqual(obj2, obj3, 'obj2 e obj3 não são iguais');
