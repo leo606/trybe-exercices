@@ -2,10 +2,10 @@
 //   return workerName.split(' ').join('').toLowerCase();
 // }
 
-function workerData(workerName){
-  return{
+function workerData(workerName) {
+  return {
     nomeCompleto: workerName,
-    email: `${workerName.split(' ').join('').toLowerCase()}@trybe.com`
+    email: `${workerName.split(' ').join('_').toLowerCase()}@trybe.com`
   };
 }
 
