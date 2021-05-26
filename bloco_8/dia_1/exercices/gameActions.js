@@ -37,7 +37,7 @@ function warriorDamage() {
 function mageDamageMana() {
   return {
     damage: (mage.mana >= 15) ? generateRandom(mage.intelligence, mage.intelligence * 2) : 'low mana',
-    manaSpend: (mage.mana >= 15) ? mage.mana - 15 : mage.mana,
+    manaSpend: (mage.mana >= 15) ? mage.mana -= 15 : mage.mana,
   }
 }
 
@@ -51,7 +51,7 @@ const gameActions = {
     let mageDamageManaCalc = mageDamageMana();
     dragon.healthPoints -= mageDamageManaCalc.damage;
     mage.damage = mageDamageManaCalc.damage;
-    mage.mana -= mageDamageManaCalc.manaSpend;
+    mage.mana = mageDamageManaCalc.manaSpend;
   },
   dragonTurn: (dragonDamage) => {
     const damage = dragonDamage();
@@ -69,4 +69,6 @@ console.log(gameActions.membersUpdate());
 gameActions.warriorTurn(warriorDamage);
 console.log(gameActions.membersUpdate());
 gameActions.dragonTurn(dragonDamage);
+console.log(gameActions.membersUpdate());
+gameActions.mageTurn(mageDamageMana);
 console.log(gameActions.membersUpdate());
