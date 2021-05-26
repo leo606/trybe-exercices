@@ -41,4 +41,32 @@ function mageDamageMana() {
   }
 }
 
-console.log(mageDamageMana());
+const gameActions = {
+  warriorTurn: (warriorDamage) => {
+    const damage = warriorDamage();
+    dragon.healthPoints -= damage;
+    warrior.damage = damage;
+  },
+  mageTurn: (mageDamageMana) => {
+    let mageDamageManaCalc = mageDamageMana();
+    dragon.healthPoints -= mageDamageManaCalc.damage;
+    mage.damage = mageDamageManaCalc.damage;
+    mage.mana -= mageDamageManaCalc.manaSpend;
+  },
+  dragonTurn: (dragonDamage) => {
+    const damage = dragonDamage();
+    mage.healthPoints -= damage;
+    warrior.healthPoints -= damage;
+    dragon.damage = damage;
+  },
+  membersUpdate: () => {
+    const membersStatus = battleMembers;
+    return membersStatus;
+  },
+};
+
+console.log(gameActions.membersUpdate());
+gameActions.warriorTurn(warriorDamage);
+console.log(gameActions.membersUpdate());
+gameActions.dragonTurn(dragonDamage);
+console.log(gameActions.membersUpdate());
