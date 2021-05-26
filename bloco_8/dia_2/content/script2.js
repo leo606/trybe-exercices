@@ -21,8 +21,7 @@ const musicas = [
 ]
 
 function findMusic(id) {
-  let musica = musicas.find(element=> element.id === id);
-  return musica.title;
+  return musicas.find(element => element.id === id).title;
 }
 
 console.log(findMusic('31031687'))
