@@ -28,6 +28,11 @@ function appendJoke(joke) {
 
 window.onload = () =>
   fetchJoke()
-    .then((soma) => {console.log(soma); return soma})
-    .then((soma)=> console.log(soma))
-    .catch(() => console.log('É mais de oito mil! Essa promise deve estar quebrada!'));
+    .then((soma) => {
+      console.log(soma);
+      return soma;
+    })
+    .then((soma) => console.log(`a soma dos elementos é ${soma.reduce((acc, curr) => acc + curr)}`))
+    .catch(() =>
+      console.log('É mais de oito mil! Essa promise deve estar quebrada!')
+    );
