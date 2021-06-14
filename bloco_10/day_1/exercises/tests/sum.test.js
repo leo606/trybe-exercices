@@ -13,4 +13,10 @@ describe('>>> Retorno da função sum', () => {
   it('lança erro ao inserir string', () => {
     expect(() => sum(4, '5')).toThrow();
   });
+
+  it('testa msg de erro é "parameters must be numbers"', () => {
+    expect(() => sum(4, '5')).toThrowError(
+      new Error('parameters must be numbers')
+    );
+  });
 });
