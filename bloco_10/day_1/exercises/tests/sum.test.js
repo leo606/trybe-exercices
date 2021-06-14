@@ -9,4 +9,8 @@ describe('>>> Retorno da função sum', () => {
   it('0 mais 0 ser 0', () => {
     expect(sum(0, 0)).toBe(0);
   });
+
+  it('lança erro ao inserir string', () => {
+    expect(() => sum(4, '5')).toThrow();
+  });
 });
