@@ -33,7 +33,7 @@ function techList(techs, name) {
 
   // return sortedOutputArray;
 }
-console.log(techList(['React', 'Jest', 'HTML', 'CSS', 'JavaScript'], 'Lucas'));
+// console.log(techList(['React', 'Jest', 'HTML', 'CSS', 'JavaScript'], 'Lucas'));
 
 // Desafio 11
 function generatePhoneNumber(phoneNumber) {
@@ -108,18 +108,11 @@ function triangleCheck(lineA, lineB, lineC) {
 
 // Desafio 13
 function hydrate(string) {
-  let numbersInString = string.match(/\d/g);
-  let sum = 0;
-  for (let index = 0; index < numbersInString.length; index += 1) {
-    let num = parseInt(numbersInString[index]);
-    sum += num;
-  }
-  if (sum === 1) {
-    return sum + ' copo de água';
-  }
-  return sum + ' copos de água';
+  let numbers = string.match(/\d/g);
+  const sum = numbers.reduce((acc, curr) => acc + parseFloat(curr), 0);
+  if (sum > 1) return `${sum} copos de água`;
+  return `${sum} copo de água`;
 }
-// console.log(hydrate('1 cachaça'));
 
 module.exports = {
   generatePhoneNumber,
