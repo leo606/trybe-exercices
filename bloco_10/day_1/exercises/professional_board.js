@@ -41,9 +41,9 @@ const professionalBoard = [
 // Pesquisa
 const searchEmployee = (id, detail) => {
   const prof = professionalBoard.find((prof) => prof.id === id);
+  if (!prof) return 'ID não identificada';
+  if (!prof[detail]) return 'Informação indisponível';
   return prof[detail];
 };
-
-// console.log(searchEmployee('9852-2-2'));
 
 module.exports = searchEmployee;
