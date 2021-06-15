@@ -14,4 +14,8 @@ describe('>>> searchEmployee return', () => {
   test('testa de searchEmployee recebendo id e firstName retorna esperado', () => {
     expect(searchEmployee('1256-4', 'firstName')).toBe('Linda');
   });
+
+  test('testa de searchEmployee recebendo id e firstName retorna esperado', () => {
+    expect(searchEmployee('9852-2-2', 'lastName')).toBe('Cook');
+  });
 });
