@@ -28,6 +28,12 @@ const findAnimalByName = (name) => {
   });
 };
 
+async function getAnimalsAge(age) {
+  const animalsByAge = Animals.filter((anim) => anim.age === age);
+  if (!animalsByAge.length) return 'não contém animal com essa idade';
+  return animalsByAge;
+}
+
 const getAnimal = (name) => findAnimalByName(name).then((animal) => animal);
 
-module.exports = { getListAnimals, findAnimalByName, getAnimal };
+module.exports = { getListAnimals, findAnimalByName, getAnimal, getAnimalsAge };
