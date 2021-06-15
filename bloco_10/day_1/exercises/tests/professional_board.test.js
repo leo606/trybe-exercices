@@ -24,4 +24,10 @@ describe('searchEmployee return', () => {
       'ID não identificada'
     );
   });
+
+  it('recebendo detail não existente retorna "Informação indisponível"', () => {
+    expect(searchEmployee('9852-2-2', 'xablau')).toBe(
+      'Informação indisponível'
+    );
+  });
 });
