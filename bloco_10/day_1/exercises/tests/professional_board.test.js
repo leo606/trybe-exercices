@@ -5,5 +5,7 @@ describe('searchEmployee test', () => {
     expect(searchEmployee).toBeDefined();
   });
 
-  it()
+  it('searchEmployee is function', () => {
+    expect(typeof searchEmployee).toBe('function');
+  });
 });
