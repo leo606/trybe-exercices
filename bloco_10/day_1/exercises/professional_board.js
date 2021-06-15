@@ -41,7 +41,7 @@ const professionalBoard = [
 // Pesquisa
 const searchEmployee = (id, detail) => {
   const prof = professionalBoard.find((prof) => prof.id === id);
-  return prof;
+  return prof[detail];
 };
 
 // console.log(searchEmployee('9852-2-2'));
