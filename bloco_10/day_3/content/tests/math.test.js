@@ -11,3 +11,22 @@ test('somar', () => {
   expect(spySomar).toHaveBeenCalledWith(1, 2);
   expect(spySomar(1, 2)).resolves.toBe(3);
 });
+
+describe('mock da funcao subtrair', () => {
+  math.subtrair = jest.fn();
+  it('subtrair está sendo chamada', () => {
+    math.subtrair(2, 1);
+    expect(math.subtrair).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('mock da função multiplicar', () => {
+  math.multiplicar = jest.fn().mockReturnValue(10);
+  math.multiplicar(3, 3);
+  test('chamada da funcao', () => {
+    expect(math.multiplicar).toHaveBeenCalled;
+  });
+  test('retorno da funcao', () => {
+    expect(math.multiplicar(3, 3)).toBe(10);
+  });
+});
