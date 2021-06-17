@@ -1,6 +1,6 @@
 const script = require('../script2');
 
-jest.mock('../script2');
+// jest.mock('../script2');
 
 describe('nova implementação para upper', () => {
   test('upper lower', () => {
@@ -39,5 +39,22 @@ describe('nova implementação para concatStrings', () => {
     expect(concatStringsMock('um', 'dois', 'tres')).toBe('umdoistres');
     expect(concatStringsMock).toHaveBeenCalled();
     expect(concatStringsMock).toHaveBeenCalledWith('um', 'dois', 'tres');
+  });
+});
+
+describe('nova implementação para upper 2', () => {
+  test('upper lower 2', () => {
+    const mockUpper = jest
+      .spyOn(script, 'upper')
+      .mockImplementation((str) => str.toLowerCase());
+
+    mockUpper.mockClear();
+    expect(mockUpper('TEST')).toBe('test');
+    expect(mockUpper).toHaveBeenCalled();
+    expect(mockUpper).toHaveBeenCalledWith('TEST');
+    expect(mockUpper).toHaveBeenCalledTimes(1);
+
+    script.upper.mockRestore();
+    expect(script.upper('test')).toBe('TEST');
   });
 });
