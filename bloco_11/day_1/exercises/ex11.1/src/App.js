@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 
+const appoint = ['um', 'dois', 'tres', 'quatro', 'cinco', 'seis'];
+
 const Task = (value) => {
   return <li>{value}</li>;
 };
 
 function App() {
-  return Task('Hey there!');
+  return appoint.map((elem) => Task(elem));
 }
 
 export default App;
