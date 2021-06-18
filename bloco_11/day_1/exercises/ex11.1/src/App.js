@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 const appoint = ['um', 'dois', 'tres', 'quatro', 'cinco', 'seis'];
