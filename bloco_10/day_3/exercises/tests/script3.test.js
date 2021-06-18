@@ -1,26 +1,24 @@
 const script = require('../script3');
 
 describe('teste de requisicao', () => {
-  const apiURL = jest.spyOn(script, 'fetchDog');
-  afterEach(apiURL.mockReset);
+  script.fetchDog = jest.fn();
+  afterEach(script.fetchDog.mockReset);
 
   test('teste caso resolve', () => {
-    apiURL.mockResolvedValue('ok');
+    script.fetchDog.mockResolvedValue('ok');
 
-    apiURL();
-    expect(apiURL).toHaveBeenCalled();
-    expect(apiURL).toHaveBeenCalledTimes(1);
-    expect(apiURL()).resolves.toBe('ok');
-    expect(apiURL).toHaveBeenCalledTimes(2);
-
+    script.fetchDog();
+    expect(script.fetchDog).toHaveBeenCalled();
+    expect(script.fetchDog).toHaveBeenCalledTimes(1);
+    expect(script.fetchDog()).resolves.toBe('ok');
+    expect(script.fetchDog).toHaveBeenCalledTimes(2);
   });
 
   test('teste caso reject', () => {
-    apiURL.mockRejectedValue('not ok');
+    script.fetchDog.mockRejectedValue('not ok');
 
-    expect(apiURL).toHaveBeenCalledTimes(0);
-    expect(apiURL()).rejects.toBe('not ok');
-    expect(apiURL).toHaveBeenCalledTimes(1);
-
+    expect(script.fetchDog).toHaveBeenCalledTimes(0);
+    expect(script.fetchDog()).rejects.toBe('not ok');
+    expect(script.fetchDog).toHaveBeenCalledTimes(1);
   });
 });
