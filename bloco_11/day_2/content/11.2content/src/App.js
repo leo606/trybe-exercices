@@ -72,12 +72,12 @@ const orders = [
 ];
 
 function App() {
-
-
   return (
     <div className='App'>
       <h1>Recent orders</h1>
-      orders.map
+      {orders.map((elem) => (
+        <Order order={elem} />
+      ))}
       {/* <Order order={orders[1]} /> */}
     </div>
   );
