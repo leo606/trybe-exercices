@@ -1,6 +1,7 @@
 import Album from './Components/Album';
 import './App.css';
 import UserProfile from './Components/UserProfile';
+import Order from './Components/Order';
 
 const album01 = {
   image:
@@ -48,11 +49,36 @@ const amelia = {
     'https://cdn.pixabay.com/photo/2017/01/31/13/05/cameo-2023867_640.png',
 };
 
+const orders = [
+  {
+    id: 102,
+    user: 'cena@gmail.com',
+    product: 'Razer Headphone',
+    price: {
+      value: 99.99,
+      currency: 'dollars',
+    },
+  },
+
+  {
+    id: 77,
+    user: 'cena@gmail.com',
+    product: 'Monster 500mL',
+    price: {
+      value: 9.99,
+      currency: 'dollars',
+    },
+  },
+];
+
 function App() {
+
+
   return (
     <div className='App'>
-      <UserProfile user={joao} />
-      <UserProfile user={amelia} />
+      <h1>Recent orders</h1>
+      orders.map
+      {/* <Order order={orders[1]} /> */}
     </div>
   );
 }
