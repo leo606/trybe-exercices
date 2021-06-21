@@ -2,9 +2,9 @@ import React from 'react';
 
 class Order extends React.Component {
   render() {
-    const { user, product, price } = this.props.order;
+    const { user, product, price, index } = this.props.order;
     return (
-      <p className='order'>
+      <p className='order' key={index}>
         {user} bought {product} for {price.value} {price.currency}
       </p>
     );
