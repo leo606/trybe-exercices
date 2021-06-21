@@ -50,7 +50,7 @@ const amelia = {
 
 function App() {
   return (
-    <div>
+    <div className='App'>
       <UserProfile user={joao} />
       <UserProfile user={amelia} />
     </div>
