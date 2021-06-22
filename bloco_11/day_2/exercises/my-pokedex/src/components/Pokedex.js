@@ -1,16 +1,18 @@
 import React from 'react';
+import pokemons from '../data';
 import Pokemon from './Pokemon';
-import PropTypes from 'prop-types';
 
 class Pokedex extends React.Component {
   render() {
-    return <Pokemon pokemon={this.props.pokemon} index={this.props.index}/>;
+    return (
+      <section className='pokedex-section'>
+        <h1 className='pokedex-title'>Pokedex</h1>
+        {pokemons.map((elem, index) => (
+          <Pokemon pokemon={elem} index={index} />
+        ))}
+      </section>
+    );
   }
 }
-
-Pokedex.propTypes = {
-  pokemon: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
-};
 
 export default Pokedex;
