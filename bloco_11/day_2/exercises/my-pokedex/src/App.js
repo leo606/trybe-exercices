@@ -1,12 +1,13 @@
+import pokemons from './data';
 import Pokedex from './components/Pokedex';
-import pokemons from 'data';
 import './App.css';
 
 function App() {
   return (
-    <div className='App'>
+    <div>
+      {/* <Pokedex pokemon={pokemons[0]} /> */}
       {pokemons.map((elem) => (
-        <Pokedex pekomon={elem} />
+        <Pokedex pokemon={elem} />
       ))}
     </div>
   );

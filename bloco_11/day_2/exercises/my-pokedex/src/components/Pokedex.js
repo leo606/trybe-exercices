@@ -5,7 +5,7 @@ class Pokedex extends React.Component {
   render() {
     return (
       <section>
-        <Pokemon poke={this.props.pekomon} />
+        <Pokemon pokemon={this.props.pokemon} />
       </section>
     );
   }
