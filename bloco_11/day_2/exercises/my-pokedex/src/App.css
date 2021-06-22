@@ -6,11 +6,16 @@
   width: 90vw;
 }
 
+.pokedex-title {
+  text-align: center;
+  font-size: 2em;
+}
+
 .poke-item {
   background-color: whitesmoke;
   border: solid 1px lightgray;
   border-radius: 6px;
-  box-shadow: 0 0 6px -4px black;
+  box-shadow: 0 0 6px lightgray;
   margin: 6px;
   padding: 3px;
   text-align: center;
