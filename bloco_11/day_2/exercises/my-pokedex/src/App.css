@@ -1,0 +1,17 @@
+.pokedex-section {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90vw;
+}
+
+.poke-item {
+  background-color: whitesmoke;
+  border: solid 1px lightgray;
+  border-radius: 6px;
+  box-shadow: 0 0 6px -4px black;
+  margin: 6px;
+  padding: 3px;
+  text-align: center;
+}
