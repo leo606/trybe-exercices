@@ -5,7 +5,9 @@ import './App.css';
 function App() {
   return (
     <div className='App'>
-      {}
+      {pokemons.map((elem) => (
+        <Pokedex pekomon={elem} />
+      ))}
     </div>
   );
 }
