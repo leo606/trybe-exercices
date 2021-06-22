@@ -71,15 +71,16 @@ const orders = [
   },
 ];
 
+const test = ['um', 'dois', 'tres', 'quetr']
+
 function App() {
   return (
     <div className='App'>
       <h1>Recent orders</h1>
-      {orders.map((elem, index) => {
-        console.log('item: ', elem);
-        return <Order order={elem} key={index} />;
-      })}
-      {/* <Order order={orders[1]} /> */}
+      {orders.map((elem, index) => (
+        <Order order={elem} index={index} />
+      ))}
+      {test}
     </div>
   );
 }
