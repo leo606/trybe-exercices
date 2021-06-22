@@ -7,8 +7,8 @@ class Pokedex extends React.Component {
     return (
       <section className='pokedex-section'>
         <h1 className='pokedex-title'>Pokedex</h1>
-        {pokemons.map((elem, index) => (
-          <Pokemon pokemon={elem} index={index} />
+        {pokemons.map((elem) => (
+          <Pokemon key={elem.id} pokemon={elem} />
         ))}
       </section>
     );
