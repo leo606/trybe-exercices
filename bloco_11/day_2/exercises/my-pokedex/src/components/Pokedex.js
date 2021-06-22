@@ -3,11 +3,7 @@ import Pokemon from './Pokemon';
 
 class Pokedex extends React.Component {
   render() {
-    return (
-      <section>
-        <Pokemon pokemon={this.props.pokemon} />
-      </section>
-    );
+    return <Pokemon pokemon={this.props.pokemon} />;
   }
 }
 

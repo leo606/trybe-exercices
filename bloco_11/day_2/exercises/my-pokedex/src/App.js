@@ -4,12 +4,11 @@ import './App.css';
 
 function App() {
   return (
-    <div>
-      {/* <Pokedex pokemon={pokemons[0]} /> */}
+    <section className = 'pokes-section'>
       {pokemons.map((elem) => (
         <Pokedex pokemon={elem} />
       ))}
-    </div>
+    </section>
   );
 }
 
