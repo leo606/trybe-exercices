@@ -5,11 +5,13 @@ import Pokemon from './Pokemon';
 class Pokedex extends React.Component {
   render() {
     return (
-      <section className='pokedex-section'>
+      <section>
         <h1 className='pokedex-title'>Pokedex</h1>
-        {pokemons.map((elem) => (
-          <Pokemon key={elem.id} pokemon={elem} />
-        ))}
+        <section className='pokedex-section'>
+          {pokemons.map((elem) => (
+            <Pokemon key={elem.id} pokemon={elem} />
+          ))}
+        </section>
       </section>
     );
   }
