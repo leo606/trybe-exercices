@@ -10,17 +10,20 @@ class Pokedex extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    this.setState((currState, _props) => ({
-      pokemonIndex: currState.pokemonIndex + 1,
-    }));
+  handleClick(event) {
+    // console.log(this.props.pokemons.length);
+    if (this.state.pokemonIndex < this.props.pokemons.length - 1) {
+      this.setState((currState, _props) => ({
+        pokemonIndex: currState.pokemonIndex + 1,
+      }));
+    }
   }
 
   render() {
     return (
       <div>
         <Pokemon pokemon={this.props.pokemons[this.state.pokemonIndex]} />
-        <button onClick={this.handleClick}>Pokemon</button>
+        <button onClick={(event) => this.handleClick(event)}>Pokemon</button>
       </div>
     );
   }
