@@ -42,25 +42,28 @@ class Form extends React.Component {
         </label>
         <br />
         <br />
-        <label>
-          Estado Favorito
-          <input
-            type='text'
-            name='textInput'
-            value={this.state.textInput}
-            onChange={this.handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Descrição
-          <textarea
-            name='textAreaInput'
-            value={this.state.textAreaInput}
-            onChange={this.handleChange}
-          />
-        </label>
+        <fieldset>
+          <legend>Field Title</legend>
+          <label>
+            Estado Favorito
+            <input
+              type='text'
+              name='textInput'
+              value={this.state.textInput}
+              onChange={this.handleChange}
+            />
+          </label>
+          <br />
+          <br />
+          <label>
+            Descrição
+            <textarea
+              name='textAreaInput'
+              value={this.state.textAreaInput}
+              onChange={this.handleChange}
+            />
+          </label>
+        </fieldset>
         <br />
         <br />
         <label>
