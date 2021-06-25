@@ -7,23 +7,15 @@ class Form extends React.Component {
       selectInput: '',
       textInput: '',
       textAreaInput: '',
+      checkboxInput: false,
     };
 
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleTextChange(event) {
-    this.setState({ textInput: event.target.value });
-  }
-
-  handleSelectChange(event) {
-    this.setState({ selectInput: event.target.value });
-  }
-
-  handleTextAreaChange(event) {
-    this.setState({ textAreaInput: event.target.value });
+  handleChange({ target }) {
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({ [target.name]: value });
   }
 
   render() {
@@ -34,7 +26,7 @@ class Form extends React.Component {
           <select
             name='selectInput'
             value={this.state.selectInput}
-            onChange={this.handleSelectChange}
+            onChange={this.handleChange}
           >
             <option>um</option>
             <option>dois</option>
@@ -49,7 +41,7 @@ class Form extends React.Component {
             type='text'
             name='textInput'
             value={this.state.textInput}
-            onChange={this.handleTextChange}
+            onChange={this.handleChange}
           />
         </label>
         <br />
@@ -59,8 +51,14 @@ class Form extends React.Component {
           <textarea
             name='textAreaInput'
             value={this.state.textAreaInput}
-            onChange={this.handleTextAreaChange}
+            onChange={this.handleChange}
           />
+        </label>
+        <br />
+        <br />
+        <label>
+          <input name='checkboxInput' type='checkbox' onChange={this.handleChange} />
+          llaksjdlaksdj
         </label>
       </form>
     );
