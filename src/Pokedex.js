@@ -29,21 +29,19 @@ class Pokedex extends React.Component {
 
   render() {
     const pokesOfType = this.pokeTypeHandle(this.state.pokeType);
-    console.log(pokesOfType);
+    const pokesTypes = this.props.pokemons.map((elem) => elem.type);
 
     return (
       <div>
         <Pokemon pokemon={pokesOfType[this.state.pokemonIndex]} />
+        {pokesTypes.map((elem) => (
+          <Button clicLis={() => this.pokeTypeHandle(elem)} btnText={elem} />
+        ))}
+        <br />
 
         <button onClick={(event) => this.handleClick(pokesOfType.length)}>
           Next Pokemon
         </button>
-        <br />
-        <Button clicLis={() => this.pokeTypeHandle('Fire')} btnText='Fire' />
-        <Button
-          clicLis={() => this.pokeTypeHandle('Psychic')}
-          btnText='Psychic'
-        />
       </div>
     );
   }
