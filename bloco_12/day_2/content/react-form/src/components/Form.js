@@ -9,8 +9,10 @@ class Form extends React.Component {
       textAreaInput: '',
       checkboxInput: false,
     };
+    this.fileInput = React.createRef();
 
     this.handleChange = this.handleChange.bind(this);
+    this.fileHandle = this.fileHandle.bind(this);
   }
 
   handleChange({ target }) {
@@ -18,9 +20,14 @@ class Form extends React.Component {
     this.setState({ [target.name]: value });
   }
 
+  fileHandle(event) {
+    event.preventDefault();
+    alert(`selected file: ${this.fileInput.current.files[0].name}`);
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.fileHandle}>
         <label>
           Selecione o número
           <select
@@ -57,9 +64,21 @@ class Form extends React.Component {
         <br />
         <br />
         <label>
-          <input name='checkboxInput' type='checkbox' onChange={this.handleChange} />
+          <input
+            name='checkboxInput'
+            type='checkbox'
+            onChange={this.handleChange}
+          />
           llaksjdlaksdj
         </label>
+        <br />
+        <br />
+        <label>
+          <input type='file' ref={this.fileInput} />
+        </label>
+        <br />
+        <br />
+        <button type='submit'>Submit</button>
       </form>
     );
   }
