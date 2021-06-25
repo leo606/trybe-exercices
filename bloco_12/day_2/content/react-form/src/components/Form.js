@@ -1,4 +1,6 @@
 import React from 'react';
+import FavState from './FavState';
+import Descricao from './Descricao';
 
 class Form extends React.Component {
   constructor() {
@@ -8,11 +10,18 @@ class Form extends React.Component {
       textInput: '',
       textAreaInput: '',
       checkboxInput: false,
+      errorCount: 0,
     };
     this.fileInput = React.createRef();
 
     this.handleChange = this.handleChange.bind(this);
     this.fileHandle = this.fileHandle.bind(this);
+    this.handleError = this.handleError.bind(this);
+  }
+
+  handleError(erro) {
+    console.log(erro);
+    
   }
 
   handleChange({ target }) {
@@ -44,25 +53,20 @@ class Form extends React.Component {
         <br />
         <fieldset>
           <legend>Field Title</legend>
-          <label>
-            Estado Favorito
-            <input
-              type='text'
-              name='textInput'
-              value={this.state.textInput}
-              onChange={this.handleChange}
-            />
-          </label>
+
+          <FavState
+            handleChange={this.handleChange}
+            value={this.state.textInput}
+            handleError={this.handleError}
+          />
+
           <br />
           <br />
-          <label>
-            Descrição
-            <textarea
-              name='textAreaInput'
-              value={this.state.textAreaInput}
-              onChange={this.handleChange}
-            />
-          </label>
+
+          <Descricao
+            value={this.state.textAreaInput}
+            handleChange={this.handleChange}
+          />
         </fieldset>
         <br />
         <br />
