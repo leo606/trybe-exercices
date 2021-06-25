@@ -7,6 +7,7 @@ class Pokedex extends React.Component {
     super();
     this.state = {
       pokemonIndex: 0,
+      pokeType: 'Fire',
       pokesOfType: [],
     };
     this.handleClick = this.handleClick.bind(this);
@@ -15,8 +16,7 @@ class Pokedex extends React.Component {
 
   pokeTypeHandle(type) {
     const { pokemons } = this.props;
-    const pokesOfTypeMap = pokemons.filter((poke) => poke.type === type);
-    this.setState({ pokesOfType: pokesOfTypeMap });
+    return pokemons.filter((poke) => poke.type === type);
   }
 
   handleClick(event) {
@@ -28,12 +28,12 @@ class Pokedex extends React.Component {
   }
 
   render() {
+    const { pokeType } = this.state;
     return (
       <div>
-        {this.state.pokesOfType.map((elem) => (
-          <Pokemon pokemon={elem} />
+        {this.pokeTypeHandle(pokeType).map((elem, index) => (
+          <Pokemon key={index} pokemon={elem} />
         ))}
-
         <button onClick={(event) => this.handleClick(event)}>Pokemon</button>
         <Button clicLis={() => this.pokeTypeHandle('Fire')} btnText='Fire' />
         <Button
