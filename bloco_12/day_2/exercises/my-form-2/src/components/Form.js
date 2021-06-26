@@ -2,6 +2,7 @@ import React from 'react';
 import InputText from './InputText';
 import InputSelect from './InputSelect';
 import states from '../data/states_data';
+import InputRadio from './InputRadio';
 
 class Form extends React.Component {
   constructor() {
@@ -13,8 +14,10 @@ class Form extends React.Component {
       addressInput: '',
       cityInput: '',
       stateInput: '',
+      houseTypeInput: '',
     };
     this.textInputHandler = this.textInputHandler.bind(this);
+    this.radioInputHandler = this.radioInputHandler.bind(this);
   }
 
   textInputHandler({ target }, max) {
@@ -40,7 +43,7 @@ class Form extends React.Component {
 
     if (name === 'addressInput') {
       if (value.length > max) return;
-      if (/^[a-zA-Z0-9]*$/.test(value) === false) return; // source: https://www.codexworld.com/how-to/check-special-characters-using-javascript/
+      if (/^[a-z A-Z0-9,.]*$/.test(value) === false) return; // source: https://www.codexworld.com/how-to/check-special-characters-using-javascript/
       this.setState({ [name]: value });
       return;
     }
@@ -50,6 +53,11 @@ class Form extends React.Component {
       this.setState({ [name]: value });
       return;
     }
+  }
+
+  radioInputHandler({ target }, elem) {
+    const { name } = target;
+    this.setState({ [name]: elem });
   }
 
   render() {
@@ -105,6 +113,18 @@ class Form extends React.Component {
             onChange={this.textInputHandler}
             options={states}
           />
+
+          <InputRadio
+            labelText='Tipo de Casa'
+            name='houseTypeInput'
+            radios={['Casa', 'Apartamento']}
+            value={this.state.houseTypeInput}
+            onChange={this.radioInputHandler}
+          />
+        </fieldset>
+        <fieldset>
+          <legend>Último Emprego</legend>
+          
         </fieldset>
       </form>
     );

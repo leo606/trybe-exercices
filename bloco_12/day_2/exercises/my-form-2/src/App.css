@@ -14,9 +14,12 @@ input, select {
 .form {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 fieldset {
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
