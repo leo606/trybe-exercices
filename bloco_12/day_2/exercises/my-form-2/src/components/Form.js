@@ -19,10 +19,12 @@ class Form extends React.Component {
       CVresumeInput: '',
       roleInput: '',
       roleDescriptionInput: '',
+      roleAlert: false,
     };
     this.textInputHandler = this.textInputHandler.bind(this);
     this.radioInputHandler = this.radioInputHandler.bind(this);
     this.onBlurHandler = this.onBlurHandler.bind(this);
+    this.onMouseEnterHandler = this.onMouseEnterHandler.bind(this);
   }
 
   textInputHandler({ target }, max) {
@@ -49,6 +51,13 @@ class Form extends React.Component {
     const { name, value } = target;
     if (/^[0-9]/.test(value)) {
       this.setState({ [name]: '' });
+    }
+  }
+
+  onMouseEnterHandler(event) {
+    if (!this.state.roleAlert) {
+      alert('Preencha com cuidado esta informação!');
+      this.setState({ roleAlert: true });
     }
   }
 
@@ -135,6 +144,7 @@ class Form extends React.Component {
             name='roleInput'
             value={this.state.roleInput}
             max={40}
+            onMouseEnter={this.onMouseEnterHandler}
             onChange={this.textInputHandler}
           />
 
