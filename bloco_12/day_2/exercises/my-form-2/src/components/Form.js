@@ -17,18 +17,38 @@ class Form extends React.Component {
     this.textInputHandler = this.textInputHandler.bind(this);
   }
 
-  textInputHandler({ target }) {
+  textInputHandler({ target }, max) {
     let { name, value } = target;
     if (name === 'nameInput') {
-      if (value.length > 40) return;
+      if (value.length > max) return;
       const nameUpper = value.toUpperCase();
       this.setState({ [name]: nameUpper });
       return;
     }
 
-    if (name === 'emailInput'){
-      if (value.length > 50) return;
+    if (name === 'emailInput') {
+      if (value.length > max) return;
       this.setState({ [name]: value });
+      return;
+    }
+
+    if (name === 'CPFInput') {
+      if (value.length > max) return;
+      this.setState({ [name]: value });
+      return;
+    }
+
+    if (name === 'addressInput') {
+      if (value.length > max) return;
+      if (/^[a-zA-Z0-9]*$/.test(value) === false) return; // source: https://www.codexworld.com/how-to/check-special-characters-using-javascript/
+      this.setState({ [name]: value });
+      return;
+    }
+
+    if (name === 'cityInput') {
+      if (value.length > max) return;
+      this.setState({ [name]: value });
+      return;
     }
   }
 
@@ -42,6 +62,7 @@ class Form extends React.Component {
             name={'nameInput'}
             toUpper={true}
             value={this.state.nameInput}
+            max={3}
             onChange={this.textInputHandler}
           />
 
@@ -49,6 +70,7 @@ class Form extends React.Component {
             labelText='Email:'
             name={'emailInput'}
             value={this.state.emailInput}
+            max={50}
             onChange={this.textInputHandler}
           />
 
@@ -56,6 +78,7 @@ class Form extends React.Component {
             labelText='CPF:'
             name={'CPFInput'}
             value={this.state.CPFInput}
+            max={11}
             onChange={this.textInputHandler}
           />
 
@@ -63,6 +86,7 @@ class Form extends React.Component {
             labelText='Endereço:'
             name={'addressInput'}
             value={this.state.addressInput}
+            max={200}
             onChange={this.textInputHandler}
           />
 
@@ -70,6 +94,7 @@ class Form extends React.Component {
             labelText='Cidade:'
             name={'cityInput'}
             value={this.state.cityInput}
+            max={28}
             onChange={this.textInputHandler}
           />
 
