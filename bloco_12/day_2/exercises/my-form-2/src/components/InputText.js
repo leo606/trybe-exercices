@@ -2,7 +2,7 @@ import React from 'react';
 
 class InputText extends React.Component {
   render() {
-    const { name, value, labelText, max, onChange } = this.props;
+    const { name, value, labelText, max, onBlur, onChange } = this.props;
 
     return (
       <label>
@@ -10,6 +10,7 @@ class InputText extends React.Component {
         <input
           name={name}
           value={value}
+          onBlur={onBlur}
           onChange={(event) => onChange(event, max)}
         />
       </label>

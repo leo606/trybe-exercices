@@ -7,7 +7,7 @@ label {
   padding: 3px;
 }
 
-input, select {
+input, select, textarea {
   margin-left: 6px;
 }
 
@@ -21,6 +21,7 @@ input, select {
 fieldset {
   width: 600px;
   display: flex;
+  margin: 3px;
   flex-direction: column;
   align-items: flex-end;
 }

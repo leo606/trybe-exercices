@@ -6,7 +6,7 @@ class InputSelect extends React.Component {
     return (
       <label>
         {labelText}
-        <select name={name} value={value} onChange={onChange}>
+        <select name={name} onChange={onChange}>
           {options.map((elem) => (
             <option key={elem.uf}>
               {elem.uf} - {elem.nome}

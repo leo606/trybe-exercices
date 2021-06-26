@@ -22,6 +22,7 @@ class Form extends React.Component {
     };
     this.textInputHandler = this.textInputHandler.bind(this);
     this.radioInputHandler = this.radioInputHandler.bind(this);
+    this.onBlurHandler = this.onBlurHandler.bind(this);
   }
 
   textInputHandler({ target }, max) {
@@ -42,6 +43,13 @@ class Form extends React.Component {
 
     if (value.length > max) return;
     this.setState({ [name]: value });
+  }
+
+  onBlurHandler({ target }) {
+    const { name, value } = target;
+    if (/^[0-9]/.test(value)) {
+      this.setState({ [name]: '' });
+    }
   }
 
   radioInputHandler({ target }, elem) {
@@ -92,6 +100,7 @@ class Form extends React.Component {
             name={'cityInput'}
             value={this.state.cityInput}
             max={28}
+            onBlur={this.onBlurHandler}
             onChange={this.textInputHandler}
           />
 
