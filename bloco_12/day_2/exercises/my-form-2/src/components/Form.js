@@ -3,6 +3,7 @@ import InputText from './InputText';
 import InputSelect from './InputSelect';
 import states from '../data/states_data';
 import InputRadio from './InputRadio';
+import InputTextArea from './InputTextArea';
 
 class Form extends React.Component {
   constructor() {
@@ -15,6 +16,9 @@ class Form extends React.Component {
       cityInput: '',
       stateInput: '',
       houseTypeInput: '',
+      CVresumeInput: '',
+      roleInput: '',
+      roleDescriptionInput: '',
     };
     this.textInputHandler = this.textInputHandler.bind(this);
     this.radioInputHandler = this.radioInputHandler.bind(this);
@@ -49,6 +53,12 @@ class Form extends React.Component {
     }
 
     if (name === 'cityInput') {
+      if (value.length > max) return;
+      this.setState({ [name]: value });
+      return;
+    }
+
+    if (name === 'CVresume') {
       if (value.length > max) return;
       this.setState({ [name]: value });
       return;
@@ -124,7 +134,29 @@ class Form extends React.Component {
         </fieldset>
         <fieldset>
           <legend>Último Emprego</legend>
-          
+          <InputTextArea
+            labelText='Resumo do Currículo'
+            name='CVresumeInput'
+            value={this.state.CVresumeInput}
+            max={1000}
+            onChange={this.textInputHandler}
+          />
+
+          <InputTextArea
+            labelText='Cargo'
+            name='roleInput'
+            value={this.state.roleInput}
+            max={40}
+            onChange={this.textInputHandler}
+          />
+
+          <InputText
+            labelText='Descrição do cargo:'
+            name={'roleDescriptionInput'}
+            value={this.state.roleDescriptionInput}
+            max={500}
+            onChange={this.textInputHandler}
+          />
         </fieldset>
       </form>
     );
