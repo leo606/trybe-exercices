@@ -33,18 +33,6 @@ class Form extends React.Component {
       return;
     }
 
-    if (name === 'emailInput') {
-      if (value.length > max) return;
-      this.setState({ [name]: value });
-      return;
-    }
-
-    if (name === 'CPFInput') {
-      if (value.length > max) return;
-      this.setState({ [name]: value });
-      return;
-    }
-
     if (name === 'addressInput') {
       if (value.length > max) return;
       if (/^[a-z A-Z0-9,.]*$/.test(value) === false) return; // source: https://www.codexworld.com/how-to/check-special-characters-using-javascript/
@@ -52,17 +40,8 @@ class Form extends React.Component {
       return;
     }
 
-    if (name === 'cityInput') {
-      if (value.length > max) return;
-      this.setState({ [name]: value });
-      return;
-    }
-
-    if (name === 'CVresume') {
-      if (value.length > max) return;
-      this.setState({ [name]: value });
-      return;
-    }
+    if (value.length > max) return;
+    this.setState({ [name]: value });
   }
 
   radioInputHandler({ target }, elem) {
@@ -80,7 +59,7 @@ class Form extends React.Component {
             name={'nameInput'}
             toUpper={true}
             value={this.state.nameInput}
-            max={3}
+            max={40}
             onChange={this.textInputHandler}
           />
 
