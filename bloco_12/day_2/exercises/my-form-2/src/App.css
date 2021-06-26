@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+
+label {
+  display: block;
+  padding: 3px;
+}
+
+input, select {
+  margin-left: 6px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
