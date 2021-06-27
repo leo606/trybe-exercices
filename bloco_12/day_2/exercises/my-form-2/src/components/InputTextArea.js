@@ -10,6 +10,7 @@ class InputTextArea extends React.Component {
           name={name}
           value={value}
           onMouseEnter={onMouseEnter}
+          onFocus={onMouseEnter}
           onChange={(event) => onChange(event, max)}
         />
       </label>

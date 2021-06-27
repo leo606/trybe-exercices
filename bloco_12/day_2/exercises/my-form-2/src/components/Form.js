@@ -25,6 +25,7 @@ class Form extends React.Component {
     this.radioInputHandler = this.radioInputHandler.bind(this);
     this.onBlurHandler = this.onBlurHandler.bind(this);
     this.onMouseEnterHandler = this.onMouseEnterHandler.bind(this);
+    this.submitHandle = this.submitHandle.bind(this);
   }
 
   textInputHandler({ target }, max) {
@@ -64,6 +65,14 @@ class Form extends React.Component {
   radioInputHandler({ target }, elem) {
     const { name } = target;
     this.setState({ [name]: elem });
+  }
+
+  submitHandle(event) {
+    event.preventDefault();
+    console.log(Object.values(this.state));
+    const allState = Object.values(this.state);
+    const allStateState = allState.every((elem) => (elem ? true : false));
+    if (allStateState) this.setState({ printResume: true });
   }
 
   render() {
@@ -156,6 +165,12 @@ class Form extends React.Component {
             onChange={this.textInputHandler}
           />
         </fieldset>
+        <button type='submit' onClick={this.submitHandle}>
+          submit
+        </button>
+        {this.state.printResume
+          ? Object.values(this.state).map((elem) => <div>{elem}</div>)
+          : ''}
       </form>
     );
   }
