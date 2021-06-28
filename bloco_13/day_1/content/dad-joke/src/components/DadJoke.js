@@ -8,9 +8,11 @@ class DadJoke extends React.Component {
       jokeObj: undefined,
       loading: true,
       storedJokes: [],
+      counter: 0,
     };
 
     this.fetchJoke = this.fetchJoke.bind(this);
+    console.log('constructor');
   }
 
   async fetchJoke() {
@@ -21,7 +23,17 @@ class DadJoke extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchJoke();
+    console.log('componentDidMount');
+    // this.fetchJoke();
+  }
+
+  shouldComponentUpdate(nextProps, prevState) {
+    console.log('shouldComponentUpdate= ', nextProps, prevState);
+    return true;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate= ', this.state, prevState);
   }
 
   saveJoke() {
@@ -40,16 +52,22 @@ class DadJoke extends React.Component {
   }
 
   render() {
-    const { storedJokes } = this.state;
-    const loadingelement = <span>Loading...</span>;
+    // const { storedJokes } = this.state;
+    // const loadingelement = <span>Loading...</span>;
+    console.log('render');
 
     return (
       <div>
-        <span>
-          {storedJokes.map(({ id, joke }) => (
-            <p key={id}>{joke} </p>
-          ))}
-        </span>
+        <h1>contador</h1>
+        <button
+          onClick={() =>
+            this.setState((state) => ({ counter: state.counter + 1 }))
+          }
+        >
+          soma
+        </button>
+        <br />
+        <span>{this.state.counter}</span>
       </div>
     );
   }
