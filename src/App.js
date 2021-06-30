@@ -25,6 +25,10 @@ class App extends React.Component {
           headers,
         );
         const dogObj = await fetchResponse.json();
+        if (dogObj.message.includes('terrier')) {
+          this.setState({ loading: false });
+          return;
+        }
         this.setState({ dog: dogObj });
         this.setState({ loading: false });
       } catch (err) {
@@ -38,7 +42,9 @@ class App extends React.Component {
     return (
       <div>
         <img src={ dog.message } alt="dog" />
-        <button type="button" onClick={ this.fetchDog }>DOG!!</button>
+        <button type="button" onClick={ this.fetchDog }>
+          DOG!!
+        </button>
       </div>
     );
   }
