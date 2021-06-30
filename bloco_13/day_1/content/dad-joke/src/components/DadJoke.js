@@ -8,43 +8,40 @@ class DadJoke extends React.Component {
       jokeObj: undefined,
       loading: true,
       storedJokes: [],
-      counter: 0,
     };
 
     this.fetchJoke = this.fetchJoke.bind(this);
-    console.log('constructor');
+    this.saveJoke = this.saveJoke.bind(this);
   }
 
   async fetchJoke() {
-    const headers = { headers: { Accept: 'application/json' } };
-    const fetchReturn = await fetch('https://icanhazdadjoke.com/', headers);
-    const fetchObj = await fetchReturn.json();
-    this.setState({ jokeObj: fetchObj });
+    this.setState({ loading: true }, async () => {
+      try {
+        const headers = { headers: { Accept: 'application/json' } };
+        const requestReturn = await fetch('https://icanhazdadjoke.com/', headers);
+        const requestObj = await requestReturn.json();
+        this.setState({ loading: false, jokeObj: requestObj });
+      } catch (err) {
+        console.log(err);
+      }
+    });
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
-    // this.fetchJoke();
-  }
-
-  shouldComponentUpdate(nextProps, prevState) {
-    console.log('shouldComponentUpdate= ', nextProps, prevState);
-    return true;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate= ', this.state, prevState);
+    this.fetchJoke();
   }
 
   saveJoke() {
-    //salva piada no array de piadas existente
+    this.setState(({ jokeObj, storedJokes }) => ({
+      storedJokes: [...storedJokes, jokeObj],
+    }));
   }
 
   renderJokeElement() {
     return (
       <div>
         <p>{this.state.jokeObj.joke}</p>
-        <button type='button' onClick={this.saveJoke}>
+        <button type="button" onClick={this.saveJoke}>
           Salvar Piada
         </button>
       </div>
@@ -52,22 +49,11 @@ class DadJoke extends React.Component {
   }
 
   render() {
-    // const { storedJokes } = this.state;
-    // const loadingelement = <span>Loading...</span>;
-    console.log('render');
-
+    const loadingElmt = <span>Loading</span>;
+    const { loading, jokeObj } = this.state;
     return (
       <div>
-        <h1>contador</h1>
-        <button
-          onClick={() =>
-            this.setState((state) => ({ counter: state.counter + 1 }))
-          }
-        >
-          soma
-        </button>
-        <br />
-        <span>{this.state.counter}</span>
+        <span>{loading ? loadingElmt : jokeObj.joke}</span>
       </div>
     );
   }
