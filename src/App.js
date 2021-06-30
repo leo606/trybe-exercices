@@ -38,6 +38,7 @@ class App extends React.Component {
     return (
       <div>
         <img src={ dog.message } alt="dog" />
+        <button type="button" onClick={ this.fetchDog }>DOG!!</button>
       </div>
     );
   }
