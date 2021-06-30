@@ -12,6 +12,7 @@ class DadJoke extends React.Component {
 
     this.fetchJoke = this.fetchJoke.bind(this);
     this.saveJoke = this.saveJoke.bind(this);
+    this.renderJokeElement = this.renderJokeElement.bind(this);
   }
 
   async fetchJoke() {
@@ -35,12 +36,13 @@ class DadJoke extends React.Component {
     this.setState(({ jokeObj, storedJokes }) => ({
       storedJokes: [...storedJokes, jokeObj],
     }));
+    this.fetchJoke();
   }
 
   renderJokeElement() {
     return (
       <div>
-        <p>{this.state.jokeObj.joke}</p>
+        <h4>{this.state.jokeObj.joke}</h4>
         <button type="button" onClick={this.saveJoke}>
           Salvar Piada
         </button>
@@ -49,11 +51,16 @@ class DadJoke extends React.Component {
   }
 
   render() {
-    const loadingElmt = <span>Loading</span>;
-    const { loading, jokeObj } = this.state;
+    const loadingElmt = <span>Loading...</span>;
+    const { loading, storedJokes } = this.state;
     return (
       <div>
-        <span>{loading ? loadingElmt : jokeObj.joke}</span>
+        <ul>
+          {storedJokes.map(({ id, joke }) => (
+            <li key={id}>{joke}</li>
+          ))}
+        </ul>
+        {loading ? loadingElmt : this.renderJokeElement()}
       </div>
     );
   }
