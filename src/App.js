@@ -1,30 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={ logo } className="App-logo" alt="logo" />
-        <p>
-          Edit
-          <code>
-            src/App.js
-          </code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      dog: undefined,
+      loading: true,
+    };
+    this.fetchDog = this.fetchDog.bind(this);
+    this.renderImgElement = this.renderImgElement.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchDog();
+  }
+
+  async fetchDog() {
+    this.setState({ loading: true }, async () => {
+      try {
+        const headers = { headers: { Accept: 'application/json' } };
+        const fetchResponse = await fetch(
+          'https://dog.ceo/api/breeds/image/random',
+          headers,
+        );
+        const dogObj = await fetchResponse.json();
+        this.setState({ dog: dogObj });
+        this.setState({ loading: false });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+
+  renderImgElement() {
+    const { dog } = this.state;
+    return (
+      <div>
+        <img src={ dog.message } alt="dog" />
+      </div>
+    );
+  }
+
+  render() {
+    const { loading } = this.state;
+    return <div>{loading ? 'Loading...' : this.renderImgElement()}</div>;
+  }
 }
 
 export default App;
