@@ -21,12 +21,14 @@ class App extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, { dog }) {
-    console.log('dog - ', dog);
     return !dog.includes('terrier');
   }
 
   componentDidUpdate() {
     this.saveToLocalStorage();
+    const { dog } = this.state;
+    const splitArrey = dog.split('/'); // creditos: Roberval - https://github.com/rslfilho/trybe-exercises-front-end/pull/5/files
+    alert(`Dog breed: ${splitArrey[4]}`);
   }
 
   loadSavedDog(dog) {
@@ -39,6 +41,7 @@ class App extends React.Component {
   }
 
   async fetchDog() {
+    this.setState({ loading: true });
     console.log('fetchDog');
     const DOG_URL = 'https://dog.ceo/api/breeds/image/random';
     const fetchRequest = await fetch(DOG_URL);
