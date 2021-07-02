@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import fetchDog from './services/fetchDog';
+import Dog from './components/Dog';
 
 class App extends React.Component {
   constructor() {
@@ -7,68 +9,75 @@ class App extends React.Component {
     this.state = {
       dog: '',
       loading: true,
+      dogName: '',
     };
-    this.fetchDog = this.fetchDog.bind(this);
-    this.renderImgElement = this.renderImgElement.bind(this);
-    this.saveToLocalStorage = this.saveToLocalStorage.bind(this);
-    this.loadSavedDog = this.loadSavedDog.bind(this);
+    this.refreshDog = this.refreshDog.bind(this);
+    this.dogNameHandle = this.dogNameHandle.bind(this);
+    this.saveLocalStorage = this.saveLocalStorage.bind(this);
   }
 
   componentDidMount() {
-    const { dog } = localStorage;
-    if (dog) return this.loadSavedDog(dog);
-    this.fetchDog();
+    const { dog, dogName } = JSON.parse(localStorage.dog);
+    if (dog) return this.loadLocalStorge(dog, dogName);
+    this.setDogUrl();
   }
 
-  shouldComponentUpdate(nextProps, { dog }) {
+  shouldComponentUpdate(_nextProps, { dog }) {
+    // if (loading) return true;
     return !dog.includes('terrier');
   }
 
   componentDidUpdate() {
-    this.saveToLocalStorage();
-    const { dog } = this.state;
-    const splitArrey = dog.split('/'); // creditos: Roberval - https://github.com/rslfilho/trybe-exercises-front-end/pull/5/files
-    alert(`Dog breed: ${splitArrey[4]}`);
+    const { dog, loading, dogName } = this.state;
+    const dogBreed = dog.split('/'); // creditos: Roberval - https://github.com/rslfilho/trybe-exercises-front-end/pull/5/
+    // eslint-disable-next-line no-alert
+    // if (!loading) alert(`Dog breed: ${dogBreed[4]}`);
   }
 
-  loadSavedDog(dog) {
-    this.setState({ dog, loading: false });
+  async setDogUrl() {
+    this.setState({ dog: await fetchDog(), loading: false });
   }
 
-  saveToLocalStorage() {
-    const { dog } = this.state;
-    localStorage.dog = dog;
+  saveLocalStorage() {
+    const { dog, dogName } = this.state;
+    localStorage.dog = JSON.stringify({ dog, dogName });
   }
 
-  async fetchDog() {
-    this.setState({ loading: true });
-    console.log('fetchDog');
-    const DOG_URL = 'https://dog.ceo/api/breeds/image/random';
-    const fetchRequest = await fetch(DOG_URL);
-    const dogObj = await fetchRequest.json();
-    this.setState({ dog: dogObj.message, loading: false });
+  loadLocalStorge(dog, dogName) {
+    this.setState({ dog, dogName, loading: false });
   }
 
-  renderImgElement() {
-    const { dog } = this.state;
-    return (
-      <div>
-        <img src={ dog } alt="dog" />
-      </div>
-    );
+  dogNameHandle({ target }) {
+    console.log(target.value);
+    this.setState({ dogName: target.value });
+  }
+
+  refreshDog() {
+    this.setState({ loading: true },
+      () => fetchDog().then((dog) => this.setState({ dog, loading: false })));
   }
 
   render() {
-    const { loading } = this.state;
+    const { dog, loading, dogName } = this.state;
 
     return (
       <div>
         <div>
-          <button type="button" onClick={ this.fetchDog }>
+          <button type="button" onClick={ this.refreshDog }>
             DOG!!
           </button>
+          <button type="button" onClick={ this.saveLocalStorage }>
+            SAVE!!
+          </button>
+          <span>
+            {dogName || null}
+          </span>
         </div>
-        {loading ? 'Loading...' : this.renderImgElement()}
+        {loading ? (
+          'Loading...'
+        ) : (
+          <Dog dogURL={ dog } value={ dogName } onChange={ this.dogNameHandle } />
+        )}
       </div>
     );
   }
