@@ -28,8 +28,8 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    const { dog, loading, dogName } = this.state;
-    const dogBreed = dog.split('/'); // creditos: Roberval - https://github.com/rslfilho/trybe-exercises-front-end/pull/5/
+    // const { dog, loading, dogName } = this.state;
+    // const dogBreed = dog.split('/'); // creditos: Roberval - https://github.com/rslfilho/trybe-exercises-front-end/pull/5/
     // eslint-disable-next-line no-alert
     // if (!loading) alert(`Dog breed: ${dogBreed[4]}`);
   }
@@ -61,14 +61,16 @@ class App extends React.Component {
     const { dog, loading, dogName } = this.state;
 
     return (
-      <div>
+      <div className="app-container">
         <div>
-          <button type="button" onClick={ this.refreshDog }>
-            DOG!!
-          </button>
-          <button type="button" onClick={ this.saveLocalStorage }>
-            SAVE!!
-          </button>
+          <div className="btns">
+            <button type="button" onClick={ this.refreshDog }>
+              DOG!!
+            </button>
+            <button type="button" onClick={ this.saveLocalStorage }>
+              SAVE!!
+            </button>
+          </div>
           <span>
             {dogName || null}
           </span>

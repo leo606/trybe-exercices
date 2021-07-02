@@ -6,7 +6,7 @@ class Dog extends React.Component {
   render() {
     const { dogURL, value, onChange } = this.props;
     return (
-      <div>
+      <div className="dog-card">
         <img src={ dogURL } alt="dog" />
         <label htmlFor="dog-name-input">
           <input
