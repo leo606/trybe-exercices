@@ -7,6 +7,7 @@ function App() {
         Email
       </label>
       <input type="email" id='id-email'/>
+      <input id='btn-send' type="button" value='Enviar' />
     </div>
   );
 }
