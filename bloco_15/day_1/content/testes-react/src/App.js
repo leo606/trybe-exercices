@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import ValidEmail from './ValidEmail';
 
 class App extends React.Component {
   constructor() {
@@ -10,7 +11,7 @@ class App extends React.Component {
     };
   }
   textHandler(value) {
-    this.setState({email: value});
+    this.setState({ email: value });
   }
 
   changeSaveEmail(email) {
@@ -25,6 +26,7 @@ class App extends React.Component {
         <input
           type="email"
           id="id-email"
+          value={email}
           onChange={(e) => this.textHandler(e.target.value)}
         />
         <input
@@ -35,7 +37,7 @@ class App extends React.Component {
           onClick={() => this.changeSaveEmail(email)}
         />
         <input id="btn-back" type="button" value="Voltar" />
-        <h2 data-testid="id-email-user">{`Email: ${saveEmail}`}</h2>
+        <ValidEmail email={saveEmail}/>
       </div>
     );
   }
