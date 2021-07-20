@@ -1,11 +1,15 @@
 import React from 'react';
+import Info from '../components/Info';
 
 class Home extends React.Component {
   render() {
     return (
-      <div>Home</div>
+      <>
+        <h1>Home</h1>
+        <Info />
+      </>
     );
-  };
+  }
 }
 
 export default Home;

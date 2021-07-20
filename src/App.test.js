@@ -15,6 +15,7 @@ describe('test App', () => {
     const sobreLink = getByRole('link', { name: 'Sobre' });
     const contatoLink = getByRole('link', { name: 'Contato' });
     const projetosLink = getByRole('link', { name: 'Projetos' });
+    
     userEvent.click(sobreLink);
     expect(history.location.pathname).toBe('/about');
     const aboutText = getByText(/about/i);
