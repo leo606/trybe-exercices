@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 class Pokemon extends React.Component {
   render() {
     const {name, type, averageWeight, image, id} = this.props.pokemon;
+    const location = {pathname: `/pokemons/${id}`, state: this.props.pokemon }
     return (
       <div className="pokemon">
         <div>
@@ -14,7 +15,7 @@ class Pokemon extends React.Component {
           <p>
             Average weight: {`${averageWeight.value} ${averageWeight.measurementUnit}`}
           </p>
-          <Link to={`/pokemons/${id}`}><p>Details</p></Link>
+          <Link to={location}><p>Details</p></Link>
         </div>
         <img src={image} alt={`${name} sprite`} />
       </div>
