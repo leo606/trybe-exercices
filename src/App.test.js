@@ -8,6 +8,8 @@ describe('test App', () => {
     const { getByText, getByRole } = renderWithRouter(<App />);
     const home = getByText(/home/i);
     const img = getByRole('img');
+    console.log(img.src);
+    console.log(img.alt);
     expect(img).toBeInTheDocument();
     expect(img.src).toBe('https://github.com/leo606.png');
     expect(img.alt).toBe('leonardo');
