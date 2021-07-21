@@ -22,19 +22,19 @@ class App extends React.Component {
         <p>
           Nome:
           <input
-            onChange={(e) => this.handleInput(e)}
-            name='nome'
-            data-testid='input-nome'
-            value={this.state.nome}
+            onChange={ (e) => this.handleInput(e) }
+            name="nome"
+            data-testid="input-nome"
+            value={ this.state.nome }
           />
         </p>
         <p>
           E-mail:
           <input
-            onChange={(e) => this.handleInput(e)}
-            name='email'
-            data-testid='input-email'
-            value={this.state.email}
+            onChange={ (e) => this.handleInput(e) }
+            name="email"
+            data-testid="input-email"
+            value={ this.state.email }
           />
         </p>
       </div>
