@@ -42,16 +42,22 @@
 
     function reducer(state = ESTADO_INICIAL, action) {
       switch (action.type) {
+        case 'NEXT_COLOR':
+          if (state.index = state.colors.length) return state;
+          return { ...state, index: state.index + 1 }
+
+        case 'PREVIOUS_COLOR':
+          if (state.index - 1 < 0) return state
+          return { ...state, index: state.index - 1 }
+
         default:
           return state;
       }
     }
     const store = Redux.createStore(reducer);
 
-
-
-
-
+    document.getElementById('previous').addEventListener('click', store.dispatch({type: 'NEXT_COLOR'}))
+    document.getElementById('next').addEventListener('click', store.dispatch({type: 'PREVIOUS_COLOR'}))
 
   </script>
 </body>
