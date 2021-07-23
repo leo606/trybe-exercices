@@ -62,7 +62,7 @@
           return { ...state, index: state.index - 1 }
 
         case 'RANDOM_COLOR':
-          return { colors: [...state.colors, criarCor()], index: state.colors.length }
+          return { ...state, colors: [...state.colors, criarCor()], index: state.colors.length }
 
         default:
           return state;
@@ -76,7 +76,7 @@
     document.getElementById('random').addEventListener('click', () => store.dispatch({ type: 'RANDOM_COLOR' }));
 
     store.subscribe(() => {
-      console.log('subscribe');
+      console.log(store.getState().colors);
       const spn = document.getElementById('value');
       const div = document.getElementById('container');
       const { colors, index } = store.getState();
