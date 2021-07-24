@@ -55,7 +55,18 @@
     const combinado = combineReducers({ meuPrimeiroReducer, meuSegundoReducer });
 
     const store = createStore(combinado);
-    
+
+    const action1 = () => ({
+      type: 'NAME1',
+      nome: 'Marcelo',
+      sobrenome: 'Almeida',
+    });
+
+    const action2 = () => ({
+      type: 'NAME2',
+      nome: 'Ana',
+      sobrenome: 'Linhares',
+    });
 
   </script>
 </body>
