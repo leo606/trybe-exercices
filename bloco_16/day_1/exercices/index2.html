@@ -40,6 +40,8 @@
 
     const meuPrimeiroReducer = (state = ESTADO_INICIAL_1, action) => {
       switch (action.type) {
+        case 'NAME1':
+          return { ...state, nome: action.nome, sobrenome: action.sobrenome }
         default:
           return state;
       }
@@ -47,26 +49,47 @@
 
     const meuSegundoReducer = (state = ESTADO_INICIAL_2, action) => {
       switch (action.type) {
+        case 'NAME2':
+          return { ...state, nome: action.nome, sobrenome: action.sobrenome }
         default:
           return state;
       }
     };
 
-    const combinado = combineReducers({ meuPrimeiroReducer, meuSegundoReducer });
+    const combinado = Redux.combineReducers({ meuPrimeiroReducer, meuSegundoReducer });
 
-    const store = createStore(combinado);
+    const store = Redux.createStore(combinado);
 
-    const action1 = () => ({
+    const action1 = (name, lastname) => ({
       type: 'NAME1',
-      nome: 'Marcelo',
-      sobrenome: 'Almeida',
+      nome: name,
+      sobrenome: lastname,
     });
 
-    const action2 = () => ({
+    const action2 = (name, lastname) => ({
       type: 'NAME2',
-      nome: 'Ana',
-      sobrenome: 'Linhares',
+      nome: name,
+      sobrenome: lastname,
     });
+
+    window.onload = () => {
+      setTimeout(() => {
+        store.dispatch(action1('Marcelo', 'Silva'))
+        store.dispatch(action2('Ana', 'Linhares'))
+      }, 1000)
+    }
+
+    store.subscribe(() => {
+      const name1 = document.getElementById('nome-1');
+      const lastname1 = document.getElementById('sobrenome-1');
+      name1.innerHTML = store.getState().meuPrimeiroReducer.nome
+      lastname1.innerHTML = store.getState().meuPrimeiroReducer.sobrenome
+
+      const name2 = document.getElementById('nome-2');
+      const lastname2 = document.getElementById('sobrenome-2');
+      name2.innerHTML = store.getState().meuSegundoReducer.nome
+      lastname2.innerHTML = store.getState().meuSegundoReducer.sobrenome
+    })
 
   </script>
 </body>
