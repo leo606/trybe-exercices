@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import { connect } from 'react-redux';
+import { fetchDog } from './redux/actions';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+function App({ isFetching, src, fetchDog }) {
+  return isFetching ? (
+    <h3>Loading</h3>
+  ) : (
+    <div style={{ width: 500 }}>
+      <button style={{ display: 'block' }} onClick={fetchDog} type="button">
+        Novo Doguinho
+      </button>
+      <img style={{ width: '100%' }} src={src} alt="dog" />
     </div>
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    src: state.imagePath,
+    isFetching: state.isFetching,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchDog: () => dispatch(fetchDog()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
