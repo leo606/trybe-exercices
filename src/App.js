@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   moveCar(car, side) {
-    this.setState(() => ({ [car]: side }));
+    this.setState({ [car]: side });
   }
 
   changeSignal(color) {
@@ -32,9 +32,11 @@ class App extends React.Component {
       changeSignal: this.changeSignal,
     };
     return (
-      <MyContext.Provider value={providerValue} >
-        <Cars />
-        <TrafficSignal />
+      <MyContext.Provider value={providerValue}>
+        <div className="container">
+          <Cars />
+          <TrafficSignal />
+        </div>
       </MyContext.Provider>
     );
   }
