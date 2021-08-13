@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import TicTacToeContext from './context/TicTacToeContext';
 import GameBoard from './GameBoard';
 
 function victoryArchivedInLine(gameBoard) {
@@ -37,8 +38,8 @@ function victoryArchivedInDiagonals(gameBoard) {
 }
 
 function TicTacToe() {
-  const [activePlayer, setActivePlayer] = useState(1);
-  const [gameBoard, setGameBoard] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const { activePlayer, setActivePlayer, gameBoard, setGameBoard } =
+    useContext(TicTacToeContext);
 
   function resetGame() {
     setActivePlayer(1);
@@ -65,7 +66,6 @@ function TicTacToe() {
   }
 
   function victoryArchieved() {
-
     return (
       victoryArchivedInLine(gameBoard) ||
       victoryArchivedInColumn(gameBoard) ||
