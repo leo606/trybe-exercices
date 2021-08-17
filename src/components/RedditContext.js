@@ -15,25 +15,10 @@ function RedditProvider({ children }) {
   const [shouldRefreshSubreddit, setShouldRefreshSubreddit] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
 
-  // componentDidUpdate(_prevProps, prevState) {
-  //   const { state } = this;
-  //   const { shouldRefreshSubreddit } = state;
-  //   const selectedSubredditChanged = prevState.selectedSubreddit !== state.selectedSubreddit;
-
-  //   if (selectedSubredditChanged || shouldRefreshSubreddit) {
-  //     this.fetchPosts();
-  //   }
-  // }
-
   function fetchPosts() {
     if (!shouldFetchPosts()) return;
-
-    this.setState({
-      shouldRefreshSubreddit: false,
-      isFetching: true,
-    });
-
-    const { selectedSubreddit } = this.state;
+    setShouldRefreshSubreddit(false);
+    setIsFetching(true);
     getPostsBySubreddit(selectedSubreddit).then(handleFetchSuccess, handleFetchError);
   }
 
