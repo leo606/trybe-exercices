@@ -1,0 +1,1 @@
+SELECT CEIL(84.324);

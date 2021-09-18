@@ -1,0 +1,1 @@
+SELECT REPLACE('Você já ouviu falar do Google?', 'Google', 'DuckDuckGo');
