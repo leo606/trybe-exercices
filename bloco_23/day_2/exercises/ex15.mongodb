@@ -1,0 +1,10 @@
+use('class');
+
+db.superheroes.find({
+  $and: [
+    {"aspects.weight": {$gte: 80}},
+    {"aspects.weight": {$lte: 100}}
+    ],
+  "race": {$exists: true, $in: ['Human', 'Mutant']},
+  "publisher": {$exists: true, $ne: 'DC Comics'}
+});
