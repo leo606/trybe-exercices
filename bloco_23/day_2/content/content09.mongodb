@@ -1,0 +1,10 @@
+use('business');
+
+db.restaurants.deleteMany(
+  {
+    cuisine: "American"
+  }
+);
+
+
+//'Ice Cream', 'Gelato', 'Yogurt', 'Ices'
