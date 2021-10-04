@@ -1,0 +1,6 @@
+use('class');
+
+db.superheroes.find({
+  "race": {$exists: true, $ne: "Human"},
+  "aspects.height": {$not: {$gt: 180}}
+});
