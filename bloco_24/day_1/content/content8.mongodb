@@ -1,0 +1,7 @@
+use('agg_example');
+
+db.inventory.aggregate([
+  {
+    $unwind: "$sizes"
+  }
+])

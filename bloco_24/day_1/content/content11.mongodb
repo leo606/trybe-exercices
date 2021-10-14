@@ -1,0 +1,15 @@
+use('agg_example');
+
+db.clients.aggregate([
+  {
+    $limit: 4
+  },
+  {
+    $lookup: {
+      from: 'transactions',
+      localField: 'name',
+      foreignField: 'to',
+      as: 'transactionsRecived'
+    }
+  }
+])
