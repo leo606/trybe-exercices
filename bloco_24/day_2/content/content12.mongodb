@@ -1,0 +1,15 @@
+use("storage");
+db.products.find()
+
+db.products.aggregate([
+  {
+    $addFields: {
+      total_stock: {
+        $round: [
+          {$multiply: ["$quantity", "$sale_price"]},
+          1
+        ]
+      }
+    }
+  }
+])

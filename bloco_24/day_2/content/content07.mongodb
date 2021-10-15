@@ -1,0 +1,15 @@
+use("storage");
+db.products.find()
+
+db.products.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      purchase_price: 1,
+      taxes: 1,
+      sale_price: 1,
+      ceil_profit: {$ceil: {$subtract: ['$sale_price', '$purchase_price']}}
+    }
+  }
+])
