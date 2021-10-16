@@ -1,0 +1,17 @@
+use('erp');
+db.clientes.find()
+
+db.clientes.aggregate([
+  {
+  $addFields: {
+    idade: {
+      $floor: {
+        $divide: [
+          {$subtract: ['$$NOW', '$dataNascimento']},
+          {$multiply: [360, 86400000]}
+        ]
+      }
+    },
+  }
+  }
+])

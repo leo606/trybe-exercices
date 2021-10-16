@@ -1,0 +1,12 @@
+use("storage");
+// db.products.find()
+
+db.products.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      totalPrice: {$add: ['$purchase_price', '$taxes']}
+    }
+  }
+])
