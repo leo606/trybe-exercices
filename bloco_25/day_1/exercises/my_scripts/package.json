@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "imc": "node imc"
+    "imc": "node imc",
+    "velo": "node velocity",
+    "start": "node index",
+    "prize": "node prize"
   },
   "author": "leo",
   "license": "ISC",
