@@ -17,9 +17,15 @@ function idk(p1, p2, p3) {
 }
 
 function randomN() {
-  return Math.floor(Math.random() * 100 + 1)
+  return Math.floor(Math.random() * 100 + 1);
 }
 
-idk(randomN(), randomN(), randomN())
-  .then((msg)=> console.log(msg))
-  .catch((e)=> console.log(e.message));
+async function main() {
+  try {
+    console.log(await idk(randomN(), randomN(), randomN()));
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+
+main();
