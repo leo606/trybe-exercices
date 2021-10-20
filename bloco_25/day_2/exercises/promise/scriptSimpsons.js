@@ -53,7 +53,7 @@ async function simpsonFamily() {
   );
 
   fs.writeFile("./simpsonFamily.json", JSON.stringify(filteredData))
-    .then(() => console.log("arquivo criado com sucesso"))
+    .then(() => console.log("arquivo family criado com sucesso"))
     .catch((e) => console.log(e.message));
 }
 
@@ -68,11 +68,34 @@ async function addNelson() {
     .then((data) => JSON.parse(data))
     .catch((e) => console.log(e.message));
 
-  const nelson = characters.findIndex((c)=> c.name === "Nelson Muntz")
+  const nelson = characters.findIndex((c) => c.name === "Nelson Muntz");
   family.push(characters[nelson]);
 
   fs.writeFile("./simpsonFamily.json", JSON.stringify(family))
     .then(() => console.log("arquivo criado com sucesso -- add nelson"))
     .catch((e) => console.log(e.message));
 }
-addNelson();
+
+async function replaceNelson() {
+  const family = await fs
+    .readFile("./simpsonFamily.json", "utf-8")
+    .then((data) => JSON.parse(data))
+    .catch((e) => console.log(e.message));
+
+  const characters = await fs
+    .readFile("./simpsons.json", "utf-8")
+    .then((data) => JSON.parse(data))
+    .catch((e) => console.log(e.message));
+
+  const nelsonInFamily = family.findIndex((c) => c.name === "Nelson Muntz");
+  const maggie = characters.findIndex((c) => c.name === "Maggie Simpson");
+
+  family[nelsonInFamily] = characters[maggie];
+
+  fs.writeFile("./simpsonFamily.json", JSON.stringify(family))
+    .then(() => console.log("arquivo criado com sucesso - replace nelson"))
+    .catch((e) => console.log(e.message));
+}
+simpsonFamily()
+  .then(addNelson)
+  .then(replaceNelson)
