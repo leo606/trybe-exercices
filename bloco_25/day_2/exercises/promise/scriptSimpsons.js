@@ -28,4 +28,16 @@ async function printSimpsonsById(inId) {
   }
 }
 
-printSimpsonsById(11);
+async function removeSimpsons() {
+  const characters = await fs
+    .readFile("./simpsons.json", "utf-8")
+    .then((data) => JSON.parse(data));
+
+  const charactersRemoved = characters.filter((c)=> c.id !== '10' && c.id !== '6');
+
+  fs.writeFile("./simpsons.json", JSON.stringify(charactersRemoved, 2))
+    .then(() => console.log("removido com sucesso"))
+    .catch((e) => console.log(e.message));
+}
+
+removeSimpsons();
