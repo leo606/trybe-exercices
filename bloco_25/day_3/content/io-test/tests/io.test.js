@@ -16,13 +16,14 @@ describe("leArquivo", () => {
     });
 
     describe("a resposta", () => {
-      const resp = leArquivo("file.txt");
-
+      
       it("é uma string", () => {
+        const resp = leArquivo("file.txt");
         expect(resp).a("string");
       });
 
       it("é igual ao conteudo do arquivo", () => {
+        const resp = leArquivo("file.txt");
         expect(resp).equal(fileContent);
       });
     });
