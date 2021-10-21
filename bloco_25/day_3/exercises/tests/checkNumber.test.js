@@ -25,4 +25,12 @@ describe("checkNumber", () => {
       expect(resp).equal("neutro");
     });
   });
+
+  describe("caso tipo não é number", () => {
+    it("input string", () => {
+      const resp = checkNumber('string');
+      expect(resp).a('string');
+      expect(resp).equal("o valor deve ser um número");
+    });
+  });
 });
