@@ -1,7 +1,9 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const fs = require("fs").promises;
 
 const app = express();
+app.use(bodyParser.json());
 
 const foods = [
   { id: 1, name: "Lasanha", price: 40.0, waitTime: 30 },
@@ -20,15 +22,22 @@ const drinks = [
 
 app.get("/hello", handleHelloWorldRequest);
 
-app.route("/drinks").get((req, res) => {
-  res.json(
-    drinks.sort((d, e) => {
-      if (d.name > e.name) return 1;
-      if (d.name < e.name) return -1;
-      return 0;
-    })
-  );
-});
+app
+  .route("/drinks")
+  .get((req, res) => {
+    res.json(
+      drinks.sort((d, e) => {
+        if (d.name > e.name) return 1;
+        if (d.name < e.name) return -1;
+        return 0;
+      })
+    );
+  })
+  .post((req, res) => {
+    const { id, name, price } = req.body;
+    drinks.push({ id, name, price });
+    res.status(201).json({ message: "drink saved" });
+  });
 
 app.route("/drinks/search").get((req, res) => {
   const { name } = req.query;
@@ -38,14 +47,28 @@ app.route("/drinks/search").get((req, res) => {
   return res.status(200).json(drinkByName);
 });
 
-app.route("/drinks/:id").get((req, res) => {
-  const { id } = req.params;
-  const drinkById = drinks.find(({ id: drinkId }) => drinkId === +id);
+app
+  .route("/drinks/:id")
+  .get((req, res) => {
+    const { id } = req.params;
+    const drinkById = drinks.find(({ id: drinkId }) => drinkId === +id);
 
-  if (!drinkById) return res.status(404).json({ message: "drink not found" });
+    if (!drinkById) return res.status(404).json({ message: "drink not found" });
 
-  return res.status(200).json(drinkById);
-});
+    return res.status(200).json(drinkById);
+  })
+  .put((req, res) => {
+    const { id } = req.params;
+    console.log(id);
+    const { name, price } = req.body;
+    const drinkIndex = drinks.findIndex((f) => f.id === +id);
+
+    if (drinkIndex === -1)
+      return res.status(404).json({ message: "drink not found iiii" });
+
+    drinks[drinkIndex] = { ...drinks[drinkIndex], name, price };
+    res.status(204).end();
+  });
 
 app.route("/foods/search").get((req, res) => {
   const { name, minPrice } = req.query;
@@ -56,9 +79,17 @@ app.route("/foods/search").get((req, res) => {
   return res.status(200).json(foodByName);
 });
 
-app.route("/foods").get((_req, res) => {
-  res.json(foods);
-});
+app
+  .route("/foods")
+  .get((_req, res) => {
+    res.json(foods);
+  })
+  .post((req, res) => {
+    const { id, name, price, waitTime } = req.body;
+    foods.push({ id, name, price, waitTime });
+    console.log(foods);
+    return res.status(201).json({ message: "recipe created" });
+  });
 
 app.listen(3001, () => {
   console.log("ouvindo na porta 3001");
