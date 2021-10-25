@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs").promises;
+const crypto = require("crypto");
 const { getSimpsons, writeSimpson } = require("./simpsons");
 
 const app = express();
@@ -35,6 +36,9 @@ app.route("/hello").post((req, res) => {
 });
 
 app.route("/greetings").post((req, res) => {
+  const token = req.headers.authorization;
+  if (token.length !== 16)
+    return res.status(401).json({ message: "invalid token" });
   const { name, age } = req.body;
   if (age <= 17) return res.status(401).json({ message: "Unauthorized" });
   return res.status(200).json({ message: `Hello ${name}!` });
@@ -42,7 +46,11 @@ app.route("/greetings").post((req, res) => {
 
 app
   .route("/simpsons")
-  .get(async (_req, res) => {
+  .get(async (req, res) => {
+    const token = req.headers.authorization;
+    if (!token || token.length !== 16)
+      return res.status(401).json({ message: "invalid token" });
+
     try {
       const simpsons = await getSimpsons();
       res.status(200).json(simpsons);
@@ -62,5 +70,15 @@ app
       res.status(401).json({ message: "internal server error" });
     }
   });
+
+app.route("/signup").post((req, res) => {
+  const { email, password, firstName, phone } = req.body;
+  console.log(email, password, firstName, phone);
+
+  if (!email || !password || !firstName || !phone)
+    return res.status(401).json({ message: "missing fields" });
+
+  res.status(200).json({ token: crypto.randomBytes(8).toString('hex') });
+});
 
 app.listen(3001, () => console.log("listening on port 3001"));
