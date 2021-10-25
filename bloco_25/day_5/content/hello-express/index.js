@@ -1,10 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs").promises;
-const auth = require("./utils/auth");
+const { checkNameValid, authMiddleware } = require("./utils/auth");
 
 const app = express();
 app.use(bodyParser.json());
+
+app.get("/open", (_req, res) => res.send("open"));
+
+app.use(authMiddleware);
 
 const foods = [
   { id: 1, name: "Lasanha", price: 40.0, waitTime: 30 },
@@ -58,7 +62,7 @@ app
 
     return res.status(200).json(drinkById);
   })
-  .put(auth, (req, res) => {
+  .put(checkNameValid, (req, res) => {
     const { id } = req.params;
     console.log(id);
     const { name, price } = req.body;
@@ -93,7 +97,7 @@ app
   .get((_req, res) => {
     res.json(foods);
   })
-  .post(auth, (req, res) => {
+  .post(checkNameValid, (req, res) => {
     const { id, name, price, waitTime } = req.body;
     foods.push({ id, name, price, waitTime });
     console.log(foods);
