@@ -5,4 +5,8 @@ async function getSimpsons() {
   return JSON.parse(data);
 }
 
-module.exports = { getSimpsons };
+async function writeSimpson(payload) {
+  fs.writeFile("./simpsons.json", payload);
+}
+
+module.exports = { getSimpsons, writeSimpson };
