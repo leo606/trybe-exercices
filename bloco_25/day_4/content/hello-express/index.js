@@ -30,6 +30,15 @@ app.route("/drinks").get((req, res) => {
   );
 });
 
+app.route("/drinks/:id").get((req, res) => {
+  const { id } = req.params;
+  const drinkById = drinks.find(({ id: drinkId }) => drinkId === +id);
+
+  if (!drinkById) return res.status(404).json({ message: "drink not found" });
+
+  return res.status(200).json(drinkById);
+});
+
 app.route("/foods").get((_req, res) => {
   res.json(foods);
 });
