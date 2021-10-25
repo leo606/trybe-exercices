@@ -13,6 +13,18 @@ app.route("/users/:name/:age").put((req, res) => {
     .json({ message: `your name is ${name}, you are ${age} years old` });
 });
 
+app.route("/simpsons/:id").get(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const simpsonsData = await getSimpsons();
+    const character = simpsonsData.find(({ id: chaId }) => id === chaId);
+    if (character) return res.status(200).json(character);
+    return res.status(404).json({ message: "not found" });
+  } catch (e) {
+    res.status(401).json({ message: "internal server error" });
+  }
+});
+
 app.route("/ping").get((req, res) => {
   res.status(200).json({ message: "pong" });
 });
