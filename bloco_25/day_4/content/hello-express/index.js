@@ -5,7 +5,7 @@ const app = express();
 
 const foods = [
   { id: 1, name: "Lasanha", price: 40.0, waitTime: 30 },
-  { id: 2, name: "Macarrão a Bolonhesa", price: 35.0, waitTime: 25 },
+  { id: 2, name: "Macarrão a Bolonhesa", price: 40.0, waitTime: 25 },
   { id: 3, name: "Macarrão com molho branco", price: 35.0, waitTime: 25 },
 ];
 
@@ -30,6 +30,14 @@ app.route("/drinks").get((req, res) => {
   );
 });
 
+app.route("/drinks/search").get((req, res) => {
+  const { name } = req.query;
+  const drinkByName = drinks.filter((d) => d.name.includes(name));
+  if (!drinkByName.length)
+    return res.status(404).json({ message: "not found" });
+  return res.status(200).json(drinkByName);
+});
+
 app.route("/drinks/:id").get((req, res) => {
   const { id } = req.params;
   const drinkById = drinks.find(({ id: drinkId }) => drinkId === +id);
@@ -37,6 +45,15 @@ app.route("/drinks/:id").get((req, res) => {
   if (!drinkById) return res.status(404).json({ message: "drink not found" });
 
   return res.status(200).json(drinkById);
+});
+
+app.route("/foods/search").get((req, res) => {
+  const { name, minPrice } = req.query;
+  const foodByName = foods.filter(
+    (food) => food.name.includes(name) && food.price >= +minPrice
+  );
+  if (!foodByName.length) return res.status(404).json({ message: "not found" });
+  return res.status(200).json(foodByName);
 });
 
 app.route("/foods").get((_req, res) => {
