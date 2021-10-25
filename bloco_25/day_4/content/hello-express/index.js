@@ -68,6 +68,14 @@ app
 
     drinks[drinkIndex] = { ...drinks[drinkIndex], name, price };
     res.status(204).end();
+  })
+  .delete((req, res) => {
+    const { id } = req.params;
+    const drinkIndex = drinks.findIndex((d) => d.id === +id);
+    if (drinkIndex === -1)
+      return res.status(404).json({ message: "not found" });
+    drinks.splice(drinkIndex, 1);
+    res.status(204).end();
   });
 
 app.route("/foods/search").get((req, res) => {
@@ -90,6 +98,10 @@ app
     console.log(foods);
     return res.status(201).json({ message: "recipe created" });
   });
+
+app.all("*", (req, res) => {
+  return res.status(404).json({ message: `route ${req.path} not found` });
+});
 
 app.listen(3001, () => {
   console.log("ouvindo na porta 3001");
