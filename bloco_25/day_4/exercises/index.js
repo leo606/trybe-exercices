@@ -4,6 +4,12 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());
 
+app.route("/users/:name/:age").put((req, res) => {
+  const { name, age } = req.params;
+  res.status(200)
+    .json({ message: `your name is ${name}, you are ${age} years old` });
+});
+
 app.route("/ping").get((req, res) => {
   res.status(200).json({ message: "pong" });
 });
