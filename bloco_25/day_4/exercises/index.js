@@ -13,5 +13,10 @@ app.route("/hello").post((req, res) => {
   return res.status(200).json({ message: `Hello ${name}` });
 });
 
+app.route("/greetings").post((req, res) => {
+  const { name, age } = req.body;
+  if (age <= 17) return res.status(401).json({ message: "Unauthorized" });
+  return res.status(200).json({ message: `Hello ${name}!` });
+});
 
 app.listen(3001, () => console.log("listening on port 3001"));
