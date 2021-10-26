@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
-// const checkUser = require("./utils/checkUser");
 const checkUser = require("./utils/checkUser");
 const randomBytes = require("random-bytes");
 
-// router.use(checkUser);
+router.use(checkUser);
 
-router.post("/register", checkUser, (req, res) => {
+router.post("/register", (req, res) => {
   res.status(200).json({ message: "user created" });
 });
 
