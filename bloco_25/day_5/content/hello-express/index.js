@@ -40,7 +40,8 @@ app
   })
   .post((req, res) => {
     const { id, name, price } = req.body;
-    drinks.push({ id, name, price });
+    const { username } = req.user;
+    drinks.push({ id, name, price, chef: username });
     res.status(201).json({ message: "drink saved" });
   });
 
