@@ -11,8 +11,13 @@ app.get("/authors", async (req, res) => {
 });
 
 app.get("/books", async (req, res) => {
+  const { author_id } = req.query;
+  if (author_id) {
+    const books = await Books.getByAuthorId(+author_id);
+    return res.status(200).json(books);
+  }
   const books = await Books.getAll();
-  res.status(200).json(books);
+  return res.status(200).json(books);
 });
 
 const PORT = process.env.PORT || 3000;
