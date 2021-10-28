@@ -14,6 +14,7 @@ module.exports = function checkUserLogin(req, res, next) {
     ) {
       return next();
     }
+    return res.status(401).json({ message: "invalid" });
   }
   if (req.path === "/login") {
     const { email, password } = req.body;
@@ -28,6 +29,7 @@ module.exports = function checkUserLogin(req, res, next) {
     ) {
       return next();
     }
+    // return res.status(401).json({ message: "invalid" });
+    next({ err: "invalid", status: 401 });
   }
-  return res.status(401).json({ message: "invalid" });
 };
