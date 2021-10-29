@@ -18,13 +18,10 @@ function serialize(author) {
 }
 
 async function getAll() {
-  try {
-    const db = await connection();
-    const authors = await db.collection("authors").find().toArray();
-    return authors.map((a) => addFullNameField(a));
-  } catch (error) {
-    console.log(error);
-  }
+  const [authors] = await connection.execute(
+    "SELECT id, first_name, middle_name, last_name FROM model_example.authors;"
+  );
+  return authors.map(serialize).map(addFullNameField);
 }
 
 async function getAllAuthorsIds() {
