@@ -20,7 +20,6 @@ async function getAll() {
   try {
     const db = await connection();
     const authors = await db.collection("authors").find().toArray();
-    console.log(authors);
     return authors.map(({ _id, firstName, middleName, lastName }) =>
       newAuthor({
         id: _id,
@@ -48,11 +47,21 @@ function validAuthor(first_name, middle_name, last_name) {
   return true;
 }
 
-function createAuthor(first_name, middle_name, last_name) {
-  return connection.execute(
-    "INSERT INTO authors (first_name, middle_name, last_name) VALUES (?, ?, ?)",
-    [first_name, middle_name, last_name]
-  );
+async function createAuthor(firstName, middleName, lastName) {
+  try {
+    const db = await connection();
+    const insert = await db
+      .collection("authors")
+      .insertOne({ firstName, middleName, lastName });
+    return newAuthor({
+      id: insert.insertedId,
+      firstName,
+      middleName,
+      lastName,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function findByid(id) {

@@ -1,5 +1,6 @@
 const connection = require("./connection");
 const { getAllAuthorsIds } = require("./Author");
+const { ObjectId } = require("mongodb");
 
 async function getAll() {
   try {
@@ -29,11 +30,16 @@ async function getByAuthorId(id) {
 }
 
 async function getByBookId(id) {
-  const [books] = await connection.execute("SELECT * FROM books WHERE id=?", [
-    id,
-  ]);
-  if (!books.length) return null;
-  return books;
+  if (!ObjectId.isValid(id)) return null;
+
+  try {
+    const db = await connection();
+    const book = await db.collection("books").findOne(new ObjectId(id));
+    if (!book) return null;
+    return book;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function validBook(title, authorId) {
@@ -49,10 +55,15 @@ async function validBook(title, authorId) {
 }
 
 async function createBook(title, authorId) {
-  await connection.execute(
-    "INSERT INTO books (title, author_id) VALUES (?, ?)",
-    [title, authorId]
-  );
+  try {
+    const db = await connection();
+    const inserted = await db
+      .collection("books")
+      .insertOne({ title, authorId });
+    return { saved: { id: inserted.insertedId, title, authorId } };
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 module.exports = { getAll, getByAuthorId, getByBookId, validBook, createBook };

@@ -23,14 +23,13 @@ app.post("/authors", async (req, res) => {
   if (!Author.validAuthor(...Object.values(obj))) {
     return res.status(400).json({ message: "invalid data" });
   }
-  await Author.createAuthor(...Object.values(obj));
-  res.status(201).json({ message: "author saved" });
+  const saved = await Author.createAuthor(...Object.values(obj));
+  res.status(201).json({ message: "author saved", saved });
 });
 
 app.get("/books/:id", async (req, res) => {
   const { id } = req.params;
-  console.log("params", id);
-  const books = await Books.getByBookId(+id);
+  const books = await Books.getByBookId(id);
   if (!books) return res.status(404).json({ message: "not found" });
   return res.status(200).json(books);
 });
@@ -48,13 +47,13 @@ app.get("/books", async (req, res) => {
 
 app.post("/books", async (req, res) => {
   const obj = ({ title, author_id } = req.body);
-  const isValid = await Books.validBook(...Object.values(obj));
-  if (!isValid) {
-    return res.status(400).json({ message: "invalid data" });
-  }
-  await Books.createBook(...Object.values(obj));
+  // const isValid = await Books.validBook(...Object.values(obj));
+  // if (!isValid) {
+  //   return res.status(400).json({ message: "invalid data" });
+  // }
+  const saved = await Books.createBook(...Object.values(obj));
 
-  return res.status(201).json({ message: "book saved" });
+  return res.status(201).json({ message: "book saved", saved });
 });
 
 const PORT = process.env.PORT || 3000;
