@@ -1,4 +1,5 @@
 const connection = require("./connection");
+const { ObjectId } = require("mongodb");
 
 function newAuthor({ id, firstName, middleName, lastName }) {
   const fullName = [firstName, middleName, lastName].filter((n) => n).join(" ");
@@ -54,4 +55,24 @@ function createAuthor(first_name, middle_name, last_name) {
   );
 }
 
-module.exports = { getAll, validAuthor, createAuthor, getAllAuthorsIds };
+async function findByid(id) {
+  if (!ObjectId.isValid(id)) return null;
+
+  try {
+    const db = await connection();
+    const author = await db.collection("authors").findOne(new ObjectId(id));
+    if (!author) return null;
+    const { _id, firstName, middleName, lastName } = author;
+    return newAuthor({ id: _id, firstName, middleName, lastName });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+module.exports = {
+  getAll,
+  validAuthor,
+  createAuthor,
+  getAllAuthorsIds,
+  findByid,
+};
