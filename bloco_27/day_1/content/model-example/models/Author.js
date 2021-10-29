@@ -1,11 +1,9 @@
 const connection = require("./connection");
 
-function addFullNameField(author) {
-  const fullName = [author.firstName, author.middleName, author.lastName]
-    .filter((n) => n)
-    .join(" ");
+function newAuthor({ id, firstName, middleName, lastName }) {
+  const fullName = [firstName, middleName, lastName].filter((n) => n).join(" ");
 
-  return { ...author, fullName };
+  return { id, name: fullName, firstName, middleName, lastName };
 }
 
 function serialize(author) {
@@ -21,7 +19,15 @@ async function getAll() {
   try {
     const db = await connection();
     const authors = await db.collection("authors").find().toArray();
-    return authors.map((a) => addFullNameField(a));
+    console.log(authors);
+    return authors.map(({ _id, firstName, middleName, lastName }) =>
+      newAuthor({
+        id: _id,
+        firstName,
+        middleName,
+        lastName,
+      })
+    );
   } catch (error) {
     console.log(error);
   }

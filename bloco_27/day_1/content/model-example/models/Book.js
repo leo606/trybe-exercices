@@ -2,16 +2,30 @@ const connection = require("./connection");
 const { getAllAuthorsIds } = require("./Author");
 
 async function getAll() {
-  const [books] = await connection.execute("SELECT * FROM books;");
-  return books;
+  try {
+    const db = await connection();
+    const books = await db.collection("books").find().toArray();
+    return books;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function getByAuthorId(id) {
-  const [books] = await connection.execute(
-    `SELECT * FROM books WHERE author_id = ${id}`
-  );
-  if (!books.length) return null;
-  return books;
+  try {
+    const db = await connection();
+
+    const books = await db
+      .collection("books")
+      .find({ author_id: id })
+      .toArray();
+
+    if (!books.length) return null;
+
+    return books;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 async function getByBookId(id) {
