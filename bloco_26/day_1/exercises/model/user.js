@@ -1,27 +1,25 @@
 const connection = require("./connection");
-const { ObjectId } = require("mongodb");
 
 async function postUser(user) {
   const { firstName, lastName, email, password } = user;
   try {
-    const db = await connection();
-    const insert = await db
-      .collection("users")
-      .insertOne({ firstName, lastName, email, password });
-    return { id: insert.insertedId, firstName, lastName, email };
+    const [insert] = await connection.execute(
+      "INSERT INTO users (first_name, last_name, email, password) VALUES (?,?,?,?)",
+      [firstName, lastName, email, password]
+    );
+    return { id: insert.insertId, firstName, lastName, email, password };
   } catch (error) {
     console.log(error);
   }
 }
 
 async function putUser(user, id) {
-  if (!ObjectId.isValid(id)) return false;
   const { firstName, lastName, email, password } = user;
   try {
-    const db = await connection();
-    const update = await db
-      .collection("users")
-      .updateOne({_id: new ObjectId(id)}, {$set: { firstName, lastName, email, password }});
+    const update = await connection.execute(
+      "UPDATE users SET first_name=? , last_name=?, email=?, password=? WHERE id=?",
+      [firstName, lastName, email, password, +id]
+    );
     console.log(update);
     return { id, firstName, lastName, email };
   } catch (error) {
@@ -31,8 +29,9 @@ async function putUser(user, id) {
 
 async function getUsers() {
   try {
-    const db = await connection();
-    const users = await db.collection("users").find().toArray();
+    const [users] = await connection.execute(
+      "SELECT * FROM users"
+    );
     return users;
   } catch (error) {
     console.log(error);
@@ -40,11 +39,11 @@ async function getUsers() {
 }
 
 async function getUsersById(id) {
-  if (!ObjectId.isValid(id)) return false;
-
   try {
-    const db = await connection();
-    const users = await db.collection("users").findOne(new ObjectId(id));
+    const [users] = await connection.execute(
+      "SELECT * FROM users WHERE id=?",
+      [id]
+    );
     return users;
   } catch (error) {
     console.log(error);
