@@ -8,7 +8,7 @@ const getAll = rescue(async (req, res) => {
   res.status(200).json(authors);
 });
 
-const findById = rescue((req, res, next) => {
+const findById = rescue(async (req, res, next) => {
   const { id } = req.params;
 
   const author = await service.findById(id);
@@ -36,4 +36,4 @@ const create = rescue(async (req, res, next) => {
   return res.status(201).json({ newAuthor });
 });
 
-module.exports = { getAll, findById };
+module.exports = { getAll, findById, create };
