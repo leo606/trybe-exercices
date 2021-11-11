@@ -1,5 +1,8 @@
-function pingRes(_req, res) {
-  res.status(200).json({ message: "pong" });
-}
+const express = require("express");
+const router = express.Router();
 
-module.exports = pingRes;
+router.get("/", (_req, res) => {
+  res.status(200).json({ message: "pong" });
+});
+
+module.exports = router;
