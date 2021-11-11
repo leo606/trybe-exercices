@@ -2,13 +2,13 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-const ping = require("./service/ping");
-const cep = require("./service/cep");
+const pingController = require("./controller/pingController");
+const cepController = require("./controller/cepController");
 
 app.use(express.json());
 
-app.get("/ping", ping.pingRes);
+app.get("/ping", pingController);
 
-app.get("/cep", cep.cep);
+app.get("/cep", cepController);
 
 app.listen(PORT, console.log("listening port", PORT));
