@@ -18,4 +18,27 @@ route.get("/", async (req, res, next) => {
   res.status(200).json(cepReturn);
 });
 
+route.post("/", async (req, res, next) => {
+  const cepData = ({ cep, logradouro, bairro, localidade, uf } = req.body);
+  const valid = cepService.isCepDataValid(cepData);
+  if (valid.error) {
+    return next({
+      status: 400,
+      code: "invalidData",
+      message: valid.error.message,
+    });
+  }
+  const cepLookup = await cepService.cepLookup(cep);
+  if (cepLookup.length) {
+    return next({
+      status: 409,
+      code: "alreadyExists",
+      message: "CEP existente",
+    });
+  }
+
+  await cepService.insertCep(cepData);
+  res.status(201).send();
+});
+
 module.exports = route;
