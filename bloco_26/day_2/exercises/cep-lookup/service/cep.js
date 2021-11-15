@@ -13,16 +13,34 @@ const cepDataSchema = joi.object().keys({
 });
 
 function isValid(cep) {
-  return CEP_REGEX.test(cep);
+  if (!CEP_REGEX.test(cep)) {
+    return false;
+  }
+  return cep.replace("-", "");
 }
 
-async function cepLookup(cep) {
+async function cepLookup(queryCep) {
   try {
-    const cepData = await Cep.cepLookup(cep);
-    if (cepData.length) {
-      return { cepData };
+    const [cepData] = await Cep.cepLookup(queryCep);
+    if (cepData) {
+      return cepData;
     }
-    return { error: { message: "cep does not exist" } };
+
+    const cepFetch = await Cep.fetchFromViaCep(queryCep);
+    if (cepFetch.erro) {
+      return { error: { message: "cep does not exists" } };
+    }
+
+    const { cep, logradouro, bairro, localidade, uf } = cepFetch;
+    Cep.cepCreate({
+      cep: cepFetch.cep.replace("-", ""),
+      logradouro,
+      bairro,
+      localidade,
+      uf,
+    });
+
+    return { cep, logradouro, bairro, localidade, uf };
   } catch (e) {
     console.log(e);
   }
