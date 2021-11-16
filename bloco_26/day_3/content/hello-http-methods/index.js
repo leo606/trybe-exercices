@@ -4,8 +4,14 @@ const TOKEN = "6v67i2068bkgfo004jx7jr5t";
 
 const headers = { Athorization: TOKEN };
 
+const body = {
+  name: "naamw",
+  email: "emaaail@emaail.com",
+  password: "paaasword",
+};
+
 axios
-  .post("https://postman-echo.com/post?param1=thisisnotatest")
+  .post("https://postman-echo.com/post?param1=thisisnotatest", body)
   .then((response) => {
     return response.data;
   })
