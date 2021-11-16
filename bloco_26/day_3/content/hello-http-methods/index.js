@@ -9,5 +9,6 @@ axios
     console.log(data);
   })
   .catch((err) => {
+    if (err.status) return console.log(err.response.status);
     console.log(err);
   });
