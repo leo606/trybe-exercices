@@ -3,7 +3,7 @@ const ProductModel = require('../models/productModel');
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+router.get('/', async (_req, res, next) => {
   const products = await ProductModel.getAll();
 
   res.send(products);
@@ -29,7 +29,7 @@ router.delete('/:id', async (req, res) => {
   res.send(products);
 });
 
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
   const { name, brand } = req.body;
 
   const products = await ProductModel.update(req.params.id, name, brand);

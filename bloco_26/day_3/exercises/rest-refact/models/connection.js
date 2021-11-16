@@ -1,6 +1,6 @@
 const mysql = require("mysql2/promise");
 
-const pool = null;
+var pool = null;
 
 module.exports = () => {
   return pool
