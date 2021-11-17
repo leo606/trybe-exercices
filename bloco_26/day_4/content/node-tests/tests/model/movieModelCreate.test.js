@@ -6,10 +6,6 @@ const { MongoClient } = require("mongodb");
 const MovieModel = require("../../models/moviesModel");
 const mongoConnection = require("../../models/connection");
 
-// const MovieModel = {
-//   create: () => {},
-// };
-
 describe("inserir filme no DB", () => {
   const payloadMovie = {
     title: "Example Movie",
@@ -20,12 +16,13 @@ describe("inserir filme no DB", () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
+  let connectionMock;
 
   before(async () => {
     const memoryServer = await MongoMemoryServer.create();
     const mockURI = memoryServer.getUri();
 
-    const connectionMock = await MongoClient.connect(mockURI, DB_OPTIONS).then(
+    connectionMock = await MongoClient.connect(mockURI, DB_OPTIONS).then(
       (conn) => conn.db("model_example")
     );
 
@@ -41,6 +38,15 @@ describe("inserir filme no DB", () => {
     it("possui o id do nove filme", async () => {
       const response = await MovieModel.create(payloadMovie);
       expect(response).to.have.a.property("id");
+    });
+
+    it("filme salvo no banco", async () => {
+      await MovieModel.create(payloadMovie);
+      const queryNewMovie = await connectionMock
+        .collection("movies")
+        .findOne({ title: "Example Movie" });
+
+      expect(queryNewMovie).to.be.not.null;
     });
   });
 });
