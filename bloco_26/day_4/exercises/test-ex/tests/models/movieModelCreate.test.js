@@ -7,7 +7,6 @@ const mongoConnection = require("../../models/connection");
 const MoviesModel = require("../../models/movieModel");
 
 describe("Insere um novo filme no BD", () => {
-  const DBServer = new MongoMemoryServer();
   let connectionMock;
 
   const payloadMovie = {
@@ -17,7 +16,8 @@ describe("Insere um novo filme no BD", () => {
   };
 
   before(async () => {
-    const URLMock = await DBServer.getUri();
+    const DBServer = await MongoMemoryServer.create();
+    const URLMock = DBServer.getUri();
 
     connectionMock = await MongoClient.connect(URLMock, {
       useNewUrlParser: true,

@@ -8,10 +8,10 @@ const MoviesModel = require("../../models/movieModel");
 
 describe("Busca todos os filmes", () => {
   let connectionMock;
-  const DBServer = new MongoMemoryServer();
 
   before(async () => {
-    const URLMock = await DBServer.getUri();
+    const DBServer = await MongoMemoryServer.create();
+    const URLMock = DBServer.getUri();
     connectionMock = await MongoClient.connect(URLMock, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
