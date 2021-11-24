@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
         .status(401)
         .json({ message: "Usuário não existe ou senha inválida" });
 
-    const jwtConfig = { expiresIn: "7d", algorithm: "HS256" };
+    const jwtConfig = { expiresIn: "1m", algorithm: "HS256" };
     const token = jwt.sign({ data: user }, secret, jwtConfig);
 
     return res.status(200).json({ token });
