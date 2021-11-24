@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 
     try {
       const check = jwt.verify(token, secret);
-      req.user = check.username;
+      req.user = { user: check.username, admin: check.admin };
       next();
     } catch (e) {
       return res.status(500).json({ message: e.message });
