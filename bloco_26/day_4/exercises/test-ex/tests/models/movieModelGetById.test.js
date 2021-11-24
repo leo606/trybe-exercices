@@ -4,11 +4,11 @@ const { MongoClient } = require("mongodb");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 
 const mongoConnection = require("../../models/connection");
-// const MoviesModel = require("../../models/movieModel");
+const MoviesModel = require("../../models/movieModel");
 
-const MoviesModel = {
-  getById: async () => {},
-};
+// const MoviesModel = {
+//   getById: async () => {},
+// };
 
 describe("retorna um filme por ID", () => {
   const expectedMovie = {
@@ -55,22 +55,22 @@ describe("retorna um filme por ID", () => {
   });
 
   describe("quando encontra o filme", async () => {
-    before(async () => {
-      await connectionMock.collection("movies").insertOne({ ...expectedMovie });
-    });
+    before(async () => {});
 
     after(async () => {
       await connectionMock.collection("movies").drop();
     });
 
     it("retorna object", async () => {
+      await connectionMock.collection("movies").insertOne({ ...expectedMovie });
+
       const movie = await MoviesModel.getById(expectedMovie.id);
       expect(movie).to.be.an("object");
     });
 
     it("retorna filme esperado", async () => {
       const movie = await MoviesModel.getById(expectedMovie.id);
-      expect(movie).to.be.equal(expectedMovie);
+      expect(movie).to.include.all.keys(...Object.keys(expectedMovie));
     });
   });
 });
