@@ -22,18 +22,18 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(`${__dirname}/uploads`));
+app.use(express.static(__dirname + '/uploads'));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '/uploads');
+    cb(null, '/uploads')
   },
   filename: (req, file, cb) => cb(null, file.originalname),
 });
 
 const upload = multer(storage);
 
-app.post('/files/uploads', upload.single('file'), (req, res) => {
+app.post('/uploads', upload.single('file'), (req, res) => {
   res.status(200).json({ body: req.body, file: req.file });
 });
 app.get('/ping', controllers.ping);
