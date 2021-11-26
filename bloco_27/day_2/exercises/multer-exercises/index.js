@@ -22,7 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/ping', controllers.ping);
-app.post('/upload', middlewares.upload, controllers.upload);
+app.post('/upload', middlewares.uploadSingle, controllers.uploadSingle);
+app.post('/multiple', middlewares.uploadArray, controllers.uploadArray);
 
 app.use(express.static(`${__dirname}/uploads`));
 app.use(middlewares.error);

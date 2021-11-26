@@ -1,7 +1,9 @@
 const ping = require('./ping');
-const upload = require('./upload');
+const uploadSingle = require('./uploadSingle');
+const uploadArray = require('./uploadArray');
 
 module.exports = {
   ping,
-  upload,
+  uploadSingle,
+  uploadArray,
 };

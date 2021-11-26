@@ -1,7 +1,9 @@
 const error = require('./error');
-const upload = require('./upload');
+const uploadSingle = require('./uploadSingle');
+const uploadArray = require('./uploadArray');
 
 module.exports = {
   error,
-  upload,
+  uploadSingle,
+  uploadArray,
 };
