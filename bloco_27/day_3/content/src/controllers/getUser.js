@@ -1,7 +1,9 @@
 module.exports = (req, res) => {
   const { userId } = req.params;
   const { user } = req;
-  res.status(501).end();
-  // if (userId !== user.username) {
-  // }
+
+  if (userId !== user.username) {
+    return res.status(401).json({ error: "access denied" });
+  }
+  res.status(200).json(user);
 };

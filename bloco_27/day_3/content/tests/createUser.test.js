@@ -32,8 +32,7 @@ describe("POST api/users", () => {
     });
 
     after(async () => {
-      MongoClient.connect.restore();
-      await DB_SERVER.stop();
+      await MongoClient.connect.restore();
     });
 
     it("retorna status 200", () => {
@@ -48,7 +47,7 @@ describe("POST api/users", () => {
       expect(response.body).to.have.property("message");
     });
 
-    it("message ter o texto correto", () => {
+    it("message ter o texto correto", async () => {
       expect(response.body).to.have.property(
         "message",
         "Novo usuário criado com sucesso"
