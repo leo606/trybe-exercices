@@ -2,7 +2,10 @@
 
 Esse repositório contém os exercicios feitos po mim durante o curso de Desenvolvimento Web da Trybe
 
-## Blocos
+## Módulos
+
+<details>
+<summary><strong>Fundamentos</strong></summary>
 
 1. ### Unix & Bash
     - Fundamentos do Desenvolvimento Web
@@ -67,3 +70,51 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
     - JavaScript Assíncrono - Fetch API e async/await
     - Jest - Testes Assíncronos
     - Projeto - Carrinho de Compras
+</details>
+
+
+<details>
+<summary><strong>Desenvolvimento Front-end</strong></summary>
+
+10. ### Introdução à React
+    - Introdução - Front-end
+    - Introdução - React
+    - 'Hello, world!' no React!
+    - Componentes React
+
+11. ### Componentes com Estado, Eventos e Formulários com React
+    - Componentes com estado e eventos
+    - Formulários no React
+
+12. ### Ciclo de Vida de Componentes e React Router
+    - Ciclo de vida de componentes
+    - React Router
+
+13. ### Metodologias Ágeis
+    - Metodologias Ágeis
+    - [Projeto - Frontend Online Store](https://github.com/leo606/project-frontend-online-store-trybe)
+
+14. ### Testes automatizados com React Testing Library
+    - RTL - Primeiros passos
+    - RTL - Mocks e Inputs
+    - RTL - Testando React Router
+
+15. ### Gerenciamento de estado com Redux
+    - Introdução ao Redux - O estado global da aplicação
+    - Usando o Redux no React
+    - Usando o Redux no React - Prática
+    - Usando o Redux no React - Actions Assíncronas
+    - Testes em React-Redux
+    - [Projeto - Trybe Wallet](https://github.com/leo606/project-trybewallet-trybe)
+
+16. ### Projeto Jogo de Trivia
+    - [Projeto Jogo de Trivia](https://github.com/leo606/project-trivia-react-redux-trybe)
+
+17. ### Context API e React Hooks
+    - Context API do React
+    - React Hooks - useState e useContext
+    - React Hooks - useEffect e Hooks customizados
+
+16. ### Projeto App de Receitas
+    - [Projeto Jogo de Trivia](https://github.com/leo606/project-recipes-app-trybe)
+</details>
