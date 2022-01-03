@@ -33,9 +33,19 @@ const percentageGradesIntoLetters = ({ name, disciplines, school }) => ({
     school,
     disciplines: disciplines.map(getLetterGrades) });
 
+/* Apoio para a função `setApproved` */
+const SCHOOL_DATA = {
+  Standard: {
+    approvalGrade: 0.7,
+  },
+  Hogwarts: {
+    approvalGrade: 0.8,
+  },
+};
+
 /* "Determinar" */
-const approvedStudents = ({ disciplines }) =>
-  disciplines.every(({ grade }) => grade > 0.7);
+const approvedStudents = (disciplines, { approvalGrade }) =>
+  disciplines.every(({ grade }) => grade > approvalGrade);
 
 /* "Atualizar" */
 const updateApprovalData = ({ name: studentName, disciplines }) => {
@@ -48,7 +58,7 @@ const updateApprovalData = ({ name: studentName, disciplines }) => {
 function setApproved(students) {
   students
     .map(percentageGradesIntoLetters)
-    .filter(approvedStudents)
+    .filter(({ disciplines, school }) => approvedStudents(disciplines, SCHOOL_DATA[school]))
     .map(updateApprovalData);
 }
 
