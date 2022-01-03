@@ -1,0 +1,15 @@
+{
+  "name": "content",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^8.6.0",
+    "eslint-config-trybe-backend": "^1.0.4",
+    "mocha": "^9.1.3",
+    "sinon": "^12.0.1",
+    "test": "mocha ./tests/**/*$NAME*.{test,spec}.js --exit",
+    "lint": "eslint --no-inline-config --ext .js --no-error-on-unmatched-pattern -c .eslintrc.json ."
+  }
+}
