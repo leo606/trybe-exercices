@@ -26,5 +26,11 @@ describe("Busca todos os usuários", () => {
 
       expect(User.findAll.calledOnce).to.be.equals(true);
     });
+
+    it("o status é 200", async () => {
+      const response = await chai.request(app).get("/user");
+
+      expect(response.status).to.be.equals(200);
+    });
   });
 });
