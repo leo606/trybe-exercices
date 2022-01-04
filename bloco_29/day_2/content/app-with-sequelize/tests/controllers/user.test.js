@@ -32,5 +32,17 @@ describe("Busca todos os usuários", () => {
 
       expect(response.status).to.be.equals(200);
     });
+
+    it("a resposta é um array", async () => {
+      const result = await chai.request(app).get("/user");
+
+      expect(result.body).to.be.an("array");
+    });
+
+    it("o array está vazio", async () => {
+      const result = await chai.request(app).get("/user");
+
+      expect(result.body).to.be.empty;
+    });
   });
 });
