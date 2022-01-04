@@ -14,7 +14,8 @@
     "express": "^4.17.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.12.5",
-    "sequelize-cli": "^6.3.0"
+    "sequelize-cli": "^6.3.0",
+    "sequelize-test-helpers": "^1.4.2"
   },
   "devDependencies": {
     "chai": "^4.3.4",
