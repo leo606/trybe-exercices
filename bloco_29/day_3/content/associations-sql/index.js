@@ -20,17 +20,18 @@ app.get("/employees/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const employee = await Employee.findOne({
-      where: { id },
-      include: [
-        {
-          model: Address,
-          as: "addresses",
-          attributes: { exclude: ["number", "street"] },
-        },
-      ],
-    });
+    if (req.query.includeAddresses === "true") {
+      const employeeWithAddress = await Employee.findOne({
+        where: { id },
+        include: [{ model: Address, as: "addresses" }],
+      });
+      if (!employeeWithAddress) {
+        return res.status(404).json({ message: "Funcionário não encontrado" });
+      }
+      return res.status(200).json(employeeWithAddress);
+    }
 
+    const employee = await Employee.findOne({ where: { id } });
     if (!employee) {
       return res.status(404).json({ message: "Funcionário não encontrado" });
     }
