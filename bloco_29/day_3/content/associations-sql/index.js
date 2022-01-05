@@ -23,23 +23,31 @@ app.get("/employees", async (_req, res) => {
 });
 
 app.post("/employees", async (req, res) => {
-  const trans = await sequelize.transaction();
   try {
     const { firstName, lastName, age, city, street, number } = req.body;
 
-    const employee = await Employee.create(
-      { firstName, lastName, age },
-      { transaction: trans }
-    );
+    await sequelize.transaction(async (t) => {
+      const employee = await Employee.create(
+        {
+          firstName,
+          lastName,
+          age,
+        },
+        { transaction: t }
+      );
 
-    await Address.create(
-      { city, street, number, employeeId: employee.id },
-      { transaction: trans }
-    );
+      await Address.create(
+        {
+          city,
+          street,
+          number,
+          employeeId: employee.id,
+        },
+        { transaction: t }
+      );
 
-    await trans.commit();
-
-    return res.status(201).json({ message: "Cadastrado com sucesso" });
+      return res.status(201).json({ message: "Cadastrado com sucesso" });
+    });
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: "Algo deu errado" });
