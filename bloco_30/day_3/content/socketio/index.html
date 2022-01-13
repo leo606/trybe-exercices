@@ -6,9 +6,15 @@
 </head>
 
 <body>
+  <input type="button" value="PING" id="ping-btn">
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
+    const pingBtn = document.getElementById('ping-btn');
+
+    pingBtn.addEventListener('click', () => {
+      socket.emit('ping');
+    })
   </script>
 </body>
 

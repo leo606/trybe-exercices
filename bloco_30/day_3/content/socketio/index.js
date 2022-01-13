@@ -13,6 +13,8 @@ const io = require("socket.io")(http, {
 
 io.on("connection", (socket) => {
   console.log(`user connected. ID: ${socket.id}`);
+
+  socket.on("ping", () => console.log(`${socket.id} pingou`));
 });
 
 app.get("/", (req, res) => {
