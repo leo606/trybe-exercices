@@ -24,7 +24,9 @@
       ul.appendChild(li)
     }
 
-    socket.on('hello', creteLi)
+    socket.on('hello', creteLi);
+
+    socket.on('pong', (msg)=>console.log(msg))
 
   </script>
 </body>
