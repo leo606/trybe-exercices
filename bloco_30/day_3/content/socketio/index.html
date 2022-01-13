@@ -7,6 +7,7 @@
 
 <body>
   <input type="button" value="PING" id="ping-btn">
+  <ul id="messages"></ul>
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
@@ -14,7 +15,17 @@
 
     pingBtn.addEventListener('click', () => {
       socket.emit('ping');
-    })
+    });
+
+    function creteLi(message) {
+      const ul = document.getElementById('messages');
+      const li = document.createElement('li');
+      li.innerHTML = message;
+      ul.appendChild(li)
+    }
+
+    socket.on('hello', creteLi)
+
   </script>
 </body>
 
