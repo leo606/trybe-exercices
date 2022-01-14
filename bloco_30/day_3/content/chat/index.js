@@ -14,6 +14,7 @@ const io = require("socket.io")(http, {
 
 require("./sockets/ping")(io);
 require("./sockets/chat")(io);
+require("./sockets/rooms")(io);
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
