@@ -1,11 +1,16 @@
-let postCount = 0;
+let likeCount = 0;
+let starCount = 0;
 
 module.exports = function (io) {
   io.on("connection", (socket) => {
     socket.on("likePost", () => {
-      postCount += 1;
-      console.log(postCount);
+      likeCount += 1;
+      socket.emit("updateLikes", likeCount);
     });
 
+    socket.on("starPost", () => {
+      starCount += 1;
+      socket.emit("updateStars", starCount);
+    });
   });
 };
