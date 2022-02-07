@@ -1,10 +1,10 @@
 const express = require("express");
-
 const app = express();
-
 const http = require("http").createServer(app);
-
 app.use(express.static(__dirname + "/public"));
+
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
 const io = require("socket.io")(http, {
   cors: {
