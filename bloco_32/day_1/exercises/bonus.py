@@ -30,3 +30,30 @@ def sum_range(n):
     for index in range(1, n + 1):
         sum += index
     return sum
+
+
+# Exercício 4: Um posto está vendendo combustíveis
+# com a seguinte tabela de descontos:
+
+# Álcool:
+#     - Até 20 litros, desconto de 3% por litro;
+#     - Acima de 20 litros, desconto de 5% por litro.
+#   Gasolina:
+#     - Até 20 litros, desconto de 4% por litro;
+#     - Acima de 20 litros, desconto de 6% por litro.
+
+# Escreva uma função que receba o número de litros vendidos,
+# o tipo de combustível
+# (codificado da seguinte forma: A - álcool, G - gasolina),
+# e retorne o valor a ser pago pelo cliente,
+# sabendo-se que o preço do litro da gasolina é R$ 2,50,
+# e o preço do litro do álcool é R$ 1,90.
+
+
+def gas_station(type, amount):
+    price = 0
+    if type == "A":
+        price = {True: (1 - 0.03), False: (1 - 0.05)}[amount <= 20] * 1.9
+    if type == "G":
+        price = {True: (1 - 0.04), False: (1 - 0.06)}[amount <= 20] * 2.5
+    return amount * price
