@@ -20,3 +20,13 @@ def smallest_number_easy(list):
 def print_triangle(n):
     for index in range(0, n):
         print("*" * (index + 1))
+
+
+# Exercício 3: Crie uma função que receba um número inteiro N
+# e retorne o somatório de todos os números de 1 até N.
+# Por exemplo, para N = 5 , o valor esperado será 15 .
+def sum_range(n):
+    sum = 0
+    for index in range(1, n + 1):
+        sum += index
+    return sum
