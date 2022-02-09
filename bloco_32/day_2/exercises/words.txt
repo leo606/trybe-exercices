@@ -1,0 +1,4 @@
+bread
+table
+fire
+paper
