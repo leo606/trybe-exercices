@@ -1,51 +1,45 @@
+from abc import ABC, abstractmethod
 import json
 import csv
 
 
-# Altere o código da classe SalesReport para que ela, além de gerar relatórios
-# em JSON, gere relatórios em CSV também.
-# Defina, primeiro, como você fará a extensão
-# da lógica para depois gerar o CSV mesmo
-
-
-class SalesReport:
-    def __init__(self, export_file, type):
+class SalesReport(ABC):
+    def __init__(self, export_file):
         self.export_file = export_file
-        self.file_type = type
 
     def build(self):
-        """Aqui colocamos a lógica para a entidade 'se criar',
-        ou seja, criar um relatório imprimível. Por simplicidade,
-        vamos omitir essa lógica nos exemplos!"""
         return [
             {"Coluna 1": "Dado 1", "Coluna 2": "Dado 2", "Coluna 3": "Dado 3"},
             {"Coluna 1": "Dado A", "Coluna 2": "Dado B", "Coluna 3": "Dado C"},
         ]
 
+    @abstractmethod
     def serialize(self):
-        # Vamos gerar, aqui, o nosso relatório em formato JSON
-        with open(f"{self.export_file}.{self.file_type}", "w") as file:
-            if self.file_type == "json":
-                json.dump(self.build(), file)
-            elif self.file_type == "csv":
-                writer = csv.writer(file)
-                headers = [
-                    "Coluna 1",
-                    "Coluna 2",
-                    "Coluna 3",
-                ]
-                writer.writerow(headers)
-                for row in self.build():
-                    writer.writerow(row.values())
+        raise NotImplementedError
 
 
-# Classe, crie (em outras palavras, instancie!) uma nova entidade
-# 'Relatório de vendas' para eu usar!
+class SalesReportJSON(SalesReport):
+    def serialize(self):
+        with open(self.export_file + ".json", "w") as file:
+            json.dump(self.build(), file)
 
-meu_relatorio_de_vendas_json = SalesReport("meu_relatorio", "json")
-meu_relatorio_de_vendas_csv = SalesReport("meu_relatorio", "csv")
 
-# Entidade 'meu_relatorio_de_vendas', que eu acabei de criar, imprima-se!
+# Antes de prosseguirmos para entender o que é aquele
+# @abstractmethod e aquele (ABC) , vamos fixar o
+# entendimento de herança! Implemente uma classe SalesReportCSV
+# que seja herdeira da classe SalesReport , da mesma forma que
+# fizemos com a SalesReportJSON . Para testar seu funcionamento,
+# instancie-a e chame sua função serialize
 
-meu_relatorio_de_vendas_json.serialize()
-meu_relatorio_de_vendas_csv.serialize()
+class SalesReportCSV(SalesReport):
+    def serialize(self):
+        with open(self.export_file + ".csv", "w") as file:
+            writer = csv.writer(file)
+            headers = [
+                "Coluna 1",
+                "Coluna 2",
+                "Coluna 3",
+            ]
+            writer.writerow(headers)
+            for row in self.build():
+                writer.writerow(row.values())
