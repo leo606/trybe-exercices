@@ -9,10 +9,13 @@ class User:
         self.password = password
 
     def reset_password(self):
-        print("send password reset email")
+        mailer = Mailer("passreset@test.com", "myPassword", self.email)
+        mailer.send_email(
+            "Password Reset", "instructions to reset your password:"
+        )
 
 
-class mailer:
+class Mailer:
     def __init__(self, from_email, from_password, to_email):
         self.from_email: from_email
         self.from_password: from_password

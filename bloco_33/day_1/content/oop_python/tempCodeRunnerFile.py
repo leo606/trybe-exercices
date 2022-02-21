@@ -1,1 +1,0 @@
-self.reset_password
