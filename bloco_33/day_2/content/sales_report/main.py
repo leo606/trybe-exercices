@@ -17,11 +17,18 @@ class SalesReport(ABC):
     def serialize(self):
         raise NotImplementedError
 
+    @abstractmethod
+    def get_length(self):
+        raise NotImplementedError
+
 
 class SalesReportJSON(SalesReport):
     def serialize(self):
         with open(self.export_file + ".json", "w") as file:
             json.dump(self.build(), file)
+
+    def get_length(self):
+        return len(self.build())
 
 
 # Antes de prosseguirmos para entender o que é aquele
@@ -30,6 +37,7 @@ class SalesReportJSON(SalesReport):
 # que seja herdeira da classe SalesReport , da mesma forma que
 # fizemos com a SalesReportJSON . Para testar seu funcionamento,
 # instancie-a e chame sua função serialize
+
 
 class SalesReportCSV(SalesReport):
     def serialize(self):
@@ -43,3 +51,23 @@ class SalesReportCSV(SalesReport):
             writer.writerow(headers)
             for row in self.build():
                 writer.writerow(row.values())
+
+    def get_length(self):
+        return len(self.build())
+
+
+my_sales_report_json = SalesReportJSON("my_report")
+my_sales_report_csv = SalesReportCSV("my_report")
+
+my_sales_report_json.serialize()
+my_sales_report_csv.serialize()
+
+# Defina na classe SalesReport um segundo método abstrato
+# chamado get_length que retorna quantos itens tem no
+# relatório. Tente chamar esse método a partir da classe
+# herdeira que não implementa esse método e veja o erro que você recebe.
+# Tente instanciar a SalesReport também! Depois disso, implemente
+# uma lógica qualquer para esse método em uma das classes herdeiras
+# e verifique que já é possível instanciá-la e até chamar o método!
+
+print(my_sales_report_csv.get_length())
