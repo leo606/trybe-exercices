@@ -16,3 +16,6 @@ class Tv:
     def change_channel(self, channel):
         if 1 <= channel <= 99:
             self.channel = channel
+
+    def power_switch(self):
+        self.on = not self.on
