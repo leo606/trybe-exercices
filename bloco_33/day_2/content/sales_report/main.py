@@ -22,7 +22,7 @@ class GzCompressor:
         self.filepath = filepath
 
     def compress(self, file_name):
-        with open(file_name, "rb") as content:
+        with open(file_name, "rb") as content: # rb = read binary
             with gzip.open(file_name + ".gz", "wb") as gzip_file:
                 gzip_file.writelines(content)
 
