@@ -2,11 +2,38 @@ from abc import ABC, abstractmethod
 import gzip
 import json
 import csv
+from zipfile import ZipFile
+
+
+class ZipCompressor:
+    """Nossos compressores terão fixado o local de salvamento
+    do arquivo, então vamos defini-lo nos construtores"""
+
+    def __init__(self, filepath="./"):
+        self.filepath = filepath
+
+    def compress(self, file_name):
+        with ZipFile(file_name + ".zip", "w") as zip_file:
+            zip_file.write(file_name)
+
+
+class GzCompressor:
+    def __init__(self, filepath="./"):
+        self.filepath = filepath
+
+    def compress(self, file_name):
+        with open(file_name, "rb") as content:
+            with gzip.open(file_name + ".gz", "wb") as gzip_file:
+                gzip_file.writelines(content)
 
 
 class SalesReport(ABC):
-    def __init__(self, export_file):
+    # Nossa classe agora espera *instâncias* de compressor como um parâmetro.
+    # Temos um valor padrão para suportar o código que usava as SalesReport
+    # sem parâmetros -- não precisa correr pra re-escrever nada ;)
+    def __init__(self, export_file, compressor=GzCompressor()):
         self.export_file = export_file
+        self.compressor = compressor
 
     def build(self):
         return [
@@ -14,41 +41,39 @@ class SalesReport(ABC):
             {"Coluna 1": "Dado A", "Coluna 2": "Dado B", "Coluna 3": "Dado C"},
         ]
 
-    @abstractmethod
-    def serialize(self):
-        raise NotImplementedError
+    # Aqui temos um atributo de classe!
+    FILE_EXTENSION = ""
+
+    def get_export_file_name(self):
+        # Aqui usamos o atributo de classe
+        # Vai fazer mais sentido nas classes herdeiras!
+        return self.export_file + self.FILE_EXTENSION
 
     def compress(self):
-        binary_content = json.dumps(self.build()).encode("utf-8")
-
-        with gzip.open(self.export_file + ".gz", "wb") as compressed_file:
-            compressed_file.write(binary_content)
+        self.serialize()
+        self.compressor.compress(self.get_export_file_name())
 
     @abstractmethod
-    def get_length(self):
+    def serialize(self):
         raise NotImplementedError
 
 
 class SalesReportJSON(SalesReport):
+    # Nós não reimplementamos o get_export_file_name
+    # mas como ele usa um atributo de classe pra pegar a extensão
+    # só de redefinir o atributo já vamos conseguir mudar o resultado!
+    FILE_EXTENSION = ".json"
+
     def serialize(self):
-        with open(self.export_file + ".json", "w") as file:
+        with open(self.get_export_file_name(), "w") as file:
             json.dump(self.build(), file)
-
-    def get_length(self):
-        return len(self.build())
-
-
-# Antes de prosseguirmos para entender o que é aquele
-# @abstractmethod e aquele (ABC) , vamos fixar o
-# entendimento de herança! Implemente uma classe SalesReportCSV
-# que seja herdeira da classe SalesReport , da mesma forma que
-# fizemos com a SalesReportJSON . Para testar seu funcionamento,
-# instancie-a e chame sua função serialize
 
 
 class SalesReportCSV(SalesReport):
+    FILE_EXTENSION = ".csv"
+
     def serialize(self):
-        with open(self.export_file + ".csv", "w") as file:
+        with open(self.get_export_file_name(), "w") as file:
             writer = csv.writer(file)
             headers = [
                 "Coluna 1",
@@ -59,23 +84,14 @@ class SalesReportCSV(SalesReport):
             for row in self.build():
                 writer.writerow(row.values())
 
-    def get_length(self):
-        return len(self.build())
 
+# Para testar
+relatorio_de_compras = SalesReportJSON("meu_relatorio_1")
+relatorio_de_vendas = SalesReportJSON("meu_relatorio_2", ZipCompressor())
+relatorio_de_vendas_csv = SalesReportCSV("meu_relatorio_3")
+relatorio_de_vendas_csv = SalesReportCSV("meu_relatorio_3", ZipCompressor())
 
-my_sales_report_json = SalesReportJSON("my_report")
-my_sales_report_csv = SalesReportCSV("my_report")
+relatorio_de_compras.compress()
+relatorio_de_vendas.compress()
 
-my_sales_report_json.serialize()
-my_sales_report_json.compress()
-my_sales_report_csv.serialize()
-
-# Defina na classe SalesReport um segundo método abstrato
-# chamado get_length que retorna quantos itens tem no
-# relatório. Tente chamar esse método a partir da classe
-# herdeira que não implementa esse método e veja o erro que você recebe.
-# Tente instanciar a SalesReport também! Depois disso, implemente
-# uma lógica qualquer para esse método em uma das classes herdeiras
-# e verifique que já é possível instanciá-la e até chamar o método!
-
-print(my_sales_report_csv.get_length())
+relatorio_de_vendas_csv.compress()
