@@ -3,16 +3,7 @@
 # Porém esse código está com um erro.
 # Encontre-o e corrija-o, sem alterar o código
 # das classes de personagens ( Soldier e Jedi ).
-from abc import ABC, abstractmethod
-
-
-class Character(ABC):
-    @abstractmethod
-    def attack(self):
-        raise NotImplementedError
-
-
-class Soldier(Character):
+class Soldier:
     def __init__(self, level):
         self.level = level
 
@@ -20,12 +11,20 @@ class Soldier(Character):
         return self.level * 1
 
 
-class Jedi(Character):
+class Jedi:
     def __init__(self, level):
         self.level = level
 
-    def attack(self):
+    def attackWithSaber(self):
         return self.level * 100
+
+
+class JediAdapter:
+    def __init__(self, jedi):
+        self.jedi = jedi
+
+    def attack(self):
+        return self.jedi.attackWithSaber()
 
 
 class StarWarsGame:
@@ -33,4 +32,8 @@ class StarWarsGame:
         self.character = character
 
     def fight_enemy(self):
-        print(f"You caused {self.character.attack()} of damage to the enemy")
+        print(f"You caused {self.character.attack()} of damage in the enemy")
+
+
+StarWarsGame(Soldier(5)).fight_enemy()
+StarWarsGame(JediAdapter(Jedi(20))).fight_enemy()
