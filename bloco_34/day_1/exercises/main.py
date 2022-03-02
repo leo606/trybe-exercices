@@ -17,8 +17,11 @@ class HttpRequestHandler(http.server.BaseHTTPRequestHandler):
         self.wfile.write("hello world".encode("utf-8"))
 
     def do_POST(self):
+        content_length = int(self.headers["Content-Length"])
+        post_data = self.rfile.read(content_length)
+
         self._set_response()
-        self.wfile.write("hello world".encode("utf-8"))
+        self.wfile.write(f"hello world -- {post_data}".encode("utf-8"))
 
 
 handler = HttpRequestHandler
