@@ -1,33 +1,24 @@
-import http.server
-import socketserver
+from socketserver import TCPServer, StreamRequestHandler
 
-PORT = 8085
-
-# credit: https://gist.github.com/mdonkers/63e115cc0c79b4f6b8b3a6b797e485c7
+ADDRESS = "", 8085
 
 
-class HttpRequestHandler(http.server.BaseHTTPRequestHandler):
-    def _set_response(self):
-        self.send_response(200)
-        self.send_header("content-type", "text/html")
-        self.end_headers()
+class Handler(StreamRequestHandler):
+    """Responde requisições repetindo o que foi recebido."""
 
-    def do_GET(self):
-        self._set_response()
-        print(self.headers)
-        self.wfile.write("hello world".encode("utf-8"))
+    def handle(self):
+        # Usar b'' é um jeito literal de escrever bytes em ascii
+        self.wfile.write(b"Hello world\n")
+        # self.wfile e self.rfile são canais de entrada e saída
+        # programados para ter a mesma interface de arquivos!
+        for line in self.rfile:
+            # responder ao cliente:
+            self.wfile.write(line)
 
-    def do_POST(self):
-        content_length = int(self.headers["Content-Length"])
-        post_data = self.rfile.read(content_length)
-        print(self.headers)
-
-        self._set_response()
-        self.wfile.write(f"hello world -- {post_data}".encode("utf-8"))
+            # printar no console
+            print(line.decode("ascii").strip())
 
 
-handler = HttpRequestHandler
-
-with socketserver.TCPServer(("", PORT), handler) as httpd:
-    print("server serving at port", PORT)
-    httpd.serve_forever()
+if __name__ == "__main__":
+    with TCPServer(ADDRESS, Handler) as server:
+        server.serve_forever()
