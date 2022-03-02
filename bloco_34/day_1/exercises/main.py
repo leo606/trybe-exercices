@@ -1,24 +1,19 @@
-from socketserver import TCPServer, StreamRequestHandler
-
-ADDRESS = "", 8085
+from socketserver import UDPServer, BaseRequestHandler
 
 
-class Handler(StreamRequestHandler):
+class HandlerUDP(BaseRequestHandler):
     """Responde requisições repetindo o que foi recebido."""
 
     def handle(self):
-        # Usar b'' é um jeito literal de escrever bytes em ascii
-        self.wfile.write(b"Hello world\n")
-        # self.wfile e self.rfile são canais de entrada e saída
-        # programados para ter a mesma interface de arquivos!
-        for line in self.rfile:
-            # responder ao cliente:
-            self.wfile.write(line)
-
-            # printar no console
-            print(line.decode("ascii").strip())
+        data = self.request[0].strip()
+        socket = self.request[1]
+        print("{} wrote:".format(self.client_address[0]))
+        print(data)
+        socket.sendto(data.upper(), self.client_address)
 
 
 if __name__ == "__main__":
-    with TCPServer(ADDRESS, Handler) as server:
+    HOST, PORT = "localhost", 8085
+
+    with UDPServer((HOST, PORT), HandlerUDP) as server:
         server.serve_forever()
