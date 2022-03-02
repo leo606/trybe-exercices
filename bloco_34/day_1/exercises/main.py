@@ -20,6 +20,7 @@ class HttpRequestHandler(http.server.BaseHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers["Content-Length"])
         post_data = self.rfile.read(content_length)
+        print(self.headers)
 
         self._set_response()
         self.wfile.write(f"hello world -- {post_data}".encode("utf-8"))
