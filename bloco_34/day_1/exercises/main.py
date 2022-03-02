@@ -14,6 +14,7 @@ class HttpRequestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
         self._set_response()
+        print(self.headers)
         self.wfile.write("hello world".encode("utf-8"))
 
     def do_POST(self):
