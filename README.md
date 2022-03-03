@@ -212,5 +212,11 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
       - Aprendendo Python
       - Entrada e Saída de Dados
       - Testes
-      - [Projeto - Job Insights](https://github.com/leo606/project-job-insights-trybe)
+      - [Projeto - Job Insights](https://github.com/leo606/job-insights-trybe)
+
+  33. ### Introdução à Python
+      - Introdução à programação orientada a objetos
+      - Herança, Composição e Interfaces
+      - Padrões de projeto
+      - [Projeto - Relatórios de Estoque](https://github.com/leo606/inventory-report-trybe)
 </details>
