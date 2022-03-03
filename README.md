@@ -24,7 +24,7 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
       - HTML & CSS - Primeiros passos em CSS
       - HTML & CSS - Seletores e posicionamento
       - HTML Semântico
-      - Projeto - Lessons Learned
+      - [Projeto - Lessons Learned](https://github.com/leo606/lessons-learned-trybe)
 
   4. ### Introdução à JavaScript e Lógica de Programação
       - Introdução - JavaScript
@@ -32,7 +32,7 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
       - JavaScript - Array e loop For
       - JavaScript - Lógica de Programação e Algoritmos
       - JavaScript - Objetos e funções
-      - Projeto - Playground Functions
+      - [Projeto - Playground Functions](https://github.com/leo606/playground-functions-trybe)
 
   5. ### JavaScript: DOM, Eventos e Web Storage
       - JavaScript - DOM e seletores
@@ -40,7 +40,7 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
       - JavaScript - Eventos
       - JavaScript - Web Storage
       - Projeto - Arte com Pixels
-      - Projeto - Lista de tarefas
+      - [Projeto - Lista de tarefas](https://github.com/leo606/todo-list-trybe)
 
   6. ### HTML e CSS: Forms, Flexbox e Responsivo
       - HTML & CSS - Forms
@@ -49,13 +49,13 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
       - CSS Flexbox - Parte 1
       - CSS Flexbox - Parte 2
       - CSS Responsivo - Mobile First
-      - Projeto - Trybewarts
+      - [Projeto - Trybewarts](https://github.com/leo606/trybewarts-trybe)
 
   7. ### Introdução à JavaScript ES6 e Testes Unitários
       - JavaScript ES6 - let, const, arrow functions e template literals
       - JavaScript ES6 - Objects
       - Primeiros passos em Jest
-      - Projeto - JavaScript Testes Unitários
+      - [Projeto - JavaScript Testes Unitários](https://github.com/leo606/js-unit-tests-trybe)
 
   8. ### Higher Order Functions do JavaScript ES6
       - JavaScript ES6 - Introdução a Higher Order Functions
@@ -63,13 +63,13 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
       - JavaScript ES6 - Higher Order Functions - map e filter
       - JavaScript ES6 - Higher Order Functions - reduce
       - JavaScript ES6 - spread operator, parâmetro rest, destructuring e mais
-      - Projeto - Zoo functions
+      - [Projeto - Zoo functions](https://github.com/leo606/zoo-functions-trybe)
 
   9. ### JavaScript e Testes Assíncronos
       - JavaScript Assíncrono e Callbacks
       - JavaScript Assíncrono - Fetch API e async/await
       - Jest - Testes Assíncronos
-      - Projeto - Carrinho de Compras
+      - [Projeto - Jest Assíncrono e Mocking](https://github.com/leo606/project-jest-trybe)
 </details>
 
 
@@ -81,14 +81,17 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
       - Introdução - React
       - 'Hello, world!' no React!
       - Componentes React
+      - [Projeto - Movie Cards Library](https://github.com/leo606/movie-cards-library-trybe)
 
   11. ### Componentes com Estado, Eventos e Formulários com React
       - Componentes com estado e eventos
       - Formulários no React
+      - [Projeto - Movie Cards Library Stateful](https://github.com/leo606/movie-cards-library-stateful-trybe)
 
   12. ### Ciclo de Vida de Componentes e React Router
       - Ciclo de vida de componentes
       - React Router
+      - [Projeto - Movie Cards Library CRUD](https://github.com/leo606/movie-card-library-crud-trybe)
 
   13. ### Metodologias Ágeis
       - Metodologias Ágeis
@@ -97,7 +100,7 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
   14. ### Testes automatizados com React Testing Library
       - RTL - Primeiros passos
       - RTL - Mocks e Inputs
-      - RTL - Testando React Router
+      - [RTL - Testando React Router](https://github.com/leo606/react-testing-library-trybe)
 
   15. ### Gerenciamento de estado com Redux
       - Introdução ao Redux - O estado global da aplicação
