@@ -212,5 +212,5 @@ Esse repositório contém os exercicios feitos po mim durante o curso de Desenvo
       - Aprendendo Python
       - Entrada e Saída de Dados
       - Testes
-      - [Projeto - Job Insights]()
+      - [Projeto - Job Insights](https://github.com/leo606/project-job-insights-trybe)
 </details>
