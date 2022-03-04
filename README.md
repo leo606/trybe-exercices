@@ -1,6 +1,24 @@
 # Repositório de exercícios do curso de Desenvolvimento Web
 
-Esse repositório contém os exercicios feitos po mim durante o curso de Desenvolvimento Web da Trybe
+Esse repositório contém os exercicios feitos por mim durante o curso de Desenvolvimento Web da Trybe.
+
+Abaixo, uma lista de conteúdos estudados, e também links para projetos desenvolvidos durante os blocos.
+
+A lista está separada nos seguintes módulos:
+  - **Fundamentos do Desenvolvimento Web**
+    - HTML/CSS
+    - JavaScript
+  - **Desenvolvimento Front-end**
+    - React, Context API, Hooks
+    - React Testing Library
+    - Redux
+  - **Desenvolvimento Back-end**
+    - MySQL
+    - MongoDB
+    - NodeJS
+  - **Ciência da Computação**
+    - Python
+    - Programação orientada a objetos
 
 ## Módulos
 
