@@ -13,3 +13,6 @@ Exercício 4 : Bloqueie agora o tráfego de saída para HTTP. Lembre-se, também
 Exercício 5 : Para finalizar, vamos limpar todas as regras. Para isso, utilize o comando --flush do iptables (Linux).
   iptables --flush
   iptables -F
+
+Exercício 6 : Agora, vamos utilizar um tipo de proxy bem legal que pode ser bastante útil no nosso dia como pessoas desenvolvedoras: o NGROK . Com ele conseguimos criar um túnel para o nosso localhost.
+  ngrok http 80
