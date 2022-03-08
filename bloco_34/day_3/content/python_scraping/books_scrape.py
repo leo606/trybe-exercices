@@ -34,5 +34,13 @@ while next_page_url:
     for product in selector.css(".product_pod"):
         title = product.css("h3 a::attr(title)").get()
         price = product.css(".product_price p.price_color::text").get()
+
+        details_url = product.css("h3 a::attr(href)").get()
+        details_response = requests.get(BASE_URL + details_url)
+        details_selector = Selector(details_response.text)
+        details = details_selector.css("#product_description ~ p::text").get()
+
         print(title, price)
+        print(details)
+        print("=============================================")
     next_page_url = selector.css(".next a::attr(href)").get()
