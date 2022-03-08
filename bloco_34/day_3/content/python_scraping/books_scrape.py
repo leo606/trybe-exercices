@@ -33,14 +33,21 @@ while next_page_url:
     # Imprime os produtos de uma determinada página
     for product in selector.css(".product_pod"):
         title = product.css("h3 a::attr(title)").get()
-        price = product.css(".product_price p.price_color::text").get()
+        price = product.css(".product_price p.price_color::text").re(
+            r"£\d+\.\d{2}"
+        )
 
         details_url = product.css("h3 a::attr(href)").get()
         details_response = requests.get(BASE_URL + details_url)
         details_selector = Selector(details_response.text)
-        details = details_selector.css("#product_description ~ p::text").get()
+        description = details_selector.css(
+            "#product_description ~ p::text"
+        ).get()
+        suffix = "...more"
+        if description.endswith(suffix):
+            description = description[: -len(suffix)]
 
         print(title, price)
-        print(details)
+        print(description)
         print("=============================================")
     next_page_url = selector.css(".next a::attr(href)").get()
