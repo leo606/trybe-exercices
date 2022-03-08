@@ -1,12 +1,9 @@
-import requests
 from parsel import Selector
+import requests
 
-URL_BASE = "http://books.toscrape.com/catalogue/"
 
-response = requests.get(URL_BASE + "page-1.html")
+response = requests.get("http://books.toscrape.com/")
 selector = Selector(text=response.text)
-
-href = selector.css(".product_pod h3 a::attr(href)").get()
-print(href)
-
-print(URL_BASE + href)
+# Extrai todos os preços da primeira página
+prices = selector.css(".product_price .price_color::text").re(r"£\d+\.\d{2}")
+print(prices)
