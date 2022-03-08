@@ -45,7 +45,7 @@ while next_page_url:
         ).get()
         suffix = "...more"
         if description.endswith(suffix):
-            description = description[: -len(suffix)]
+            description = description.removesuffix(suffix)
 
         print(title, price)
         print(description)
