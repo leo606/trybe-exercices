@@ -13,9 +13,7 @@ from parsel import Selector
 # Exercício 5 Modifique o exercício anterior para retornar também
 # quantos livros estão disponíveis apresentando como último campo no retorno.
 
-URL_BASE = (
-    "https://books.toscrape.com/catalogue/the-grand-design_405/index.html"
-)
+URL_BASE = "https://books.toscrape.com/catalogue/the-grand-design_405/"
 description_suffix = "...more"
 
 response = requests.get(URL_BASE)
@@ -34,9 +32,12 @@ description = selector.css(
 if description.endswith(description_suffix):
     description = description.removesuffix(description_suffix)
 
+cover_url = selector.css(".product_page .thumbnail img::attr(src)").get()
+
 stock_status = selector.css(
     ".product_main p.instock.availability::text"
 ).re_first(r"\d+")
-print(stock_status)
 
-# print(f"{title}, {price}, {description}")
+print(
+    f"{title}, {price}, {description}, {URL_BASE+ cover_url}, {stock_status}"
+)
