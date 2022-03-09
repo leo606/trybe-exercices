@@ -10,6 +10,9 @@ from parsel import Selector
 # Os campos extraídos devem ser apresentados separados por vírgula.
 # Ex: título,preço,descrição,capa.
 
+# Exercício 5 Modifique o exercício anterior para retornar também
+# quantos livros estão disponíveis apresentando como último campo no retorno.
+
 URL_BASE = (
     "https://books.toscrape.com/catalogue/the-grand-design_405/index.html"
 )
@@ -31,4 +34,9 @@ description = selector.css(
 if description.endswith(description_suffix):
     description = description.removesuffix(description_suffix)
 
-print(f"{title}, {price}, {description}")
+stock_status = selector.css(
+    ".product_main p.instock.availability::text"
+).re_first(r"\d+")
+print(stock_status)
+
+# print(f"{title}, {price}, {description}")
