@@ -1,3 +1,11 @@
+// Exercício 6 : Temos um array characters que agrupa dados de jogadores em um MMORPG
+// (“Jogo de representação de papéis online, multijogador em massa”)
+// usado para manter o registro de uma guilda (grupo de jogadores) no
+// acompanhamento da evolução do grupo. Esses dados foram adicionados sem se atentar
+// para sua correta tipagem, o que pode ocasionar um bug no futuro.
+// Faça a correta tipagem do array através da tipo character e da
+// função usada para imprimir as informações básicas de todos os jogadores
+
 type character = {
   nickname: string;
   class: string;
