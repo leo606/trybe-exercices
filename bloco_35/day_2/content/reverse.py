@@ -3,9 +3,8 @@ def rev(list):
     reverse_list = []
 
     for _item in list:
-        if index >= 0:
-            reverse_list.append(list[index])
-            index -= 1
+        reverse_list.append(list[index])
+        index -= 1
 
     return reverse_list
 
