@@ -19,6 +19,7 @@ A lista está separada nos seguintes módulos:
   - **Ciência da Computação**
     - Python
     - Programação orientada a objetos
+    - Rede e raspagem de dados
 
 ## Módulos
 
@@ -240,4 +241,10 @@ A lista está separada nos seguintes módulos:
       - Herança, Composição e Interfaces
       - Padrões de projeto
       - [Projeto - Relatórios de Estoque](https://github.com/leo606/inventory-report-trybe)
+
+  34. ### Redes e Raspagem de Dados
+      - Arquitetura de redes
+      - Redes de computadores, ferramentas e segurança
+      - Raspagem de Dados
+      - [Projeto - Tech news](https://github.com/leo606/tech-news-trybe)
 </details>
