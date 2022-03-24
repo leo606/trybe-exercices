@@ -5,7 +5,7 @@ from shutil import rmtree
 DISK_PATH = "./disk"
 
 
-class SecondaryMemory:
+class Secondary_memory:
     def __init__(self, disk_path=DISK_PATH):
         self.disk_path = disk_path
         try:
@@ -25,7 +25,7 @@ class SecondaryMemory:
         index = str(index)
         file_name = join(self.disk_path, index)
         with open(file=file_name, mode="r") as file:
-            return file.read()
+            return int(file.read())
 
     def clean(self):
         rmtree(self.disk_path)

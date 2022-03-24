@@ -6,11 +6,11 @@ class Main_memory:
         self.loaded_memory.append(value)
 
     def get(self, index):
-        try:
-            int(self.loaded_memory[index])
-            return self.loaded_memory[index]
-        except Exception:
+        value = int(self.loaded_memory[index])
+        if int(value):
+            return value
+        else:
             return 0
 
-    def clear(self):
+    def clean(self):
         self.loaded_memory = []
