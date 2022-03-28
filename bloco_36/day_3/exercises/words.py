@@ -27,10 +27,8 @@ def words_match(words, chars):
 
     for word in words:
         word_letters_count = {}
-        match = True
         for letter in word:
             if letter not in seen_in_chars:
-                match = False
                 break
 
             if letter not in word_letters_count:
@@ -38,9 +36,8 @@ def words_match(words, chars):
             else:
                 word_letters_count[letter] += 1
                 if word_letters_count[letter] > seen_in_chars[letter]:
-                    match = False
                     break
-        if match:
+        else:
             length_sum += len(word)
     return length_sum
 
