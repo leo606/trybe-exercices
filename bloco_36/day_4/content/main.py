@@ -11,9 +11,9 @@ if __name__ == "__main__":
 
     for value in values2:
         set2.add(value)
-    
+
     print(set1)
     print(set2)
     print()
 
-    print(set1.union(set2))
+    print(set1.intersection(set2))

@@ -25,3 +25,10 @@ class Conjunto:
             if index in self or index in setB:
                 new_set.add(index)
         return new_set
+
+    def intersection(self, setB):
+        new_set = Conjunto()
+        for index in range(1001):
+            if index in self and index in setB:
+                new_set.add(index)
+        return new_set
