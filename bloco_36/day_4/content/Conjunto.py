@@ -3,7 +3,8 @@ class Conjunto:
         self._set = [False for _index in range(1001)]
 
     def add(self, value):
-        self._set[value] = True
+        if not self._set[value]:
+            self._set[value] = True
 
     def __str__(self):
         values = "{"
@@ -14,3 +15,6 @@ class Conjunto:
                     values += ", "
         values += "}"
         return values
+
+    def __contains__(self, item):
+        return self._set[item]
