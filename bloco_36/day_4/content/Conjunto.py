@@ -18,3 +18,10 @@ class Conjunto:
 
     def __contains__(self, item):
         return self._set[item]
+
+    def union(self, setB):
+        new_set = Conjunto()
+        for index in range(1001):
+            if index in self or index in setB:
+                new_set.add(index)
+        return new_set
