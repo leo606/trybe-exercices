@@ -6,3 +6,5 @@ if __name__ == "__main__":
 
     for value in values:
         set.add(value)
+
+    print(set)
