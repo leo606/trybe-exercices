@@ -52,3 +52,16 @@ class Linked_list:
             value_to_remove.next = None
             self.__length -= 1
         return value_to_remove
+
+    def remove_last(self):
+        if len(self) <= 1:
+            return self.remove_first()
+
+        previous_to_remove = self.head_value
+        while previous_to_remove.next.next:
+            previous_to_remove = previous_to_remove.next
+
+        value_to_remove = previous_to_remove.next
+        previous_to_remove.next = None
+        self.__length -= 1
+        return value_to_remove
