@@ -81,3 +81,17 @@ class Linked_list:
         value_to_remove.next = None
         self.__length -= 1
         return value_to_remove
+
+    def get_element_at(self, position):
+        value_returned = None
+        value_to_return = self.head_value
+        if value_to_return:
+            while position > 0 and value_to_return.next:
+                value_to_return = value_to_return.next
+                position -= 1
+            if value_to_return:
+                value_returned = Node(value_to_return.value)
+        return value_returned
+
+    def in_empty(self):
+        return not self.__length
