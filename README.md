@@ -260,4 +260,9 @@ A lista está separada nos seguintes módulos:
       - Hashmap e Dict
       - Set
       - [Projeto - Restaurant Orders](https://github.com/leo606/restaurant-orders-trybe)
+
+  37. ### Estrutura de Dados II: Listas, Filas e Pilhas
+      - Nó e Listas Encadeadas
+      - Pilhas e Filas
+      - [Projeto - TING - Trybe Is Not Google](https://github.com/leo606/ting-trybe)
 </details>
