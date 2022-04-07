@@ -253,4 +253,11 @@ A lista está separada nos seguintes módulos:
       - Recursividade e Estratégias para solução de problemas
       - Algoritmos de ordenação e busca
       - [Projeto - Algoritmos](https://github.com/leo606/algorithms-trybe)
+
+  36. ### Estrutura de Dados I: Arrays, Hashmaps e Sets
+      - Arquitetura de Computadores
+      - Arrays
+      - Hashmap e Dict
+      - Set
+      - [Projeto - Restaurant Orders](https://github.com/leo606/restaurant-orders-trybe)
 </details>
