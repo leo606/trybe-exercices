@@ -247,4 +247,10 @@ A lista está separada nos seguintes módulos:
       - Redes de computadores, ferramentas e segurança
       - Raspagem de Dados
       - [Projeto - Tech news](https://github.com/leo606/tech-news-trybe)
+
+  35. ### Algoritmos
+      - Complexidade de Algoritmos
+      - Recursividade e Estratégias para solução de problemas
+      - Algoritmos de ordenação e busca
+      - [Projeto - Algoritmos](https://github.com/leo606/algorithms-trybe)
 </details>
