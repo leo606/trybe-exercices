@@ -20,8 +20,8 @@ A lista está separada nos seguintes módulos:
     - Python
     - Programação orientada a objetos
     - Rede e raspagem de dados
-    - Algoritimos
-    - Estruturas de dados
+    - Algoritmos
+    - Estrutura de dados
 
 ## Módulos
 
